@@ -12,10 +12,12 @@
         "jeremykenedy/laravel-phpinfo": "^1.2",
         "jeremykenedy/laravel-roles": "^1.6",
         "jeremykenedy/laravel-users": "^3.1",
+        "kg-bot/laravel-localization-to-vue": "^1.6",
         "laravel/framework": "5.8.*",
         "laravel/tinker": "^1.0",
         "michelf/php-markdown": "^1.8",
         "michelf/php-smartypants": "^1.8",
+        "renatomarinho/laravel-page-speed": "^1.8",
         "spatie/laravel-feed": "^2.1",
         "spatie/laravel-sitemap": "^5.2",
         "unisharp/laravel-filemanager": "^1.9"
