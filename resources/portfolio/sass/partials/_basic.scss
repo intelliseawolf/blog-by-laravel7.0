@@ -280,6 +280,9 @@ blockquote {
     margin-right: $standardMeasure * 3;
 }
 
+.pt-0 {
+    padding-top: 0;
+}
 .pt-1 {
     padding-top: $standardMeasure;
 }
@@ -290,6 +293,9 @@ blockquote {
     padding-top: $standardMeasure * 3;
 }
 
+.pb-0 {
+    padding-bottom: 0 !important;
+}
 .pb-1 {
     padding-bottom: $standardMeasure;
 }

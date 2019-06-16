@@ -1,5 +1,4 @@
 <template>
-
     <div class="Skill">
         <div class="Skill__head">
             <span class="Skill__title flex"><slot></slot></span>
@@ -9,9 +8,7 @@
             <div class="Skill__bar-filling"></div>
         </div>
     </div>
-
 </template>
-
 <script>
     export default{
         props: ['percent'],
@@ -29,7 +26,6 @@
 
             Event.listen('fire-skills', () => this.fireSkills());
         },
-
         methods: {
             fireSkills(){
                 $(this.$el).find('.Skill__bar-filling').animate({
@@ -37,8 +33,6 @@
                 }, 3000);
             }
         }
-
-
     }
 </script>
 
@@ -65,9 +59,7 @@
             width: 0%;
             background: black;
         }
-
     }
-
     .flex{
         flex: 1;
     }

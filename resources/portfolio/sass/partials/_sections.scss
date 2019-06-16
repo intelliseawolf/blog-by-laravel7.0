@@ -636,10 +636,27 @@ section .section--basic,
  * TESTIMONIALS
  */
 
+.testimonials-headline {
+    color: $white;
+    background: $black;
+    padding: 60px 0 0;
+    h2 {
+        color: $white;
+        margin: 0;
+        padding: 0;
+        text-transform: uppercase;
+        font-weight: bold;
+        display: block;
+        text-align: center;
+    }
+    &--no-margin-bottom {
+        margin-bottom: 0px;
+    }
+}
 .section.paralax-testimonials {
     background: $black no-repeat fixed 50% 50% / cover;
     position: relative;
-    padding: 100px 0 80px 0;
+    padding: 60px 0 80px 0;
     &:after {
         top: 0;
         left: 0;

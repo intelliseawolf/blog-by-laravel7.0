@@ -2,7 +2,9 @@
             <div class="section--basic section--darker">
                 <div class="container">
                     <div class="headline">
-                        <h2>Contact me</h2>
+                        <h2>
+                            {{ $sections['contact']['sectionTitle'] }}
+                        </h2>
                     </div>
                     <div class="Contact pt-2">
                         <div class="row">
@@ -16,15 +18,29 @@
                             </div>
                             <div class="col-md-4 col-sm-6">
                                 <h4 data-aos="fade">
-                                    Feel free to contact with me!
+                                    {{ $sections['contact']['textTitle'] }}
                                 </h4>
                                 <p data-aos="fade">
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptate dolores, quasi unde quisquam facilis at ullam aperiam similique dicta voluptatibus!
+                                    {{ $sections['contact']['textContent'] }}
                                 </p>
                                 <div class="Contact__details">
-                                    <div class="Contact__detail"  data-aos="fade">
-                                        <i class="fa fa-phone"></i> 503.619.6366
-                                    </div>
+
+                    @if($sections['footer']['phone']['enabled'])
+                        @if($sections['footer']['phone']['link'])<a href="{{ $sections['footer']['phone']['link'] }}" class="footer-link">@endif
+
+                            <div class="Contact__detail"  data-aos="fade">
+<!--                                 <i class="fa fa-phone"></i>
+                                503.619.6366 -->
+
+                                <i class="fa {{ $sections['footer']['phone']['icon'] }}"></i>
+                                {{ $sections['footer']['phone']['text'] }}
+
+                            </div>
+
+                        @if($sections['footer']['phone']['link'])</a>@endif
+                    @endif
+
+
                                     <div class="Contact__detail"  data-aos="fade">
                                         <i class="fa fa-envelope"></i> jeremykenedy@gmail.com
                                     </div>

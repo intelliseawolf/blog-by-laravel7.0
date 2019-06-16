@@ -20742,6 +20742,10 @@ blockquote {
   margin-right: 45px;
 }
 
+.pt-0 {
+  padding-top: 0;
+}
+
 .pt-1 {
   padding-top: 15px;
 }
@@ -20752,6 +20756,10 @@ blockquote {
 
 .pt-3 {
   padding-top: 45px;
+}
+
+.pb-0 {
+  padding-bottom: 0 !important;
 }
 
 .pb-1 {
@@ -21841,10 +21849,30 @@ section .section--basic.\--nopadding-bottom,
  * TESTIMONIALS
  */
 
+.testimonials-headline {
+  color: #ffffff;
+  background: #000000;
+  padding: 60px 0 0;
+}
+
+.testimonials-headline h2 {
+  color: #ffffff;
+  margin: 0;
+  padding: 0;
+  text-transform: uppercase;
+  font-weight: bold;
+  display: block;
+  text-align: center;
+}
+
+.testimonials-headline--no-margin-bottom {
+  margin-bottom: 0px;
+}
+
 .section.paralax-testimonials {
   background: #000000 no-repeat fixed 50% 50%/cover;
   position: relative;
-  padding: 100px 0 80px 0;
+  padding: 60px 0 80px 0;
 }
 
 .section.paralax-testimonials:after {

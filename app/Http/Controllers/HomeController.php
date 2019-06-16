@@ -30,7 +30,7 @@ class HomeController extends Controller
             ],
             'intro' => [
                 'enabled'           => true,
-                'particlesEnabled'  => true,
+                'particlesEnabled'  => false,
                 'scrollHtmlEnabled' => true,
                 'navTitle'          => 'Start',
                 'downText'          => 'Scroll Down',
@@ -45,12 +45,29 @@ class HomeController extends Controller
                 ],
             ],
             'about' => [
-                'enabled'       => false,
+                'enabled'       => true,
                 'titleEnabled'  => true,
+                'aboutButtons'  => true,
                 'navTitle'      => 'About Me',
                 'intro'         => trans('portfolio.sections.about.intro'),
                 'textTitle'     => trans('portfolio.sections.about.textTitle'),
                 'text'          => trans('portfolio.sections.about.text'),
+                'buttons'       => collect([
+                    [
+                        'enabled'   => true,
+                        'link'      => '#',
+                        'text'      => 'Hire me',
+                        'delay'     => '150',
+                        'target'    => '_blank',
+                    ],
+                    [
+                        'enabled'   => true,
+                        'link'      => '#',
+                        'text'      => 'Download CV',
+                        'delay'     => '300',
+                        'target'    => '_blank',
+                    ],
+                ]),
             ],
             'skills' => [
                 'enabled'       => true,
@@ -111,7 +128,7 @@ class HomeController extends Controller
             'counters' => [
                 'enabled' => true,
                 'background' => 'https://hdqwalls.com/wallpapers/code.jpg',
-                'bsClass'    => "col-sm-3 col-xs-6",
+                'bsClass'    => "col-md-3 col-sm-6",
                 'items' => collect([
                     [
                         'title'     => 'Published Packagist Packages',
@@ -148,15 +165,102 @@ class HomeController extends Controller
                 ]),
             ],
             'portfolio' => [
-                'enabled'   => true,
-                'navTitle'  => 'Portfolio',
+                'enabled'       => true,
+                'spacing'       => false,
+                'lightBox'      => true,
+                'navTitle'      => 'Portfolio',
+                'sectionTitle'  => 'Portfolio',
+                'itemLimit'     => '8',
+                'items' => collect([
+                    [
+                        'name'  => 'Item name',
+                        'image' => 'http://via.placeholder.com/476x476',
+                        'href1' => 'project-page.html',
+                        'href2' => 'http://via.placeholder.com/1300x950',
+                        'tags'  => [
+                            'Webdesign'
+                        ],
+                    ],
+                    [
+                        'name'  => 'Item name',
+                        'image' => 'http://via.placeholder.com/476x476',
+                        'href1' => 'project-page.html',
+                        'href2' => 'http://via.placeholder.com/1300x950',
+                        'tags'  => [
+                            'Photography'
+                        ],
+                    ],
+                    [
+                        'name'  => 'Item name',
+                        'image' => 'http://via.placeholder.com/476x476',
+                        'href1' => 'project-page.html',
+                        'href2' => 'http://via.placeholder.com/1300x950',
+                        'tags'  => [
+                            'Photography',
+                            'Branding',
+                        ],
+                    ],
+                    [
+                        'name'  => 'Item name',
+                        'image' => 'http://via.placeholder.com/476x476',
+                        'href1' => 'project-page.html',
+                        'href2' => 'http://via.placeholder.com/1300x950',
+                        'tags'  => [
+                            'Branding'
+                        ],
+                    ],
+                    [
+                        'name'  => 'Item name',
+                        'image' => 'http://via.placeholder.com/476x476',
+                        'href1' => 'project-page.html',
+                        'href2' => 'http://via.placeholder.com/1300x950',
+                        'tags'  => [
+                            'Webdesign'
+                        ],
+                    ],
+                    [
+                        'name'  => 'Item name',
+                        'image' => 'http://via.placeholder.com/476x476',
+                        'href1' => 'project-page.html',
+                        'href2' => 'http://via.placeholder.com/1300x950',
+                        'tags'  => [
+                            'Photography'
+                        ],
+                    ],
+                    [
+                        'name'  => 'Item name',
+                        'image' => 'http://via.placeholder.com/476x476',
+                        'href1' => 'project-page.html',
+                        'href2' => 'http://via.placeholder.com/1300x950',
+                        'tags'  => [
+                            'Photography',
+                            'Branding',
+                        ],
+                    ],
+                    [
+                        'name'  => 'Item name',
+                        'image' => 'http://via.placeholder.com/476x476',
+                        'href1' => 'project-page.html',
+                        'href2' => 'http://via.placeholder.com/1300x950',
+                        'tags'  => [
+                            'Branding'
+                        ],
+                    ],
+                ]),
+                'seeMoreButton' => [
+                    'enabled'   => true,
+                    'link'      => 'project-list.html',
+                    'text'      => 'See more',
+                    'icon'      => 'fa-long-arrow-right',
+                ],
             ],
             'blog' => [
                 'enabled'   => true,
                 'navTitle'  => 'Blog',
             ],
             'testimonials' => [
-                'enabled'   => true,
+                'enabled'       => true,
+                'sectionTitle'  => 'What people are saying',
                 'items' => collect([
                     [
                         'author'    => 'John Doe',
@@ -171,8 +275,18 @@ class HomeController extends Controller
                 ]),
             ],
             'contact' => [
-                'enabled'   => true,
-                'navTitle'  => 'Contact',
+                'enabled'       => true,
+                'navTitle'      => 'Contact',
+                'sectionTitle'  => 'Contact Me',
+                'textTitle'     => 'Feel free to contact me!',
+                'textContent'   => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptate dolores, quasi unde quisquam facilis at ullam aperiam similique dicta voluptatibus!',
+
+
+
+
+
+
+
             ],
             'footer' => [
                 'enabled' => true,
