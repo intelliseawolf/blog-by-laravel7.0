@@ -69,14 +69,14 @@ class HomeController extends Controller
                 'text'          => trans('portfolio.sections.about.text'),
                 'buttons'       => collect([
                     [
-                        'enabled'   => true,
+                        'enabled'   => false,
                         'link'      => '#',
                         'text'      => 'Hire me',
                         'delay'     => '150',
                         'target'    => '_blank',
                     ],
                     [
-                        'enabled'   => true,
+                        'enabled'   => false,
                         'link'      => '#',
                         'text'      => 'Download CV',
                         'delay'     => '300',

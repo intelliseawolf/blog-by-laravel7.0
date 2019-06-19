@@ -7,14 +7,6 @@
 @endpush
 
 @section('content')
-    {{--
-        @include('blog.partials.header', ['image' => $post_image, 'title' => $title, 'subtitle'  => $subtitle ])
-        @include('blog.partials.posts-roll', ['blogposts' => $posts])
-        @if(!$tag)
-            @include('blog.partials.posts-pager')
-        @endif
-    --}}
-
     @if($sections['preloader']['enabled'])
         @include("portfolio.preloaders.preloader-{$sections['preloader']['type']}")
     @endif
