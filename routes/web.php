@@ -15,23 +15,27 @@ Route::group(['middleware' => ['activity']], function () {
 
     // Homepage Route
     Route::get('/', 'HomeController@index')->name('home');
-
-    // Blog
-    Route::get('/blog', 'BlogController@index')->name('blog');
-
-    // Authors Routes
-    Route::get('blog/authors', 'BlogController@authors')->name('authors');
-    Route::get('/blogauthor/{author}', 'BlogController@author')->name('author');
-
-    // Contact Routes
-    Route::get('blog/contact', 'ContactController@index')->name('contact');
-    Route::post('blog/contact', 'ContactController@contactSend')->name('contactSend');
-
-    // RSS Feed Route
-    Route::feeds();
+    Route::post('homeContact', 'HomeContactController@contactSend')->name('homeContactSend');
 
     // Register, Login, and forget PW Routes
     Auth::routes();
+});
+
+// Blog routes
+Route::group(['prefix' => 'blog', 'middleware' => ['activity']], function () {
+    // Blog
+    Route::get('/', 'BlogController@index')->name('blog');
+
+    // Authors Routes
+    Route::get('authors', 'BlogController@authors')->name('authors');
+    Route::get('/blogauthor/{author}', 'BlogController@author')->name('author');
+
+    // Bloc Contact Routes
+    Route::get('contact', 'ContactController@index')->name('contact');
+    Route::post('contact', 'ContactController@contactSend')->name('contactSend');
+
+    // RSS Feed Route
+    Route::feeds();
 });
 
 // Super Admin only routes

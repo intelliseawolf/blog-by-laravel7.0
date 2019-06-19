@@ -46,17 +46,6 @@ window.Config = {
 
   /*
   |--------------------------------------------------------------------------
-  | Contact form
-  |--------------------------------------------------------------------------
-  |
-  */
-  contactForm: {
-    mailScriptLocation: 'send_email.php',
-    successMessage: 'Your message was sent!'
-  },
-
-  /*
-  |--------------------------------------------------------------------------
   | AOS - Animate on Scroll
   |--------------------------------------------------------------------------
   | This template uses AOS - small library to animate elements on your page
@@ -85,7 +74,6 @@ window.Config = {
     all: 'all',
     previous: 'previous',
     next: 'next',
-    sendMessage: 'Send message'
   }
 }
 

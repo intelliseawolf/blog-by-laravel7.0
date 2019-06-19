@@ -9,8 +9,9 @@
 
 <script>
     export default{
-        props: ['data'],
-
+        props: [
+            'data'
+        ],
         data() {
             return {
                 href: this.data.href

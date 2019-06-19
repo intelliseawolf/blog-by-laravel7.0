@@ -29,16 +29,12 @@ return [
         ],
     ],
 
-
     'footer' => [
-
         'nav' => [
             'github'  => 'GitHub',
             'license' => 'License',
         ],
-
         'copyright' => '&copy; '.date("Y").' | Developed with Love <i class="fa fa-heart text-danger"></i><br /> by '.config('blog.author'),
     ],
-
 
 ];

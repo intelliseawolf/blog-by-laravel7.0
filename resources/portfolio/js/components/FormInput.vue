@@ -1,9 +1,9 @@
 <template>
     <div class="Form__input-container">
-    <div class="Form__group" :class="{'Form--filled': notEmpty, 'Form--error': errors}">
-        <textarea v-if="type == 'textarea'" :id="formId" type="text"  class="Form__control" :name="name" v-model="value" @keydown="clearErrros"></textarea>
-        <input v-else :id="formId" type="text"  class="Form__control" :name="name" v-model="value" @keydown="clearErrros">
-        <label class="Form__label" :for="formId">{{label}}</label>
+        <div class="Form__group" :class="{'Form--filled': notEmpty, 'Form--error': errors}">
+            <textarea v-if="type == 'textarea'" :id="formId" type="text"  class="Form__control" :name="name" v-model="value" @keydown="clearErrors"></textarea>
+            <input v-else :id="formId" type="text"  class="Form__control" :name="name" v-model="value" @keydown="clearErrors">
+            <label class="Form__label" :for="formId">{{label}}</label>
         </div>
         <transition name="slide-fade">
              <ul v-if="errors" class="Form__errors">
@@ -12,11 +12,13 @@
         </transition>
     </div>
 </template>
-
 <script>
     export default{
-        props: ['name', 'label', 'type'],
-
+        props: [
+            'name',
+            'label',
+            'type'
+        ],
         data() {
             return{
                 value: '',
@@ -24,18 +26,16 @@
                 errors: false
             }
         },
-
         watch: {
             value() {
                 this.syncWithParent();
             }
         },
-
         mounted() {
             this.syncWithParent();
             Event.listen('contact-form-error', (errors) => this.handleErrors(errors));
+            Event.listen('clear-values', (action) => this.clearFields());
         },
-
         computed: {
             formId() {
                 return 'form-' + this.name;
@@ -44,7 +44,6 @@
                 return this.focus || this.value.length > 0;
             }
         },
-
         methods: {
             syncWithParent() {
                 this.$parent.values[this.name] = this.value;
@@ -55,13 +54,16 @@
                    // this.value = ''
                 }
             },
-            clearErrros() {
+            clearErrors() {
                 this.errors = false;
+            },
+            clearFields() {
+                this.value = '';
+                // console.log('hit');
             }
         }
     }
 </script>
-
 <style lang="scss" scoped>
     .Form {
     &__input-container{
