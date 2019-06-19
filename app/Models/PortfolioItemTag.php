@@ -11,7 +11,7 @@ class PortfolioItemTag extends Model
      *
      * @var string
      */
-    protected $table = 'portfolioitemtags';
+    protected $table = 'portfolio_item_tags';
 
     /**
      * The attributes that are not mass assignable.

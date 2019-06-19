@@ -13,7 +13,7 @@ class CreatePortfolioItemsTable extends Migration
      */
     public function up()
     {
-        Schema::create('portfolioitems', function (Blueprint $table) {
+        Schema::create('portfolio_items', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('slug')->unique();
             $table->longText('title');
@@ -36,6 +36,6 @@ class CreatePortfolioItemsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('portfolioitems');
+        Schema::dropIfExists('portfolio_items');
     }
 }

@@ -18,7 +18,7 @@ class PortfolioItem extends Model implements Feedable
      *
      * @var string
      */
-    protected $table = 'portfolioitems';
+    protected $table = 'portfolio_items';
 
     /**
      * The attributes that are not mass assignable.

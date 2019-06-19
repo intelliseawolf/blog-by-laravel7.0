@@ -13,10 +13,10 @@ class CreatePortfolioItemTagsTable extends Migration
      */
     public function up()
     {
-        Schema::create('portfolioitemtags', function (Blueprint $table) {
+        Schema::create('portfolio_item_tags', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('tag')->unique();
-            $table->longText('title')->unique();
+            $table->longText('title')->nullable();
             $table->timestamps();
         });
     }
@@ -28,6 +28,6 @@ class CreatePortfolioItemTagsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('portfolioitemtags');
+        Schema::dropIfExists('portfolio_item_tags');
     }
 }
