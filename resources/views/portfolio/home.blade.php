@@ -33,7 +33,7 @@
         @include('portfolio.partials.portfolio')
     @endif
     @if($sections['blog']['enabled'])
-        @include('portfolio.partials.blog')
+        @include('portfolio.partials.blog', ['posts' => $sections['blog']['posts'], 'sectionData' => $sections['blog']])
     @endif
     @if($sections['testimonials']['enabled'])
         @include('portfolio.partials.testimonials')

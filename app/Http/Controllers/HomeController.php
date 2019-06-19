@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use Route;
+
 class HomeController extends Controller
 {
     /**
@@ -14,6 +16,19 @@ class HomeController extends Controller
     public function __construct()
     {
         // $this->middleware('auth');
+    }
+
+    /**
+     * Gets the blog posts.
+     *
+     * @return array The blog posts.
+     */
+    private function getBlogPosts()
+    {
+        $blogPostsRequest = Request::create('/api/posts/all/', 'GET');
+        $blogPosts = json_decode(Route::dispatch($blogPostsRequest)->getContent());
+
+        return $blogPosts;
     }
 
     /**
@@ -255,8 +270,19 @@ class HomeController extends Controller
                 ],
             ],
             'blog' => [
-                'enabled'   => true,
-                'navTitle'  => 'Blog',
+                'enabled'       => true,
+                'navTitle'      => 'Blog',
+                'sectionTitle'  => 'LATEST BLOG POSTS',
+                'itemLimit'     => '3',
+                'fadeInc'       => '200',
+                'seeMoreButton' => [
+                    'enabled'   => true,
+                    'link'      => route('blog'),
+                    'text'      => 'See more',
+                    'icon'      => 'fa-long-arrow-right',
+                ],
+                'posts'         => $this->getBlogPosts(),
+                'noPosts'       => 'No Recent Posts',
             ],
             'testimonials' => [
                 'enabled'       => true,
@@ -284,7 +310,7 @@ class HomeController extends Controller
                     'enabled'   => true,
                     'icon'      => 'fa-phone',
                     'text'      => '503.619.6366',
-                    'link'      => '1-503-619-6366',
+                    'link'      => 'tel:1-503-619-6366',
                 ],
                 'email' => [
                     'enabled'   => true,
@@ -322,7 +348,7 @@ class HomeController extends Controller
                     'enabled' => true,
                     'icon' => 'fa-phone-square',
                     'text' => '503.619.6366',
-                    'link' => '1-503-619-6366',
+                    'link' => 'tel:1-503-619-6366',
                 ],
                 'email' => [
                     'enabled' => true,
