@@ -10,7 +10,7 @@
         "google/recaptcha": "^1.2",
         "jeremykenedy/laravel-logger": "^2.4",
         "jeremykenedy/laravel-phpinfo": "^1.2",
-        "jeremykenedy/laravel-roles": "^1.6",
+        "jeremykenedy/laravel-roles": "^2.0.1",
         "jeremykenedy/laravel-users": "^3.1",
         "kg-bot/laravel-localization-to-vue": "^1.6",
         "laravel/framework": "5.8.*",

@@ -40,7 +40,9 @@ import Skill from './components/Skill';
  * Load configs
  */
 particlesJS.load('particles-js', 'js/particles-config.json');
-AOS.init(Config.AOS);
+// AOS.init(Config.AOS);
+AOS.init();
+
 
 var app = new Vue({
   components: {
