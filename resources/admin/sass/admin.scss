@@ -132,3 +132,20 @@
         font-size: 30px;
     }
 }
+
+// Cards
+
+.card {
+    .card-header {
+        padding: 15px 15px;
+        &.bg-default {
+            color: $white;
+        }
+    }
+}
+.badge {
+    &.badge-default {
+        color: $white;
+    }
+}
+
