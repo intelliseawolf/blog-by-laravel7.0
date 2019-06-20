@@ -86,9 +86,9 @@
                 </li>
             @endif
 
-            @if (Route::has('admin/roles'))
-                <li class="{{ Request::is('admin/roles') ? 'active' : null }} ">
-                    <a href="{{ route('admin/roles') }}">
+            @if (Route::has('laravelroles::roles.index'))
+                <li class="{{ (Request::routeIs('laravelroles::roles.index') || Request::routeIs('laravelroles::roles.role-show-deleted') || Request::routeIs('laravelroles::roles.roles-deleted') || Request::routeIs('laravelroles::roles.create') || Request::routeIs('laravelroles::roles.show') || Request::routeIs('laravelroles::roles.edit') || Request::routeIs('laravelroles::permission-show-deleted') || Request::routeIs('laravelroles::permission-restore') || Request::routeIs('laravelroles::permissions.create') || Request::routeIs('laravelroles::permissions.show') || Request::routeIs('laravelroles::permissions.edit')) ? 'active' : null }} ">
+                    <a href="{{ route('laravelroles::roles.index') }}">
                         <i class="nc-icon nc-tile-56"></i>
                         <p>
                             {!! trans('admin.drawer-nav.roles') !!}
