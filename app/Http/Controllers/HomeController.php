@@ -45,7 +45,7 @@ class HomeController extends Controller
             ],
             'intro' => [
                 'enabled'           => true,
-                'particlesEnabled'  => false,
+                'particlesEnabled'  => true,
                 'scrollHtmlEnabled' => true,
                 'navTitle'          => 'Start',
                 'downText'          => 'Scroll Down',
