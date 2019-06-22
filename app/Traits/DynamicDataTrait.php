@@ -240,7 +240,7 @@ trait DynamicDataTrait
     {
         return [
             'enabled'           => true,
-            'particlesEnabled'  => false,
+            'particlesEnabled'  => true,
             'scrollHtmlEnabled' => true,
             'navTitle'          => 'Start',
             'downText'          => 'Scroll Down',
