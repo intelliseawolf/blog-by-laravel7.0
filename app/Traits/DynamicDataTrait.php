@@ -290,7 +290,7 @@ trait DynamicDataTrait
 
     private function getLogoText()
     {
-        return 'JK';
+        return config('app.name', 'JK');
     }
 
     /**
