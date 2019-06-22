@@ -17,7 +17,7 @@
                 <ul class="list-group mb-5">
                     @foreach ($authors as $author)
                         <li class="list-group-item d-flex justify-content-between align-items-center">
-                            <a href="{{ url('/author/' . $author->author) }}">
+                            <a href="{{ route('blog') . '/author/' . $author->author }}">
                                 {{ $author->author }}
                             </a>
                         </li>

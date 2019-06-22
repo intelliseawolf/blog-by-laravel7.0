@@ -39,7 +39,7 @@ class PortfolioItemTag extends Model
      */
     public function portfolioItems()
     {
-        return $this->belongsToMany('App\Models\PortfolioItem', 'portfolioItem_tag_pivot');
+        return $this->belongsToMany('App\Models\PortfolioItem', 'portfolio_item_tag_pivot');
     }
 
     /**

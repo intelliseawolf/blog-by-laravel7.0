@@ -37,3 +37,6 @@
         @include('portfolio.partials.footer')
     @endif
 @endsection
+
+@push('scripts')
+@endpush

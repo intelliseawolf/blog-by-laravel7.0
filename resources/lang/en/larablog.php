@@ -12,6 +12,8 @@ return [
     'nav' => [
         'menu'      => 'Menu',
         'home'      => 'Home',
+        'portfolio' => 'Portfolio',
+        'blog'      => 'Blog',
         'about'     => 'About',
         'authors'   => 'Authors',
         'contact'   => 'Contact',

@@ -17,7 +17,6 @@
                     @if(count($posts) > 0)
                         @foreach($posts as $post)
                             @php if($blogItemsCount == $blogItemLimit) break; @endphp
-
                                 <div class="col-sm-4" data-aos="fade" data-aos-delay="{{ $blogPostFade }}">
                                     <div class="Blog__post">
                                         <div class="Blog__post-image">

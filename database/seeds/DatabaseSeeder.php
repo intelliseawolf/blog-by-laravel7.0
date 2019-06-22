@@ -20,9 +20,10 @@ class DatabaseSeeder extends Seeder
         $this->call(ThemesTableSeeder::class);
         $this->call(BlogSettingsTableSeeder::class);
         $this->call(UsersTableSeeder::class);
-
         $this->call(TagTableSeeder::class);
         $this->call(PostTableSeeder::class);
+        $this->call(PortfolioItemTagsTableSeeder::class);
+        $this->call(PortfolioItemsTableSeeder::class);
 
         Model::reguard();
     }

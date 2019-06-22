@@ -1,3 +1,9 @@
+@php
+    $footerLogoLink = '#Intro';
+    if(isset($single)) {
+        $footerLogoLink = route('home');
+    }
+@endphp
 <footer>
     <div class="container">
         <div class="flex-row">
@@ -22,7 +28,7 @@
                 </div>
             </div>
             <div class="col-sm-4">
-                <a class="page-scroll" href="#Intro">
+                <a @if(!isset($single))class="page-scroll"@endif href="{{ $footerLogoLink }}">
                     <h2 class="logo">
                         {{ $logoText }}
                     </h2>

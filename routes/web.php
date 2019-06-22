@@ -11,31 +11,45 @@
 |
 */
 
+// Homepage
 Route::group(['middleware' => ['activity']], function () {
 
     // Homepage Route
     Route::get('/', 'HomeController@index')->name('home');
-    Route::post('homeContact', 'HomeContactController@contactSend')->name('homeContactSend');
+    Route::post('homeContactSend', 'HomeContactController@contactSend')->name('homeContactSend');
 
     // Register, Login, and forget PW Routes
     Auth::routes();
 });
 
+// Portfolio routes
+Route::group(['prefix' => 'portfolio', 'middleware' => ['activity']], function () {
+    // Portfolio Page
+    Route::get('/', 'Portfolio\PortfolioController@index')->name('portfolio');
+
+    // Individual Portfolio Items
+    Route::get('{slug}', 'Portfolio\PortfolioController@showPortfolioItem');
+});
+
 // Blog routes
 Route::group(['prefix' => 'blog', 'middleware' => ['activity']], function () {
     // Blog
-    Route::get('/', 'BlogController@index')->name('blog');
+    Route::get('/', 'Blog\BlogController@index')->name('blog');
 
     // Authors Routes
-    Route::get('authors', 'BlogController@authors')->name('authors');
-    Route::get('/blogauthor/{author}', 'BlogController@author')->name('author');
+    Route::get('authors', 'Blog\BlogController@authors')->name('authors');
+    Route::get('author/{author}', 'Blog\BlogController@author')->name('author');
 
-    // Bloc Contact Routes
-    Route::get('contact', 'ContactController@index')->name('contact');
-    Route::post('contact', 'ContactController@contactSend')->name('contactSend');
+    // Blog Contact Routes
+    Route::get('contact', 'Blog\BlogContactController@index')->name('contact');
+    Route::post('contact', 'Blog\BlogContactController@contactSend')->name('contactSend');
 
     // RSS Feed Route
     Route::feeds();
+
+    // Individual Blog Posts
+    Route::get('{slug}', 'Blog\BlogController@showPost');
+
 });
 
 // Super Admin only routes
@@ -100,9 +114,4 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'permission:perms.us
     Route::get('/', 'Admin\AdminController@index')->name('admin');
     Route::get('/sitemap', 'Admin\AdminController@sitemap')->name('sitemap-admin');
     Route::post('/generate-sitemap', 'Admin\AdminController@generateSitemap')->name('generate-sitemap');
-});
-
-Route::group(['middleware' => ['activity']], function () {
-    // Dynamic Pages Routes
-    Route::get('/blog/{slug}/', 'BlogController@showPost');
 });

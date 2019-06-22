@@ -16,6 +16,20 @@
                         </a>
                     </li>
                 @endif
+                @if (Route::has('portfolio'))
+                    <li class="nav-item">
+                        <a class="nav-link {{ Request::is('portfolio') ? 'active' : null }}" href="{{ route('portfolio') }}">
+                            {!! trans('larablog.nav.portfolio') !!}
+                        </a>
+                    </li>
+                @endif
+                @if (!Request::is('blog'))
+                    <li class="nav-item">
+                        <a class="nav-link {{ Request::is('blog') ? 'active' : null }}" href="{{ route('blog') }}">
+                            {!! trans('larablog.nav.blog') !!}
+                        </a>
+                    </li>
+                @endif
                 @if (Route::has('authors'))
                     <li class="nav-item">
                         <a class="nav-link {{ Request::is('authors') ? 'active' : null }}" href="{{ route('authors') }}">
@@ -23,6 +37,7 @@
                         </a>
                     </li>
                 @endif
+
                 @if (Route::has('about'))
                     <li class="nav-item">
                         <a class="nav-link {{ Request::is('about') ? 'active' : null }}" href="{{ route('about') }}">

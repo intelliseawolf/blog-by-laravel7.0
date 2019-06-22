@@ -46,7 +46,7 @@
                     self.waiting = true;
                     self.success = false;
                     self.serverError = false;
-                    axios.post('/homeContact', self.values).then(response => {
+                    axios.post('/homeContactSend', self.values).then(response => {
                         self.success = this.successmsg;
                         self.waiting = false;
                         Event.fire('clear-values', true);

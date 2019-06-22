@@ -81,7 +81,7 @@ class PortfolioItem extends Model implements Feedable
      */
     public function tags()
     {
-        return $this->belongsToMany('App\Models\PortfolioItemTag', 'portfolioitem_tag_pivot');
+        return $this->belongsToMany('App\Models\PortfolioItemTag', 'portfolio_item_tag_pivot');
     }
 
     /**
@@ -137,11 +137,11 @@ class PortfolioItem extends Model implements Feedable
      */
     public function syncTags(array $tags)
     {
-        Tag::addNeededTags($tags);
+        PortfolioItemTag::addNeededTags($tags);
 
         if (count($tags)) {
             $this->tags()->sync(
-                Tag::whereIn('tag', $tags)->pluck('id')->all()
+                PortfolioItemTag::whereIn('tag', $tags)->pluck('id')->all()
             );
 
             return;
