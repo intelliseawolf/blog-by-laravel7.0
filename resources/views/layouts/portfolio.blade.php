@@ -20,6 +20,9 @@
         <meta name="author" content="{{ config('blog.author') }}">
         <link rel="shortcut icon" href="/favicon.ico">
 
+        {{-- Dynamic RSS Feed Calls --}}
+        @include('feed::links')
+
         {{-- Fonts --}}
         <link rel="dns-prefetch" href="https://fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css?family=Montserrat|Raleway&amp;subset=latin-ext" rel="stylesheet" type='text/css'>
@@ -34,6 +37,9 @@
 
         {{-- Styles --}}
         <link href="{{ mix('css/portfolio.css') }}" rel="stylesheet">
+        @if($theme)
+            <link rel="stylesheet" type="text/css" href="{{ $theme->link }}">
+        @endif
 
         {{-- Scripts --}}
         <script>
@@ -46,9 +52,7 @@
     </head>
     <body>
         <div id="app" v-cloak>
-            {{-- @include('blog.partials.nav') --}}
             @yield('content')
-            {{-- @include('blog.partials.footer') --}}
         </div>
 
         {{-- Scripts --}}
