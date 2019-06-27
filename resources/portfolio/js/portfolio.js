@@ -8,7 +8,7 @@ import 'particles.js/particles';
 import Vue from 'vue';
 import Lang from 'lang.js';
 
-const particlesJS = window.particlesJS;
+// const particlesJS = window.particlesJS;
 const default_locale = window.default_language;
 const fallback_locale = window.fallback_locale;
 const messages = window.messages;
@@ -39,7 +39,7 @@ import Skill from './components/Skill';
 /**
  * Load configs
  */
-particlesJS.load('particles-js', 'js/particles-config.json');
+// particlesJS.load('particles-js', 'js/particles-config.json');
 // AOS.init(Config.AOS);
 AOS.init();
 

@@ -2,13 +2,14 @@
 
 namespace App\Services;
 
-use Cache;
+use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Log;
 
 class PackagistApiServices
 {
-
     private $_baseUrl;
     private $_curlTimeout;
+    private $_maxRedirects;
     private $_vendorListCacheKey;
     private $_vendorListCacheTime;
     private $_vendorItemCacheTime;
@@ -16,11 +17,11 @@ class PackagistApiServices
     private function curlPackagist()
     {
         $curl = curl_init();
-        curl_setopt_array($curl, array(
+        curl_setopt_array($curl, [
             CURLOPT_URL => $this->_baseUrl,
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_ENCODING => "",
-            CURLOPT_MAXREDIRS => 10,
+            CURLOPT_MAXREDIRS => $this->_maxRedirects,
             CURLOPT_TIMEOUT => $this->_curlTimeout,
             CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
             CURLOPT_CUSTOMREQUEST => "GET",
@@ -28,14 +29,15 @@ class PackagistApiServices
                 "Accept: application/json",
                 "cache-control: no-cache"
             ],
-        ));
+        ]);
         $response = curl_exec($curl);
         $err = curl_error($curl);
         curl_close($curl);
         if ($err) {
+            Log::error($err);
             return null;
         }
-
+        Log::info($response);
         return $response;
     }
 
@@ -53,32 +55,46 @@ class PackagistApiServices
     }
 
     /**
+     * Set the vendor cache key
+     *
+     * @param string $key    The key
+     */
+    private function assignVendorCacheKey($key)
+    {
+        $this->_vendorListCacheKey = $key . "packagistVendorKey";
+    }
+
+    /**
      * Create the instance
      */
     public function __construct()
     {
-        $this->_curlTimeout = 30;
-        $this->_vendorListCacheKey = 'packagistVenforList';
-        $this->_vendorListCacheTime = now()->addMinutes(1);
-        $this->_vendorItemCacheTime = now()->addMinutes(1);
+        $this->_maxRedirects = config('packagistapi.curl.maxredirects');
+        $this->_curlTimeout = config('packagistapi.curl.timeout');
+        $this->_vendorListCacheTime = now()->addMinutes(config('packagistapi.caching.vendorListCacheTime'));
+        $this->_vendorItemCacheTime = now()->addMinutes(config('packagistapi.caching.vendorItemCacheTime'));
     }
 
     /**
      * Gets the packagist vendor repositories list.
      *
-     * @param      <type>  $vendor  The vendor
+     * @param string $vendor  The vendor
      *
-     * @return     <type>  The packagist vendor repositories list.
+     * @return collection The packagist vendor repositories list.
      */
     public function getPackagistVendorRepositoriesList($vendor = null)
     {
-        if ($this->checkIfItemIsCached('packagistVenforList')) {
+        if (!$vendor) {
+            $vendor = config('packagistapi.vendor.default');
+        }
+
+        $this->assignVendorCacheKey($vendor);
+
+        if ($this->checkIfItemIsCached($this->_vendorListCacheKey)) {
             return Cache::get($this->_vendorListCacheKey);
         }
 
-
-
-        $this->_baseUrl = "https://packagist.org/packages/list.json?vendor=" . $vendor;
+        $this->_baseUrl = config('packagistapi.urls.vendorBase') . $vendor;
         $response       = $this->curlPackagist();
         $list           = collect(json_decode($response)->packageNames);
 
@@ -87,34 +103,97 @@ class PackagistApiServices
         return $list;
     }
 
-
-
-    public function getVendorsTotalDownloads($vendor=null, $projects = null)
+    /**
+     * Gets the vendor packages count.
+     *
+     * @param string $vendor  The vendor
+     *
+     * @return integer  The vendor packages count.
+     */
+    public function getVendorPackagesCount($vendor = null)
     {
+        if (!$vendor) {
+            $vendor = config('packagistapi.vendor.default');
+        }
+
+        return $this->getPackagistVendorRepositoriesList($vendor)->count();
+    }
+
+    /**
+     * Gets the vendors packages details.
+     *
+     * @param string $vendor The vendor
+     *
+     * @return collection The vendors packages details.
+     */
+    public function getVendorsPackagesDetails($vendor = null)
+    {
+        if (!$vendor) {
+            $vendor = config('packagistapi.vendor.default');
+        }
+
+        $this->assignVendorCacheKey($vendor);
+        $projects = $this->getPackagistVendorRepositoriesList($vendor);
         $vendorProjects = collect([]);
 
         foreach ($projects as $project) {
-            $this->_baseUrl = "https://packagist.org/packages/jeremykenedy/laravel-blocker.json";
-
             if ($this->checkIfItemIsCached($project)) {
                 $item = Cache::get($project);
             } else {
-                $this->_baseUrl = "https://packagist.org/packages/".$project.".json";
+                $this->_baseUrl = config('packagistapi.urls.projectPreFix').$project.config('packagistapi.urls.projectPostFix');
                 $item = json_decode($this->curlPackagist())->package;
                 Cache::put($project, $item, $this->_vendorListCacheTime);
             }
-
             $vendorProjects[] = $item;
         }
 
-        dd($vendorProjects);
-
+        return $vendorProjects;
     }
 
-    // Cache::put('key', 'value', now()->addMinutes(10));   //Storing Items In The Cache
-    // Cache::put('key', 'value', $seconds);                //Storing Items In The Cache
-    // Cache::forever('key', 'value');                      //Storing Items Forever
-    // Cache::add('key', 'value', $seconds);                //Store If Not Present
-    // Cache::flush();
+    /**
+     * Gets the vendors total downloads.
+     *
+     * @param string $vendor    The vendor
+     *
+     * @return integer          The vendors total downloads.
+     */
+    public function getVendorsTotalDownloads($vendor = null)
+    {
+        if (!$vendor) {
+            $vendor = config('packagistapi.vendor.default');
+        }
+
+        $totalDownloads = 0;
+        $vendorProjects = $this->getVendorsPackagesDetails($vendor);
+
+        foreach ($vendorProjects as $vendorProject) {
+            $totalDownloads += $vendorProject->downloads->total;
+        }
+
+        return $totalDownloads;
+    }
+
+    /**
+     * Gets the vendors total stars.
+     *
+     * @param string $vendor The vendor
+     *
+     * @return integer The vendors total stars.
+     */
+    public function getVendorsTotalStars($vendor = null)
+    {
+        if (!$vendor) {
+            $vendor = config('packagistapi.vendor.default');
+        }
+
+        $totalStars = 0;
+        $vendorProjects = $this->getVendorsPackagesDetails($vendor);
+
+        foreach ($vendorProjects as $vendorProject) {
+            $totalStars += $vendorProject->favers;
+        }
+
+        return $totalStars;
+    }
 
 }

@@ -79,6 +79,7 @@ mix.webpackConfig({
         })
     ]
 }).js('resources/portfolio/js/portfolio.js', 'public/js')
+    .copy('node_modules/particles.js/particles.js', 'public/js/particles.js')
     .copy('resources/portfolio/js/scripts/particles-config.json', 'public/js/particles-config.json')
     .copy( 'resources/portfolio/images', 'public/images', false )
     .sass('resources/portfolio/sass/portfolio.scss', 'public/css')

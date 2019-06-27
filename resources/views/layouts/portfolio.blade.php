@@ -37,7 +37,7 @@
 
         {{-- Styles --}}
         <link href="{{ mix('css/portfolio.css') }}" rel="stylesheet">
-        @if($theme)
+        @if($theme && ($theme->link != 'null'))
             <link rel="stylesheet" type="text/css" href="{{ $theme->link }}">
         @endif
 
