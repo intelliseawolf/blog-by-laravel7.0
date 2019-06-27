@@ -22,6 +22,8 @@ class CreatePortfolioItemsTable extends Migration
             $table->longText('content_html');
             $table->string('item_image');
             $table->string('item_image_large');
+            $table->boolean('project_link_enabled');
+            $table->string('project_link');
             $table->longText('meta_description');
             $table->boolean('enabled')->default(0);
             $table->timestamps();

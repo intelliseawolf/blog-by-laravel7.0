@@ -23,6 +23,7 @@ class DatabaseSeeder extends Seeder
         $this->call(TagTableSeeder::class);
         $this->call(PostTableSeeder::class);
         $this->call(PortfolioItemTagsTableSeeder::class);
+        $this->call(PortfolioItemTechTagsTableSeeder::class);
         $this->call(PortfolioItemsTableSeeder::class);
 
         Model::reguard();

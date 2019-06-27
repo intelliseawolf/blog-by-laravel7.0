@@ -53,6 +53,8 @@ class PortfolioItem extends Model implements Feedable
         'content_html',
         'item_image',
         'item_image_large',
+        'project_link_enabled',
+        'project_link',
         'meta_description',
         'enabled',
     ];
@@ -63,15 +65,17 @@ class PortfolioItem extends Model implements Feedable
      * @var array
      */
     protected $casts = [
-        'slug'              => 'string',
-        'title'             => 'string',
-        'subtitle'          => 'string',
-        'content_raw'       => 'string',
-        'content_html'      => 'string',
-        'item_image'        => 'string',
-        'item_image_large'  => 'string',
-        'meta_description'  => 'string',
-        'enabled'           => 'boolean',
+        'slug'                  => 'string',
+        'title'                 => 'string',
+        'subtitle'              => 'string',
+        'content_raw'           => 'string',
+        'content_html'          => 'string',
+        'item_image'            => 'string',
+        'item_image_large'      => 'string',
+        'project_link_enabled'  => 'boolean',
+        'project_link'          => 'string',
+        'meta_description'      => 'string',
+        'enabled'               => 'boolean',
     ];
 
     /**
@@ -82,6 +86,16 @@ class PortfolioItem extends Model implements Feedable
     public function tags()
     {
         return $this->belongsToMany('App\Models\PortfolioItemTag', 'portfolio_item_tag_pivot');
+    }
+
+    /**
+     * The many-to-many relationship between pages and tags.
+     *
+     * @return BelongsToMany
+     */
+    public function techTags()
+    {
+        return $this->belongsToMany('App\Models\PortfolioItemTechTag', 'portfolio_item_tech_tag_pivot');
     }
 
     /**
@@ -151,11 +165,39 @@ class PortfolioItem extends Model implements Feedable
     }
 
     /**
+     * Sync tag relation adding new tags as needed.
+     *
+     * @param array $tags
+     */
+    public function syncTechTags(array $tags)
+    {
+        PortfolioItemTechTag::addNeededTechTags($tags);
+
+        if (count($tags)) {
+            $this->techTags()->sync(
+                PortfolioItemTechTag::whereIn('tag', $tags)->pluck('id')->all()
+            );
+
+            return;
+        }
+
+        $this->techTags()->detach();
+    }
+
+    /**
      * Alias for content_raw.
      */
     public function getContentAttribute($value)
     {
         return $this->content_raw;
+    }
+
+    /**
+     * Alias for content_html.
+     */
+    public function getHtmlContentAttribute($value)
+    {
+        return $this->content_html;
     }
 
     /**
@@ -166,6 +208,23 @@ class PortfolioItem extends Model implements Feedable
      * @return string
      */
     public function url(PortfolioItemTag $tag = null)
+    {
+        $url = url('/'.$this->slug);
+        if ($tag) {
+            $url .= '?tag='.urlencode($tag->tag);
+        }
+
+        return $url;
+    }
+
+    /**
+     * Return URL to page.
+     *
+     * @param PortfolioItemTag $tag
+     *
+     * @return string
+     */
+    public function urlTech(PortfolioItemTechTag $tag = null)
     {
         $url = url('/'.$this->slug);
         if ($tag) {
@@ -190,6 +249,64 @@ class PortfolioItem extends Model implements Feedable
         foreach ($tags as $tag) {
             $url = str_replace('%TAG%', urlencode($tag), $base);
             $return[] = '<a class="badge" href="'.$url.'">'.e($tag).'</a>';
+        }
+
+        return $return;
+    }
+
+    /**
+     * Return array of tag links.
+     *
+     * @param string $base
+     *
+     * @return array
+     */
+    public function tagList($base = '/?tag=%TAG%')
+    {
+        $tags = $this->tags()->pluck('tag')->all();
+        $return = [];
+
+        foreach ($tags as $tag) {
+            $return[] = e($tag);
+        }
+
+        return $return;
+    }
+
+    /**
+     * Return array of tag links.
+     *
+     * @param string $base
+     *
+     * @return array
+     */
+    public function techTagLinks($base = '/?tag=%TAG%')
+    {
+        $techTags = $this->techTags()->pluck('tag')->all();
+        $return = [];
+
+        foreach ($techTags as $techTag) {
+            $url = str_replace('%TAG%', urlencode($techTag), $base);
+            $return[] = '<a class="badge" href="'.$url.'">'.e($techTag).'</a>';
+        }
+
+        return $return;
+    }
+
+    /**
+     * Return array of tag links.
+     *
+     * @param string $base
+     *
+     * @return array
+     */
+    public function techTagList($base = '/?tag=%TAG%')
+    {
+        $techTags = $this->techTags()->pluck('tag')->all();
+        $return = [];
+
+        foreach ($techTags as $techTag) {
+            $return[] = e($techTag);
         }
 
         return $return;
@@ -274,6 +391,7 @@ class PortfolioItem extends Model implements Feedable
     public function scopeAllPublishedPortfolioItems($query)
     {
         return $query->with('tags')
+            ->with('techTags')
             ->isEnabled()
             ->orderBy('created_at', 'desc');
     }

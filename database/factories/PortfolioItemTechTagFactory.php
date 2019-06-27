@@ -1,9 +1,9 @@
 <?php
 
-use App\Models\PortfolioItemTag;
+use App\Models\PortfolioItemTechTag;
 use Faker\Generator as Faker;
 
-$factory->define(PortfolioItemTag::class, function (Faker $faker) {
+$factory->define(PortfolioItemTechTag::class, function (Faker $faker) {
     $word = $faker->unique()->word;
 
     return [

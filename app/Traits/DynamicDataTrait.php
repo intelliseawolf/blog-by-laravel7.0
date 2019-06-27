@@ -2,6 +2,8 @@
 
 namespace App\Traits;
 
+
+use App\Services\PackagistApiServices;
 use Illuminate\Http\Request;
 use Route;
 
@@ -131,6 +133,111 @@ trait DynamicDataTrait
      */
     private function getCountersData()
     {
+
+        $vendor                         = 'jeremykenedy';
+        $packagistApiServices           = new PackagistApiServices;
+        $packagistVendorList            = $packagistApiServices->getPackagistVendorRepositoriesList($vendor);
+        $packagistVendorsTotalDownloads = $packagistApiServices->getVendorsTotalDownloads($vendor, $packagistVendorList);
+
+// $client = new Client(); //GuzzleHttp\Client
+// $response = $client->get('https://packagist.org/packages/list.json', [
+//     'headers' => [
+//         'Accept' => 'application/json',
+//         'Content-type' => 'application/json'
+//     ],
+//     'form_params' => [
+//         'vendor' => 'jeremykenedy'
+//     ]
+// ]);
+// $a = $response->getBody();
+// dd($response);
+
+
+// $request = new HttpRequest();
+// $request->setUrl('https://packagist.org/packages/list.json');
+// $request->setMethod(HTTP_METH_GET);
+
+// $request->setQueryData(array(
+//   'vendor' => 'jeremykenedy'
+// ));
+
+// $request->setHeaders(array(
+//   'Postman-Token' => 'd48586bc-bdd0-49ba-bb40-2a966e900237',
+//   'cache-control' => 'no-cache',
+//   'Accept' => 'application/json'
+// ));
+
+// try {
+//   $response = $request->send();
+
+//   echo $response->getBody();
+// } catch (HttpException $ex) {
+//   echo $ex;
+// }
+
+
+// Works
+// $curl = curl_init();
+// curl_setopt_array($curl, array(
+//   CURLOPT_URL => "https://packagist.org/packages/list.json?vendor=jeremykenedy",
+//   CURLOPT_RETURNTRANSFER => true,
+//   CURLOPT_ENCODING => "",
+//   CURLOPT_MAXREDIRS => 10,
+//   CURLOPT_TIMEOUT => 30,
+//   CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+//   CURLOPT_CUSTOMREQUEST => "GET",
+//   CURLOPT_HTTPHEADER => array(
+//     "Accept: application/json",
+//     "cache-control: no-cache"
+//   ),
+// ));
+// $response = curl_exec($curl);
+// $err = curl_error($curl);
+// curl_close($curl);
+// if ($err) {
+//     echo "cURL Error #:" . $err;
+// } else {
+//     $a = json_decode($response);
+//     $b = collect($a->packageNames);
+// }
+
+// WORKS
+// $curl = curl_init();
+// curl_setopt_array($curl, array(
+//   CURLOPT_URL => "https://packagist.org/packages/jeremykenedy/laravel-users.json",
+//   CURLOPT_RETURNTRANSFER => true,
+//   CURLOPT_ENCODING => "",
+//   CURLOPT_MAXREDIRS => 10,
+//   CURLOPT_TIMEOUT => 30,
+//   CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+//   CURLOPT_CUSTOMREQUEST => "GET",
+//   CURLOPT_HTTPHEADER => array(
+//     "Accept: application/json",
+//     "cache-control: no-cache"
+//   ),
+// ));
+// $response = curl_exec($curl);
+// $err = curl_error($curl);
+// curl_close($curl);
+// if ($err) {
+//     echo "cURL Error #:" . $err;
+// } else {
+//     $a = json_decode($response);
+//     $b = $a->package;
+// }
+// dd($b->downloads->total);
+
+
+
+
+
+
+
+
+
+
+
+
         return [
             'enabled' => true,
             'background' => 'https://hdqwalls.com/wallpapers/code.jpg',
@@ -138,7 +245,7 @@ trait DynamicDataTrait
             'items' => collect([
                 [
                     'title'     => 'Published Packagist Packages',
-                    'number'    => '14',
+                    'number'    => $packagistVendorList->count(),
                     'increment' => '',
                     'delay'     => '',
                     'icon'      => 'fa fa-code',
@@ -240,7 +347,7 @@ trait DynamicDataTrait
     {
         return [
             'enabled'           => true,
-            'particlesEnabled'  => true,
+            'particlesEnabled'  => false,
             'scrollHtmlEnabled' => true,
             'navTitle'          => 'Start',
             'downText'          => 'Scroll Down',

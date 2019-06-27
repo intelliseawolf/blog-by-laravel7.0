@@ -54,10 +54,12 @@ class PortfolioController extends Controller
         // Allow writers to view all portfolio items and everyone else only enabled items
         if ($user && $user->level() > 2) {
             $portfolioItem = PortfolioItem::with('tags')
+                            ->with('techTags')
                             ->bySlug($slug)
                             ->firstOrFail();
         } else {
             $portfolioItem = PortfolioItem::with('tags')
+                            ->with('techTags')
                             ->bySlug($slug)
                             ->isEnabled()
                             ->firstOrFail();
