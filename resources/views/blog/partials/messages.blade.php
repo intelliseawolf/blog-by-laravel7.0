@@ -1,9 +1,9 @@
 @if(session()->has('errors'))
 <div class="row">
     <div class="col-12">
-        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <div class="alert alert-danger alert-dismissible fade show pb-5" role="alert">
             <button type="button" aria-hidden="true" class="close" data-dismiss="alert" aria-label="Close">
-                <i class="nc-icon nc-simple-remove" aria-hidden="true"></i>
+                <i class="fa fa-fw fa-close" aria-hidden="true"></i>
             </button>
             <h6>
                 <i class="nc-icon nc-alert-circle-i mr-1" aria-hidden="true"></i>
@@ -22,9 +22,9 @@
 @if(session()->has('error'))
 <div class="row">
     <div class="col-12">
-        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <div class="alert alert-danger alert-dismissible fade show pb-5" role="alert">
             <button type="button" aria-hidden="true" class="close" data-dismiss="alert" aria-label="Close">
-                <i class="nc-icon nc-simple-remove" aria-hidden="true"></i>
+                <i class="fa fa-fw fa-close" aria-hidden="true"></i>
             </button>
             <h6>
                 <i class="nc-icon nc-alert-circle-i mr-1" aria-hidden="true"></i>
@@ -42,9 +42,9 @@
 
 <div class="row">
     <div class="col-12">
-        <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <div class="alert alert-success alert-dismissible fade show pb-5" role="alert">
             <button type="button" aria-hidden="true" class="close" data-dismiss="alert" aria-label="Close">
-                <i class="nc-icon nc-simple-remove" aria-hidden="true"></i>
+                <i class="fa fa-fw fa-close" aria-hidden="true"></i>
             </button>
             <h6>
                 <i class="nc-icon nc-check-2 mr-1" aria-hidden="true"></i>

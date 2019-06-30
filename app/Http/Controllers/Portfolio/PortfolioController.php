@@ -14,12 +14,6 @@ class PortfolioController extends Controller
     use DynamicDataTrait;
 
     /**
-     * Display a listing of the published blog posts.
-     *
-     * @return \Illuminate\Http\Response
-     */
-
-    /**
      * Display a listing of the enabled portfolio items.
      *
      * @return \Illuminate\Http\Response

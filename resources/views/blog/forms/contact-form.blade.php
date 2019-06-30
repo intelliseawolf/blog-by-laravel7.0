@@ -17,7 +17,7 @@ if(config('blog.services.reCaptchStatus')) {
 
         <div class="row">
             <div class="col-md-6">
-                <div class="form-group">
+                <div class="form-group @if ($errors->has('firstname')) has-error @endif">
                     {!! Form::label('firstname', trans('forms.contact.labels.firstname')); !!}
                     {!! Form::text('firstname', null, array('id' => 'firstname', 'class' => 'form-control', 'placeholder' => trans('forms.contact.placeholders.firstname'), 'required' => false, 'data-error' => ($errors->has('firstname') ? $errors->first('firstname') : ''))) !!}
                     @if ($errors->has('firstname'))
@@ -30,7 +30,7 @@ if(config('blog.services.reCaptchStatus')) {
                 </div>
             </div>
             <div class="col-md-6">
-                <div class="form-group">
+                <div class="form-group @if ($errors->has('lastname')) has-error @endif">
                     {!! Form::label('lastname', trans('forms.contact.labels.lastname')); !!}
                     {!! Form::text('lastname', null, array('id' => 'lastname', 'class' => 'form-control', 'placeholder' => trans('forms.contact.placeholders.lastname'), 'required' => false, 'data-error' => ($errors->has('lastname') ? $errors->first('lastname') : ''))) !!}
                     @if ($errors->has('lastname'))
@@ -46,7 +46,7 @@ if(config('blog.services.reCaptchStatus')) {
         <div class="row">
 
             <div class="col-md-6">
-                <div class="form-group">
+                <div class="form-group @if ($errors->has('email')) has-error @endif">
                     {!! Form::label('email', trans('forms.contact.labels.email')); !!}
                     {!! Form::email('email', null, array('id' => 'email', 'class' => 'form-control', 'placeholder' => trans('forms.contact.placeholders.email'), 'required' => false, 'data-error' => ($errors->has('email') ? $errors->first('email') : ''))) !!}
                     @if ($errors->has('email'))
@@ -60,7 +60,7 @@ if(config('blog.services.reCaptchStatus')) {
             </div>
 
             <div class="col-md-6">
-                <div class="form-group">
+                <div class="form-group @if ($errors->has('phone')) has-error @endif">
                     {!! Form::label('phone', trans('forms.contact.labels.phone')); !!}
                     {!! Form::tel('phone', null, array('id' => 'phone', 'class' => 'form-control', 'placeholder' => trans('forms.contact.placeholders.phone'), 'required' => false, 'data-error' => ($errors->has('phone') ? $errors->first('phone') : ''))) !!}
                     @if ($errors->has('phone'))
@@ -76,7 +76,7 @@ if(config('blog.services.reCaptchStatus')) {
         </div>
         <div class="row">
             <div class="col-md-12 mb-3">
-                <div class="form-group">
+                <div class="form-group @if ($errors->has('message')) has-error @endif">
                     {!! Form::label('message', trans('forms.contact.labels.message')); !!}
                     {!! Form::textarea('message', null, array('id' => 'message', 'class' => 'form-control', 'rows' => 4, 'placeholder' => trans('forms.contact.placeholders.message'), 'required' => false, 'data-error' => ($errors->has('message') ? $errors->first('message') : ''))) !!}
                     @if ($errors->has('message'))
@@ -93,7 +93,7 @@ if(config('blog.services.reCaptchStatus')) {
         <div class="row">
             @if(config('blog.services.reCaptchStatus'))
                 <div class="col-12 col-md-7 col-lg-8 mb-2 mb-md-0">
-                    <div class="form-group">
+                    <div class="form-group @if ($errors->has('g-recaptcha-response')) has-error @endif">
                         <div class="g-recaptcha" data-sitekey="{{ config('blog.services.reCaptchSite') }}"></div>
                     </div>
                     @if ($errors->has('g-recaptcha-response'))

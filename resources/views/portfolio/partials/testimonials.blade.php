@@ -8,8 +8,8 @@
         @foreach($sections['testimonials']['items'] as $testimonial)
             <testimonial author="{{ $testimonial['author'] }}">
                 <i class="{{ $testimonial['icon'] }}"></i>
-                <br />
-                {!! $testimonial['text'] !!}
+                <br /><br />
+                {!! $testimonial['content'] !!}
             </testimonial>
         @endforeach
     </testimonials>

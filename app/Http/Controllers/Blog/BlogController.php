@@ -7,10 +7,13 @@ use App\Models\Post;
 use App\Models\Tag;
 use App\Models\User;
 use App\Services\PostProcesses;
+use App\Traits\DynamicDataTrait;
 use Illuminate\Http\Request;
 
 class BlogController extends Controller
 {
+    use DynamicDataTrait;
+
     /**
      * Display a listing of the published blog posts.
      *
@@ -21,9 +24,14 @@ class BlogController extends Controller
         $tag = $request->get('tag');
         $service = new PostProcesses($tag);
         $data = $service->getResponse();
-
         $layout = $tag ? Tag::layout($tag) : 'blog.roll-layouts.home';
-
+        $baseInfo = [
+            'logoText'  => $this->getLogoText(),
+            'sections'  => [
+                'footer' => $this->getFooterData(),
+            ],
+        ];
+        $data = array_merge($data, $baseInfo);
         return view($layout, $data);
     }
 
@@ -58,7 +66,14 @@ class BlogController extends Controller
             $tag = Tag::whereTag($tag)->firstOrFail();
         }
 
+        $baseInfo = [
+            'logoText'  => $this->getLogoText(),
+            'sections'  => [
+                'footer' => $this->getFooterData(),
+            ],
+        ];
         $data = compact('post', 'tag', 'slug');
+        $data = array_merge($data, $baseInfo);
 
         return view($post->layout, $data);
     }
@@ -79,6 +94,10 @@ class BlogController extends Controller
         $data = [
             'authors'   => $authors,
             'image'     => config('blog.authors_page_image'),
+            'logoText'  => $this->getLogoText(),
+            'sections'  => [
+                'footer' => $this->getFooterData(),
+            ],
         ];
 
         return view('blog.pages.authors', $data);
@@ -99,6 +118,10 @@ class BlogController extends Controller
             'image'     => config('blog.author_page_image'),
             'posts'     => $posts,
             'tag'       => $tag,
+            'logoText'  => $this->getLogoText(),
+            'sections'  => [
+                'footer' => $this->getFooterData(),
+            ],
         ];
 
         return view('blog.pages.author', $data);

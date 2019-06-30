@@ -2,13 +2,15 @@
 
 namespace App\Traits;
 
-
 use App\Services\PackagistApiServices;
+use App\Traits\TestimonialsDataTrait;
 use Illuminate\Http\Request;
 use Route;
 
 trait DynamicDataTrait
 {
+    use TestimonialsDataTrait;
+
     /**
      * Gets the about data.
      *
@@ -43,6 +45,11 @@ trait DynamicDataTrait
         ];
     }
 
+    /**
+     * Gets the blog data.
+     *
+     * @return array  The blog data.
+     */
     private function getBlogData()
     {
         return [
@@ -206,31 +213,31 @@ trait DynamicDataTrait
                         'name'      => 'GitHub',
                         'enabled'   => true,
                         'icon'      => 'fa-github-square',
-                        'link'      => 'https://github.com/jeremykenedy',
+                        'link'      => config('blog.sm.github_url'),
                     ],
                     [
                         'name'      => 'FaceBook',
                         'enabled'   => true,
                         'icon'      => 'fa-facebook-square',
-                        'link'      => '',
+                        'link'      => config('blog.sm.facebook_url'),
                     ],
                     [
                         'name'      => 'Twitter',
                         'enabled'   => true,
                         'icon'      => 'fa-twitter-square',
-                        'link'      => '',
+                        'link'      => config('blog.sm.twitter_url'),
+                    ],
+                    [
+                        'name'      => 'Instagram',
+                        'enabled'   => true,
+                        'icon'      => 'fa-linkedin-square',
+                        'link'      => config('blog.sm.linkedin_url'),
                     ],
                     [
                         'name'      => 'RSS',
                         'enabled'   => true,
                         'icon'      => 'fa-rss-square',
-                        'link'      => '',
-                    ],
-                    [
-                        'name'      => 'Instagram',
-                        'enabled'   => true,
-                        'icon'      => 'fa-instagram',
-                        'link'      => '',
+                        'link'      => route('feeds.blog'),
                     ],
                 ]),
             ],
@@ -246,7 +253,7 @@ trait DynamicDataTrait
     {
         return [
             'enabled'           => true,
-            'particlesEnabled'  => true,
+            'particlesEnabled'  => false,
             'scrollHtmlEnabled' => true,
             'navTitle'          => 'Start',
             'downText'          => 'Scroll Down',
@@ -348,24 +355,14 @@ trait DynamicDataTrait
      */
     private function getTestimonialsData()
     {
+        $seactionData = $this->getTestimonialSectionData();
+
         return [
-            'enabled'       => true,
-            'sectionTitle'  => 'What people are saying',
-            'items' => collect([
-                [
-                    'author'    => 'John Doe',
-                    'icon'      => 'icon-profile-male',
-                    'text'      => '<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi consectetur error eius dolor excepturi odit ipsum velit, repudiandae dolore libero!</p>',
-                ],
-                [
-                    'author'    => 'Jane Doe',
-                    'icon'      => 'icon-profile-female',
-                    'text'      => '<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus eum fuga vero deleniti et, velit dolorum consequuntur repellendus expedita dolorem.</p>',
-                ],
-            ]),
+            'enabled'       => $seactionData['sectionEnabled'],
+            'sectionTitle'  => $seactionData['sectionTItle'],
+            'items'         => $seactionData['seciontItems'],
         ];
     }
-
 
     /**
      * Gets the portfolio data.
@@ -410,8 +407,8 @@ trait DynamicDataTrait
      */
     private function getPortfolioItems()
     {
-        $portfolioItemsRequest = Request::create('/api/portfolioitems/all/', 'GET');
-        $portfolioItems = json_decode(Route::dispatch($portfolioItemsRequest)->getContent());
+        $portfolioItemsRequest  = Request::create('/api/portfolioitems/all/', 'GET');
+        $portfolioItems         = json_decode(Route::dispatch($portfolioItemsRequest)->getContent());
 
         return $portfolioItems;
     }

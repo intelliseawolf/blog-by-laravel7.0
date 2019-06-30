@@ -1,6 +1,5 @@
-
 // Fonts
-@import url('https://fonts.googleapis.com/css?family=Nunito');
+// @import url('https://fonts.googleapis.com/css?family=Nunito');
 
 // Variables
 @import 'variables';
@@ -23,4 +22,25 @@ $fa-font-path: "/fonts/font-awesome";
 .navbar-laravel {
     background-color: $white;
     box-shadow: 0 2px 4px rgba($black, 0.04);
+}
+.Navigation__bar {
+    display: block;
+}
+.navbar-nav {
+    display: block;
+}
+.alert {
+    &.fade {
+        &.show {
+            opacity: 1;
+        }
+    }
+}
+@media all and (max-width: 767px) {
+    .flex-row {
+        flex-direction: column !important;
+        .footer-socials {
+            text-align: center;
+        }
+    }
 }

@@ -78,4 +78,4 @@ window.Config = {
 }
 
 // Overwriting default value of Preloader duration
-window.Config.preloader.duration = 1500;
+window.Config.preloader.duration = 100;

@@ -41,8 +41,8 @@ function scrollFromTop() {
 }
 
 function menuChangeOnScroll(event) {
-  var scrollPosition = $(document).scrollTop(),
-    fixedMenuHeight = $('.navbar-fixed-top').outerHeight();
+  var scrollPosition = $(document).scrollTop();
+  var fixedMenuHeight = $('.navbar-fixed-top').outerHeight();
   $('a.page-scroll').each(function() {
     var currentLink = $(this),
       hrefElement = $(currentLink.attr("href")),
