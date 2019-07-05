@@ -2,7 +2,11 @@
 
 namespace App\Traits;
 
-use App\Services\PackagistApiServices;
+use App\Models\TimelineItem;
+use App\Services\Sections\AboutSectionService;
+use App\Services\Sections\BlogSectionService;
+use App\Services\Sections\ContactSectionService;
+use App\Services\Sections\CountersSectionService;
 use App\Traits\TestimonialsDataTrait;
 use Illuminate\Http\Request;
 use Route;
@@ -16,33 +20,10 @@ trait DynamicDataTrait
      *
      * @return array The about data.
      */
-    private function getAboutData()
+    public function getAboutData()
     {
-        return [
-            'enabled'       => true,
-            'titleEnabled'  => true,
-            'aboutButtons'  => true,
-            'navTitle'      => 'About Me',
-            'intro'         => trans('portfolio.sections.about.intro'),
-            'textTitle'     => trans('portfolio.sections.about.textTitle'),
-            'text'          => trans('portfolio.sections.about.text'),
-            'buttons'       => collect([
-                [
-                    'enabled'   => false,
-                    'link'      => '#',
-                    'text'      => 'Hire me',
-                    'delay'     => '150',
-                    'target'    => '_blank',
-                ],
-                [
-                    'enabled'   => false,
-                    'link'      => '#',
-                    'text'      => 'Download CV',
-                    'delay'     => '300',
-                    'target'    => '_blank',
-                ],
-            ]),
-        ];
+        $service = new AboutSectionService;
+        return $service->getAboutServiceData();
     }
 
     /**
@@ -50,36 +31,10 @@ trait DynamicDataTrait
      *
      * @return array  The blog data.
      */
-    private function getBlogData()
+    public function getBlogData()
     {
-        return [
-            'enabled'       => true,
-            'navTitle'      => 'Blog',
-            'sectionTitle'  => 'LATEST BLOG POSTS',
-            'itemLimit'     => '3',
-            'fadeInc'       => '200',
-            'seeMoreButton' => [
-                'enabled'   => true,
-                'link'      => route('blog'),
-                'text'      => 'See more',
-                'icon'      => 'fa-long-arrow-right',
-            ],
-            'posts'         => array_slice($this->getBlogPosts(), 0, 3),
-            'noPosts'       => 'No Recent Posts',
-        ];
-    }
-
-    /**
-     * Gets the blog posts.
-     *
-     * @return array The blog posts.
-     */
-    private function getBlogPosts()
-    {
-        $blogPostsRequest = Request::create('/api/posts/all/', 'GET');
-        $blogPosts = json_decode(Route::dispatch($blogPostsRequest)->getContent());
-
-        return $blogPosts;
+        $service = new BlogSectionService;
+        return $service->getBlogServiceData();
     }
 
     /**
@@ -87,50 +42,10 @@ trait DynamicDataTrait
      *
      * @return array The contact data.
      */
-    private function getContactData()
+    public function getContactData()
     {
-        return [
-            'enabled'       => true,
-            'navTitle'      => 'Contact',
-            'sectionTitle'  => 'Contact Me',
-            'textTitle'     => 'Feel free to contact me!',
-            'textContent'   => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptate dolores, quasi unde quisquam facilis at ullam aperiam similique dicta voluptatibus!',
-            'phone' => [
-                'enabled'   => true,
-                'icon'      => 'fa-phone',
-                'text'      => '503.619.6366',
-                'link'      => 'tel:1-503-619-6366',
-            ],
-            'email' => [
-                'enabled'   => true,
-                'icon'      => 'fa-envelope',
-                'text'      => 'jeremykenedy@gmail.com',
-                'link'      => 'mailto:jeremykenedy@gmail.com',
-            ],
-            'time' => [
-                'enabled'   => true,
-                'icon'      => 'fa-clock-o',
-                'text'      => 'Pacific Standard Time',
-            ],
-            'location' => [
-                'enabled'   => true,
-                'icon'      => 'fa-map-marker',
-                'text'      => 'Portland, OR, USA',
-            ],
-            'form' => [
-                'labels'  => [
-                    'name'      => 'Name*',
-                    'email'     => 'Email*',
-                    'subject'   => 'Subject',
-                    'message'   => 'Type your message here*',
-                ],
-                'messages' => [
-                    'successMsg'        => 'Your message was sent!',
-                    'serverErrorMsg'    => 'Server error',
-                ],
-                'submitButton' => 'Send message',
-            ],
-        ];
+        $service = new ContactSectionService;
+        return $service->getContactServiceData();
     }
 
     /**
@@ -138,50 +53,39 @@ trait DynamicDataTrait
      *
      * @return array The counters data.
      */
-    private function getCountersData()
+    public function getCountersData()
     {
-        $packagistApiServices           = new PackagistApiServices;
-        $packagistVendorPackagesCount   = $packagistApiServices->getVendorPackagesCount();
-        $packagistVendorsTotalDownloads = $packagistApiServices->getVendorsTotalDownloads();
+        $service = new CountersSectionService;
+        return $service->getCountersServiceData();
+    }
+
+    /**
+     * Gets the education timeline data.
+     */
+    public function getEducationTimelineData($enabled = true)
+    {
+        $items = TimelineItem::allEnabledItemsByType('education')->get();
 
         return [
-            'enabled' => true,
-            'background' => 'https://hdqwalls.com/wallpapers/code.jpg',
-            'bsClass'    => "col-md-3 col-sm-6",
-            'items' => collect([
-                [
-                    'title'     => 'Published Packagist Packages',
-                    'number'    => $packagistVendorPackagesCount,
-                    'increment' => '',
-                    'delay'     => '',
-                    'icon'      => 'fa fa-code',
-                    'link'      => 'https://packagist.org/packages/jeremykenedy/'
-                ],
-                [
-                    'title'     => 'Package Downloads',
-                    'number'    => $packagistVendorsTotalDownloads,
-                    'increment' => $packagistVendorsTotalDownloads / 500,
-                    'delay'     => '150',
-                    'icon'      => 'fa fa-heart',
-                    'link'      => 'https://packagist.org/packages/jeremykenedy/',
-                ],
-                [
-                    'title'     => 'Lines of Code Written',
-                    'number'    => '9140852',
-                    'increment' => '20000',
-                    'delay'     => '300',
-                    'icon'      => 'fa fa-coffee',
-                    'link'      => 'https://sourcerer.io/jeremykenedy',
-                ],
-                [
-                    'title'     => 'Open Source Commits',
-                    'number'    => '1359',
-                    'increment' => '10',
-                    'delay'     => '450',
-                    'icon'      => 'fa fa-trophy',
-                    'link'      => 'https://sourcerer.io/jeremykenedy',
-                ],
-            ]),
+            'enabled'       => $enabled,
+            'sectionTitle'  => 'My Education',
+            'sectionClass'  => 'section--darker',
+            'items'         => $items,
+        ];
+    }
+
+    /**
+     * Gets the experience timeline data.
+     */
+    public function getExperienceTimelineData($enabled = true)
+    {
+        $items = TimelineItem::allEnabledItemsByType('experience')->get();
+
+        return [
+            'enabled'       => $enabled,
+            'sectionTitle'  => 'My Experience',
+            'sectionClass'  => '',
+            'items'         => $items,
         ];
     }
 
@@ -190,7 +94,7 @@ trait DynamicDataTrait
      *
      * @return array  The footer data.
      */
-    private function getFooterData()
+    public function getFooterData()
     {
         return [
             'enabled' => true,
@@ -249,7 +153,7 @@ trait DynamicDataTrait
      *
      * @return     array  The intro data.
      */
-    private function getIntroData()
+    public function getIntroData()
     {
         return [
             'enabled'           => true,
@@ -274,7 +178,7 @@ trait DynamicDataTrait
      *
      * @return array The skills data.
      */
-    private function getSkillsData()
+    public function getSkillsData()
     {
         return [
             'enabled'       => true,
@@ -301,7 +205,7 @@ trait DynamicDataTrait
         ];
     }
 
-    private function getLogoText()
+    public function getLogoText()
     {
         return config('app.name', 'JK');
     }
@@ -311,7 +215,7 @@ trait DynamicDataTrait
      *
      * @return array The services data.
      */
-    private function getServicesData()
+    public function getServicesData()
     {
         return [
             'enabled'               => true,
@@ -353,7 +257,7 @@ trait DynamicDataTrait
      *
      * @return array The testimonials data.
      */
-    private function getTestimonialsData()
+    public function getTestimonialsData()
     {
         $seactionData = $this->getTestimonialSectionData();
 
@@ -375,7 +279,7 @@ trait DynamicDataTrait
      *
      * @return     array    The portfolio data.
      */
-    private function getPortfolioData($enabled = true, $limit = null, $lightbox = false, $spacing=false, $more=true)
+    public function getPortfolioData($enabled = true, $limit = null, $lightbox = false, $spacing=false, $more=true)
     {
         $items = $this->getPortfolioItems();
         if (!$limit) {
@@ -405,7 +309,7 @@ trait DynamicDataTrait
      *
      * @return array The portfolio items.
      */
-    private function getPortfolioItems()
+    public function getPortfolioItems()
     {
         $portfolioItemsRequest  = Request::create('/api/portfolioitems/all/', 'GET');
         $portfolioItems         = json_decode(Route::dispatch($portfolioItemsRequest)->getContent());
@@ -418,23 +322,11 @@ trait DynamicDataTrait
      *
      * @return array The preloader data.
      */
-    private function getPreloaderData()
+    public function getPreloaderData()
     {
         return [
             'enabled' => true,
             'type'  => '8',    // 1-8
-        ];
-    }
-
-    /**
-     * Gets the timeline data.
-     */
-    private function getExperienceTimelineData($enabled = true)
-    {
-        return [
-            'enabled'       => $enabled,
-            'sectionTitle'  => 'MY EXPERIENCE',
-            'items'         => [1,2,3,4],
         ];
     }
 

@@ -35,6 +35,7 @@ class HomeController extends Controller
             'counters'              => $this->getCountersData(),
             'portfolio'             => $this->getPortfolioData(true, 8),
             'experienceTimeline'    => $this->getExperienceTimelineData(),
+            'educationTimeline'     => $this->getEducationTimelineData(),
             'blog'                  => $this->getBlogData(),
             'testimonials'          => $this->getTestimonialsData(),
             'contact'               => $this->getContactData(),

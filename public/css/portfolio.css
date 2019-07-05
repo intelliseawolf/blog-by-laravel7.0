@@ -22107,7 +22107,7 @@ footer .footer-socials a {
   width: 20px;
   height: 20px;
   border-radius: 50%;
-  border: 4px solid #fff;
+  border: 4px solid #ffffff;
   background: #ec496e;
   position: absolute;
   top: 50%;
@@ -22273,7 +22273,7 @@ footer .footer-socials a {
           transform: translateY(-50%);
   width: 70px;
   height: 50px;
-  background: #fff;
+  background: transparent;
   top: 89px;
   right: -30px;
 }

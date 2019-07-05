@@ -14,31 +14,27 @@
     @if($sections['intro']['enabled'])
         @include('portfolio.partials.intro')
     @endif
-
-
-    @include('portfolio.partials.about')
-
-
+    @if($sections['about']['enabled'])
+        @include('portfolio.partials.about')
+    @endif
     @if($sections['services']['enabled'])
         @include('portfolio.partials.services')
     @endif
     @if($sections['counters']['enabled'])
         @include('portfolio.partials.counters')
     @endif
-
     @if($sections['portfolio']['enabled'])
         @include('portfolio.partials.portfolio')
     @endif
-
     @if($sections['experienceTimeline']['enabled'])
         @include('portfolio.partials.timeline', ['title' => $sections['experienceTimeline']['sectionTitle'], 'items' => $sections['experienceTimeline']['items']])
     @endif
-
+    @if($sections['educationTimeline']['enabled'])
+        @include('portfolio.partials.timeline', ['title' => $sections['educationTimeline']['sectionTitle'], 'items' => $sections['educationTimeline']['items'], 'sectionClass' => $sections['educationTimeline']['sectionClass']])
+    @endif
     @if($sections['blog']['enabled'])
         @include('portfolio.partials.blog', ['posts' => $sections['blog']['posts'], 'sectionData' => $sections['blog']])
     @endif
-
-
     @if($sections['testimonials']['enabled'])
         @include('portfolio.partials.testimonials')
     @endif

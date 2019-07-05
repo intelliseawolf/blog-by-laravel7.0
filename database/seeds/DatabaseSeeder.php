@@ -26,6 +26,8 @@ class DatabaseSeeder extends Seeder
         $this->call(PortfolioItemTechTagsTableSeeder::class);
         $this->call(PortfolioItemsTableSeeder::class);
         $this->call(TestimonialsTableSeeder::class);
+        $this->call(TimelineTypeTableSeeder::class);
+        $this->call(TimelineItemsTableSeeder::class);
 
         Model::reguard();
     }

@@ -5,7 +5,7 @@
     $blogItemLimit      = $sectionData['itemLimit'];
 @endphp
 <section id="Blog">
-    <div class="section--basic section--darker">
+    <div class="section--basic">
         <div class="container">
             <div class="headline">
                 <h2>

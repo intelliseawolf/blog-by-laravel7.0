@@ -15,7 +15,6 @@ class PortfolioItemsTableSeeder extends Seeder
      */
     public function run()
     {
-
         $portfolioTags = PortfolioItemTag::pluck('tag')->all();
         $portfolioTechTags = PortfolioItemTechTag::pluck('tag')->all();
 
