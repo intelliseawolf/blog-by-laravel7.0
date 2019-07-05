@@ -27,17 +27,18 @@ class HomeController extends Controller
     private function sectionData()
     {
         return [
-            'preloader'     => $this->getPreloaderData(),
-            'intro'         => $this->getIntroData(),
-            'about'         => $this->getAboutData(),
-            'skills'        => $this->getSkillsData(),
-            'services'      => $this->getServicesData(),
-            'counters'      => $this->getCountersData(),
-            'portfolio'     => $this->getPortfolioData(true, 8),
-            'blog'          => $this->getBlogData(),
-            'testimonials'  => $this->getTestimonialsData(),
-            'contact'       => $this->getContactData(),
-            'footer'        => $this->getFooterData(),
+            'preloader'             => $this->getPreloaderData(),
+            'intro'                 => $this->getIntroData(),
+            'about'                 => $this->getAboutData(),
+            'skills'                => $this->getSkillsData(),
+            'services'              => $this->getServicesData(),
+            'counters'              => $this->getCountersData(),
+            'portfolio'             => $this->getPortfolioData(true, 8),
+            'experienceTimeline'    => $this->getExperienceTimelineData(),
+            'blog'                  => $this->getBlogData(),
+            'testimonials'          => $this->getTestimonialsData(),
+            'contact'               => $this->getContactData(),
+            'footer'                => $this->getFooterData(),
         ];
     }
 

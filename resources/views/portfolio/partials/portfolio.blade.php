@@ -3,7 +3,7 @@
     $itemLimit = $sections['portfolio']['itemLimit'];
 @endphp
 <section id="Portfolio">
-    <div class="section--basic @if(!$sections['portfolio']['seeMoreButton']['enabled']) pb-0 @endif">
+    <div class="section--basic section--darker @if(!$sections['portfolio']['seeMoreButton']['enabled']) pb-0 @endif">
         <div class="container">
             <div class="headline">
                 <h2>

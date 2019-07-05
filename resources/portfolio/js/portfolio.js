@@ -4,6 +4,7 @@
 require('./scripts/config.js');
 require('./bootstrap.js');
 require('./Event.js');
+
 import 'particles.js/particles';
 import Vue from 'vue';
 import Lang from 'lang.js';
@@ -132,3 +133,15 @@ var app = new Vue({
     }
   },
 })
+
+
+
+
+
+
+
+
+
+
+
+

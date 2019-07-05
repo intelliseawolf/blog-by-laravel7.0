@@ -7,8 +7,35 @@ $gray: #555555;
 $silver: #888888;
 $green: #00d1b2;
 $red: #D10000;
+$lightGreen: #2fcea5;
+$vividRed: #ec496e;
+$orange:#f9850f;
+$deepYellowGreen: #8fb800;
+$gray25: #404040;
 $headline_font: 'Montserrat';
 $basic_font: 'Raleway';
 $easeInOutQuad: cubic-bezier(0.455, 0.03, 0.515, 0.955);
 $pageSwithingTime: 0.5s;
 $standardMeasure: 15px;
+
+// Timeline
+$bp-xl: 1200px;
+$bp-lg: 990px;
+$bp-md: 767px;
+$bp-sm: 479px;
+$color_1: $white;
+$color_2: $vividRed;
+$color_3: $gray25;
+$color_4: $orange;
+$color_5: $deepYellowGreen;
+$color_6: $lightGreen;
+$border_color_1: $orange;
+$border_color_2: $deepYellowGreen;
+$border_color_3: $lightGreen;
+$border_bottom_color_1: $orange;
+$border_bottom_color_2: $deepYellowGreen;
+$border_bottom_color_3: $lightGreen;
+$border_left_color_1: $orange;
+$border_left_color_2: $deepYellowGreen;
+$border_left_color_3: $lightGreen;
+

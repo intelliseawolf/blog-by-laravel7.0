@@ -375,7 +375,7 @@ trait DynamicDataTrait
      *
      * @return     array    The portfolio data.
      */
-    private function getPortfolioData($enabled=true, $limit = null, $lightbox = false, $spacing=false, $more=true)
+    private function getPortfolioData($enabled = true, $limit = null, $lightbox = false, $spacing=false, $more=true)
     {
         $items = $this->getPortfolioItems();
         if (!$limit) {
@@ -423,6 +423,18 @@ trait DynamicDataTrait
         return [
             'enabled' => true,
             'type'  => '8',    // 1-8
+        ];
+    }
+
+    /**
+     * Gets the timeline data.
+     */
+    private function getExperienceTimelineData($enabled = true)
+    {
+        return [
+            'enabled'       => $enabled,
+            'sectionTitle'  => 'MY EXPERIENCE',
+            'items'         => [1,2,3,4],
         ];
     }
 
