@@ -9,7 +9,7 @@ class ContactSectionService
      *
      * @return array The contact data.
      */
-    public function getContactServiceData()
+    public function getSectionData()
     {
         return [
             'enabled'       => true,

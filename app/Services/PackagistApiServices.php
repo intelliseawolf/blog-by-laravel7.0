@@ -37,7 +37,6 @@ class PackagistApiServices
             Log::error($err);
             return null;
         }
-        Log::info($response);
         return $response;
     }
 

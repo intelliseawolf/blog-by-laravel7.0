@@ -28,7 +28,7 @@ class DatabaseSeeder extends Seeder
         $this->call(TestimonialsTableSeeder::class);
         $this->call(TimelineTypeTableSeeder::class);
         $this->call(TimelineItemsTableSeeder::class);
-
+        $this->call(CmsSettingsTableSeeder::class);
         Model::reguard();
     }
 }

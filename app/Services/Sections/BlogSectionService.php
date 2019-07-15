@@ -12,7 +12,7 @@ class BlogSectionService
      *
      * @return array  The blog data.
      */
-    public function getBlogServiceData()
+    public function getSectionData()
     {
         return [
             'enabled'       => true,

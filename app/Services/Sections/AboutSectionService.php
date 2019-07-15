@@ -9,7 +9,7 @@ class AboutSectionService
      *
      * @return array The about data.
      */
-    public function getAboutServiceData()
+    public function getSectionData()
     {
         return [
             'enabled'       => true,

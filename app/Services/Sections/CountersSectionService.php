@@ -11,7 +11,7 @@ class CountersSectionService
      *
      * @return array The counters data.
      */
-    public function getCountersServiceData()
+    public function getSectionData()
     {
         $packagistApiServices           = new PackagistApiServices;
         $packagistVendorPackagesCount   = $packagistApiServices->getVendorPackagesCount();
