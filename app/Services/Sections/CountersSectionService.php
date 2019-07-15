@@ -2,7 +2,7 @@
 
 namespace App\Services\Sections;
 
-use App\Services\PackagistApiServices;
+use jeremykenedy\LaravelPackagist\App\Services\PackagistApiServices;
 
 class CountersSectionService
 {
@@ -13,9 +13,8 @@ class CountersSectionService
      */
     public function getSectionData()
     {
-        $packagistApiServices           = new PackagistApiServices;
-        $packagistVendorPackagesCount   = $packagistApiServices->getVendorPackagesCount();
-        $packagistVendorsTotalDownloads = $packagistApiServices->getVendorsTotalDownloads();
+        $packagistVendorPackagesCount   = PackagistApiServices::getVendorPackagesCount();
+        $packagistVendorsTotalDownloads = PackagistApiServices::getVendorsTotalDownloads();
 
         return [
             'enabled' => true,
@@ -40,7 +39,7 @@ class CountersSectionService
                 ],
                 [
                     'title'     => 'Lines of Code Written',
-                    'number'    => '9140852',
+                    'number'    => '9305966',
                     'increment' => '20000',
                     'delay'     => '300',
                     'icon'      => 'fa fa-coffee',
@@ -48,7 +47,7 @@ class CountersSectionService
                 ],
                 [
                     'title'     => 'Open Source Commits',
-                    'number'    => '1359',
+                    'number'    => '1355',
                     'increment' => '10',
                     'delay'     => '450',
                     'icon'      => 'fa fa-trophy',
