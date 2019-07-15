@@ -3,6 +3,7 @@
 namespace App\Services\Sections;
 
 use App\Models\CmsSetting;
+use App\Models\IntroTypingTextItem;
 use App\Services\CmsServices;
 
 class IntroSectionService extends CmsServices
@@ -38,12 +39,7 @@ class IntroSectionService extends CmsServices
             'bgImage'           => $introBgImage,
             'introStaticText'   => $introStaticText,
             'speed'             => self::getCmsIntroSectionTextSpeed()->value,
-            'introTypeingText'  => [
-                "Engineering Manager",
-                "Software Engineer",
-                "Open Source Advocate",
-                "Laravel Enthusiast",
-            ],
+            'introTypeingText'  => self::getCmsIntroTextItems(),
         ];
     }
 
@@ -54,16 +50,16 @@ class IntroSectionService extends CmsServices
      */
     public static function getCmsIntroSection()
     {
-        $cachedItem = 'cms_intro_section';
+        $key = 'cms_intro_section';
 
-        if (self::checkIfItemIsCached($cachedItem)) {
-            return self::getFromCache($cachedItem);
+        if (self::checkIfItemIsCached($key)) {
+            return self::getFromCache($key);
         }
 
-        $introSection = CmsSetting::IntroSection()->first();;
-        self::storeInCache($cachedItem, $introSection);
+        $item = CmsSetting::IntroSection()->first();
+        self::storeInCache($key, $item);
 
-        return $introSection;
+        return $item;
     }
 
     /**
@@ -73,7 +69,16 @@ class IntroSectionService extends CmsServices
      */
     public static function getCmsIntroSectionParticlesEnabled()
     {
-        return CmsSetting::IntroSectionParticlesEnabled()->pluck('active')->first();
+        $key = 'cms_intro_particles';
+
+        if (self::checkIfItemIsCached($key)) {
+            return self::getFromCache($key);
+        }
+
+        $item = CmsSetting::IntroSectionParticlesEnabled()->pluck('active')->first();
+        self::storeInCache($key, $item);
+
+        return $item;
     }
 
     /**
@@ -83,7 +88,16 @@ class IntroSectionService extends CmsServices
      */
     public static function getCmsIntroSectionScrollHtml()
     {
-        return CmsSetting::IntroSectionScrollHtml()->first();
+        $key = 'cms_intro_scroll_html';
+
+        if (self::checkIfItemIsCached($key)) {
+            return self::getFromCache($key);
+        }
+
+        $item = CmsSetting::IntroSectionScrollHtml()->first();
+        self::storeInCache($key, $item);
+
+        return $item;
     }
 
     /**
@@ -93,7 +107,16 @@ class IntroSectionService extends CmsServices
      */
     public static function getCmsIntroSectionBackground()
     {
-        return CmsSetting::IntroSectionBackground()->first();
+        $key = 'cms_intro_background';
+
+        if (self::checkIfItemIsCached($key)) {
+            return self::getFromCache($key);
+        }
+
+        $item = CmsSetting::IntroSectionBackground()->first();
+        self::storeInCache($key, $item);
+
+        return $item;
     }
 
     /**
@@ -103,7 +126,16 @@ class IntroSectionService extends CmsServices
      */
     public static function getCmsIntroSectionStaticText()
     {
-        return CmsSetting::IntroSectionStaticText()->first();
+        $key = 'cms_intro_static_text';
+
+        if (self::checkIfItemIsCached($key)) {
+            return self::getFromCache($key);
+        }
+
+        $item = CmsSetting::IntroSectionStaticText()->first();
+        self::storeInCache($key, $item);
+
+        return $item;
     }
 
     /**
@@ -113,7 +145,35 @@ class IntroSectionService extends CmsServices
      */
     public static function getCmsIntroSectionTextSpeed()
     {
-        return CmsSetting::IntroSectionTextSpeed()->first();
+        $key = 'cms_intro_text_speed';
+
+        if (self::checkIfItemIsCached($key)) {
+            return self::getFromCache($key);
+        }
+
+        $item = CmsSetting::IntroSectionTextSpeed()->first();
+        self::storeInCache($key, $item);
+
+        return $item;
+    }
+
+    /**
+     * Gets the intro text items from the database.
+     *
+     * @return array The intro text items.
+     */
+    public static function getCmsIntroTextItems()
+    {
+        $key = 'cms_intro_text_items';
+
+        if (self::checkIfItemIsCached($key)) {
+            return self::getFromCache($key);
+        }
+
+        $item = IntroTypingTextItem::ActiveItems()->get()->pluck('value');
+        self::storeInCache($key, $item);
+
+        return $item;
     }
 
 }

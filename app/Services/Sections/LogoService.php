@@ -24,17 +24,17 @@ class LogoService extends CmsServices
      */
     public static function getLogoText()
     {
-        $cachedItem = 'logo_settings';
+        $key = 'logo_settings';
 
-        if (self::checkIfItemIsCached($cachedItem)) {
-            $logoSettings = self::getFromCache($cachedItem);
+        if (self::checkIfItemIsCached($key)) {
+            $item = self::getFromCache($key);
         } else {
-            $logoSettings = CmsSetting::logoText()->first();
-            self::storeInCache($cachedItem, $logoSettings);
+            $item = CmsSetting::logoText()->first();
+            self::storeInCache($key, $item);
         }
 
-        if ($logoSettings->active) {
-            return $logoSettings->value;
+        if ($item->active) {
+            return $item->value;
         }
 
         return config('app.name', 'JK');
