@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCmsSettingsTable extends Migration
+class CreateAboutSectionButtonsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,14 @@ class CreateCmsSettingsTable extends Migration
      */
     public function up()
     {
-        Schema::create('cms_settings', function (Blueprint $table) {
-            $table->increments('id')->index();
-            $table->string('name')->index()->unique();
-            $table->string('key')->index()->unique();
-            $table->longText('value');
+        Schema::create('about_section_buttons', function (Blueprint $table) {
+            $table->bigIncrements('id');
             $table->boolean('active')->default(0);
+            $table->longText('link');
+            $table->string('text');
+            $table->integer('delay');
+            $table->string('target');
+            $table->integer('sort_order');
             $table->timestamps();
             $table->softDeletes();
         });
@@ -31,6 +33,6 @@ class CreateCmsSettingsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('cms_settings');
+        Schema::dropIfExists('about_section_buttons');
     }
 }

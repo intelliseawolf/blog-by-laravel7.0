@@ -6,9 +6,11 @@
             </h4>
         @endif
         @foreach($sections['skills']['items'] as $item)
-            <skill percent="{{ $item['percent'] }}">
-                {!! $item['name'] !!}
-            </skill>
+            @if($item->active)
+                <skill percent="{{ $item->percent }}">
+                    {!! $item->name !!}
+                </skill>
+            @endif
         @endforeach
     </div>
 </div>

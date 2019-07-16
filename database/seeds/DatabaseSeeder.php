@@ -30,6 +30,8 @@ class DatabaseSeeder extends Seeder
         $this->call(TimelineItemsTableSeeder::class);
         $this->call(CmsSettingsTableSeeder::class);
         $this->call(IntroTypingTextItemsTableSeeder::class);
+        $this->call(AboutSectionButtonsSeeder::class);
+        $this->call(SkillItemsTableSeeder::class);
 
         Model::reguard();
     }

@@ -3,12 +3,14 @@
 namespace App\Models;
 
 use App\Traits\Scopes\CommonScopes;
+use App\Traits\Scopes\SkillScopes;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class IntroTypingTextItem extends Model
+class SkillItem extends Model
 {
     use CommonScopes;
+    use SkillScopes;
     use SoftDeletes;
 
     /**
@@ -16,7 +18,7 @@ class IntroTypingTextItem extends Model
      *
      * @var string
      */
-    protected $table = 'intro_typing_text_items';
+    protected $table = 'skill_items';
 
     /**
      * The attributes that are not mass assignable.
@@ -33,8 +35,9 @@ class IntroTypingTextItem extends Model
      * @var array
      */
     protected $fillable = [
-        'value',
         'active',
+        'name',
+        'percent',
         'sort_order',
     ];
 
@@ -44,9 +47,11 @@ class IntroTypingTextItem extends Model
      * @var array
      */
     protected $casts = [
-        'value'      => 'string',
         'active'     => 'boolean',
+        'name'       => 'string',
+        'percent'    => 'integer',
         'sort_order' => 'integer',
+
     ];
 
     /**

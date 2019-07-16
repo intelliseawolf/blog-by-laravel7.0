@@ -14,20 +14,24 @@ class IntroTypingTextItemsTableSeeder extends Seeder
     {
         $items = [
             [
-                'value'     => "Engineering Manager",
-                'active'    => 1,
+                'value'         => "Engineering Manager",
+                'active'        => 1,
+                'sort_order'    => 1,
             ],
             [
-                'value'     => "Software Engineer",
-                'active'    => 1,
+                'value'         => "Software Engineer",
+                'active'        => 1,
+                'sort_order'    => 2,
             ],
             [
-                'value'     => "Open Source Advocate",
-                'active'    => 1,
+                'value'         => "Open Source Advocate",
+                'active'        => 1,
+                'sort_order'    => 3,
             ],
             [
-                'value'     => "Laravel Enthusiast",
-                'active'    => 1,
+                'value'         => "Laravel Enthusiast",
+                'active'        => 1,
+                'sort_order'    => 4,
             ],
         ];
 
@@ -36,8 +40,9 @@ class IntroTypingTextItemsTableSeeder extends Seeder
 
             if ($newIntroTypingTextItem === null) {
                 $newIntroTypingTextItem = IntroTypingTextItem::create([
-                    'value'     => $item['value'],
-                    'active'    => $item['active'],
+                    'value'         => $item['value'],
+                    'active'        => $item['active'],
+                    'sort_order'    => $item['sort_order'],
                 ]);
             }
         }

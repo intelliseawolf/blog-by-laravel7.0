@@ -66,6 +66,12 @@ class CmsServices
      */
     protected static function storeInCache($key, $value)
     {
+        $cachingEnabled = self::getCmsCachingEnabled();
+
+        if (!$cachingEnabled) {
+            return false;
+        }
+
         Cache::put($key, $value, self::getCmsCacheTime());
     }
 

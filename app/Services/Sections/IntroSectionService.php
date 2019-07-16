@@ -15,12 +15,12 @@ class IntroSectionService extends CmsServices
      */
     public function getSectionData()
     {
+        $introBgImage           = '';
+        $introStaticText        = '';
         $introSection           = self::getCmsIntroSection();
         $scrollHtml             = self::getCmsIntroSectionScrollHtml();
         $introBackground        = self::getCmsIntroSectionBackground();
-        $introBgImage           = '';
         $introSectionStaticText = self::getCmsIntroSectionStaticText();
-        $introStaticText        = '';
 
         if ($introBackground->active) {
             $introBgImage = $introBackground->value;
@@ -170,7 +170,7 @@ class IntroSectionService extends CmsServices
             return self::getFromCache($key);
         }
 
-        $item = IntroTypingTextItem::ActiveItems()->get()->pluck('value');
+        $item = IntroTypingTextItem::ActiveItems()->SortedItems()->get()->pluck('value');
         self::storeInCache($key, $item);
 
         return $item;

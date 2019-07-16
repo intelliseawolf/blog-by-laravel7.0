@@ -1,10 +1,10 @@
 <?php
 
-use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
 
-class CreateIntroTypingTextItemsTable extends Migration
+class CreateSkillItemsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,11 @@ class CreateIntroTypingTextItemsTable extends Migration
      */
     public function up()
     {
-        Schema::create('intro_typing_text_items', function (Blueprint $table) {
+        Schema::create('skill_items', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->boolean('active')->default(0);
-            $table->string('value');
+            $table->string('name');
+            $table->integer('percent');
             $table->integer('sort_order');
             $table->timestamps();
             $table->softDeletes();
@@ -30,6 +31,6 @@ class CreateIntroTypingTextItemsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('intro_typing_text_items');
+        Schema::dropIfExists('skill_items');
     }
 }

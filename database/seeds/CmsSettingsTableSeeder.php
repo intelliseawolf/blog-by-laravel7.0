@@ -17,7 +17,7 @@ class CmsSettingsTableSeeder extends Seeder
                 'name'      => 'CMS Cache',
                 'key'       => 'cms_cache',
                 'value'     => '100',
-                'active'    => 1,
+                'active'    => 0,
             ],
             [
                 'name'      => 'Logo Text',
@@ -59,6 +59,42 @@ class CmsSettingsTableSeeder extends Seeder
                 'name'      => 'Intro Section Text Speed',
                 'key'       => 'intro_section_text_speed',
                 'value'     => 4500,
+                'active'    => 1,
+            ],
+            [
+                'name'      => 'About Section',
+                'key'       => 'about_section',
+                'value'     => 'About Me',
+                'active'    => 1,
+            ],
+            [
+                'name'      => 'About Section Title',
+                'key'       => 'about_section_title',
+                'value'     => trans('portfolio.sections.about.textTitle'),
+                'active'    => 1,
+            ],
+            [
+                'name'      => 'About Section Intro',
+                'key'       => 'about_section_intro',
+                'value'     => trans('portfolio.sections.about.intro'),
+                'active'    => 1,
+            ],
+            [
+                'name'      => 'About Section Text',
+                'key'       => 'about_section_text',
+                'value'     => trans('portfolio.sections.about.text'),
+                'active'    => 1,
+            ],
+            [
+                'name'      => 'Skills Section Enabled',
+                'key'       => 'skills_section_enabled',
+                'value'     => '',
+                'active'    => 1,
+            ],
+            [
+                'name'      => 'Skills Section Title',
+                'key'       => 'skills_section_title',
+                'value'     => 'My Skills',
                 'active'    => 1,
             ],
         ];

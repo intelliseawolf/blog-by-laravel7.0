@@ -6,7 +6,7 @@ use App\Traits\Scopes\CommonScopes;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class IntroTypingTextItem extends Model
+class AboutSectionButton extends Model
 {
     use CommonScopes;
     use SoftDeletes;
@@ -16,7 +16,7 @@ class IntroTypingTextItem extends Model
      *
      * @var string
      */
-    protected $table = 'intro_typing_text_items';
+    protected $table = 'about_section_buttons';
 
     /**
      * The attributes that are not mass assignable.
@@ -33,8 +33,11 @@ class IntroTypingTextItem extends Model
      * @var array
      */
     protected $fillable = [
-        'value',
         'active',
+        'link',
+        'text',
+        'delay',
+        'target',
         'sort_order',
     ];
 
@@ -44,9 +47,12 @@ class IntroTypingTextItem extends Model
      * @var array
      */
     protected $casts = [
-        'value'      => 'string',
-        'active'     => 'boolean',
-        'sort_order' => 'integer',
+        'active'        => 'boolean',
+        'link'          => 'string',
+        'text'          => 'string',
+        'delay'         => 'string',
+        'target'        => 'string',
+        'sort_order'    => 'integer',
     ];
 
     /**

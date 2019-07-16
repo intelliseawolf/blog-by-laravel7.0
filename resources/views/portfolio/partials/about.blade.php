@@ -31,10 +31,10 @@
                             @if($sections['about']['aboutButtons'])
                                 <div class="buttons-group mt-2 mb-5">
                                     @foreach($sections['about']['buttons'] as $button)
-                                        @if($button['enabled'])
-                                            <a href="{{ $button['link'] }}" target="{{ $button['target'] }}">
-                                                <button class="btn btn-black" data-aos="fade" data-aos-delay="{{ $button['delay'] }}">
-                                                    {{ $button['text'] }}
+                                        @if($button->active)
+                                            <a href="{{ $button->link }}" target="{{ $button->target }}">
+                                                <button class="btn btn-black" data-aos="fade" data-aos-delay="{{ $button->delay }}">
+                                                    {{ $button->text }}
                                                 </button>
                                             </a>
                                         @endif
