@@ -97,6 +97,18 @@ class CmsSettingsTableSeeder extends Seeder
                 'value'     => 'My Skills',
                 'active'    => 1,
             ],
+            [
+                'name'      => 'Services Section',
+                'key'       => 'services_section',
+                'value'     => 'Services',
+                'active'    => 1,
+            ],
+            [
+                'name'      => 'Services Section Title',
+                'key'       => 'services_section_title',
+                'value'     => 'My Services',
+                'active'    => 1,
+            ],
         ];
 
         foreach ($settings as $setting) {

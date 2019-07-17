@@ -3,22 +3,20 @@
 namespace App\Models;
 
 use App\Traits\Scopes\CommonScopes;
-use App\Traits\Scopes\SkillScopes;
+use App\Traits\Scopes\ServiceScopes;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class SkillItem extends Model
+class ServiceItem extends Model
 {
     use CommonScopes;
-    use SkillScopes;
-    use SoftDeletes;
 
     /**
      * The database table used by the model.
      *
      * @var string
      */
-    protected $table = 'skill_items';
+    protected $table = 'service_items';
 
     /**
      * The attributes that are not mass assignable.
@@ -37,8 +35,9 @@ class SkillItem extends Model
     protected $fillable = [
         'active',
         'name',
-        'percent',
-        'sort_order',
+        'text',
+        'icon',
+        'sort_order'
     ];
 
     /**
@@ -49,7 +48,8 @@ class SkillItem extends Model
     protected $casts = [
         'active'     => 'boolean',
         'name'       => 'string',
-        'percent'    => 'integer',
+        'text'       => 'string',
+        'icon'       => 'string',
         'sort_order' => 'integer',
     ];
 

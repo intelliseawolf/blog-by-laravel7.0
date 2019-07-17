@@ -7,6 +7,7 @@ use App\Traits\Scopes\AboutScopes;
 use App\Traits\Scopes\CommonScopes;
 use App\Traits\Scopes\IntroScopes;
 use App\Traits\Scopes\SkillScopes;
+use App\Traits\Scopes\ServiceScopes;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
@@ -16,6 +17,7 @@ class CmsSetting extends BlogSetting
     use CommonScopes;
     use IntroScopes;
     use SkillScopes;
+    use ServiceScopes;
 
     /**
      * The database table used by the model.

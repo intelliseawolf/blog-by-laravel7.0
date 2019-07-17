@@ -2,7 +2,11 @@
 
 namespace App\Services\Sections;
 
-class ServicesSectionService
+use App\Models\CmsSetting;
+use App\Models\ServiceItem;
+use App\Services\CmsServices;
+
+class ServicesSectionService extends CmsServices
 {
     /**
      * Gets the services data.
@@ -11,38 +15,73 @@ class ServicesSectionService
      */
     public function getSectionData()
     {
+        $serviceSection         = self::getCmsServicesSection();
+        $serviceSectionTitle    = self::getCmsServicesSectionTitle();
+
         return [
-            'enabled'               => true,
-            'navTitle'              => 'Services',
-            'sectionTitleEnabled'   => true,
-            'sectionTitle'          => 'My Offer',
+            'enabled'               => $serviceSection->active,
+            'navTitle'              => $serviceSection->value,
+            'sectionTitleEnabled'   => $serviceSectionTitle->active,
+            'sectionTitle'          => $serviceSectionTitle->value,
             'bsClass'               => "col-sm-6 col-md-3",
-            'items' => collect([
-                [
-                    'name'  => 'Photography',
-                    'icon'  => 'icon-camera',
-                    'text'  => '<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus, hic.</p>',
-                    'delay' => '0',
-                ],
-                [
-                    'name'  => 'Web design',
-                    'icon'  => 'icon-tools',
-                    'text'  => '<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officiis, placeat!</p>',
-                    'delay' => '150',
-                ],
-                [
-                    'name'  => 'Web Development',
-                    'icon'  => 'icon-laptop',
-                    'text'  => '<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut, mollitia.</p>',
-                    'delay' => '300',
-                ],
-                [
-                    'name'  => 'Mobile apps',
-                    'icon'  => 'icon-mobile',
-                    'text'  => '<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo, veritatis?</p>',
-                    'delay' => '450',
-                ],
-            ]),
+            'items'                 => self::getCmsServiceItems(),
         ];
+    }
+
+    /**
+     * Gets the Section Enabled from the database.
+     *
+     * @return collection.
+     */
+    public static function getCmsServicesSection()
+    {
+        $key = 'cms_services_section';
+
+        if (self::checkIfItemIsCached($key)) {
+            return self::getFromCache($key);
+        }
+
+        $item = CmsSetting::ServicesSection()->first();
+        self::storeInCache($key, $item);
+
+        return $item;
+    }
+
+    /**
+     * Gets the Section Enabled from the database.
+     *
+     * @return collection.
+     */
+    public static function getCmsServicesSectionTitle()
+    {
+        $key = 'cms_services_section_title';
+
+        if (self::checkIfItemIsCached($key)) {
+            return self::getFromCache($key);
+        }
+
+        $item = CmsSetting::ServicesSectionTitle()->first();
+        self::storeInCache($key, $item);
+
+        return $item;
+    }
+
+    /**
+     * Gets the services items from the database.
+     *
+     * @return array The service items.
+     */
+    public static function getCmsServiceItems()
+    {
+        $key = 'cms_service_items';
+
+        if (self::checkIfItemIsCached($key)) {
+            return self::getFromCache($key);
+        }
+
+        $item = ServiceItem::ActiveItems()->SortedItems()->get();
+        self::storeInCache($key, $item);
+
+        return $item;
     }
 }

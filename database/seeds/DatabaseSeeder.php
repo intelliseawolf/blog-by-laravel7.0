@@ -32,6 +32,7 @@ class DatabaseSeeder extends Seeder
         $this->call(IntroTypingTextItemsTableSeeder::class);
         $this->call(AboutSectionButtonsSeeder::class);
         $this->call(SkillItemsTableSeeder::class);
+        $this->call(ServiceItemsTableSeeder::class);
 
         Model::reguard();
     }
