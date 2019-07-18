@@ -16,7 +16,7 @@ class CreateIntroTypingTextItemsTable extends Migration
         Schema::create('intro_typing_text_items', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->boolean('active')->default(0);
-            $table->string('value');
+            $table->string('value')->unique();
             $table->integer('sort_order');
             $table->timestamps();
             $table->softDeletes();

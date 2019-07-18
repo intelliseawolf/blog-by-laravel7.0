@@ -33,6 +33,8 @@ class DatabaseSeeder extends Seeder
         $this->call(AboutSectionButtonsSeeder::class);
         $this->call(SkillItemsTableSeeder::class);
         $this->call(ServiceItemsTableSeeder::class);
+        $this->call(CounterTypesTableSeeder::class);
+        $this->call(CounterItemsTableSeeder::class);
 
         Model::reguard();
     }

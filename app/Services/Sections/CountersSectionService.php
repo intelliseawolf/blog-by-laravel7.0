@@ -2,9 +2,13 @@
 
 namespace App\Services\Sections;
 
+use App\Models\CmsSetting;
+use App\Models\CounterItem;
+use App\Models\CounterType;
+use App\Services\CmsServices;
 use jeremykenedy\LaravelPackagist\App\Services\PackagistApiServices;
 
-class CountersSectionService
+class CountersSectionService extends CmsServices
 {
     /**
      * Gets the counters data.
@@ -13,47 +17,33 @@ class CountersSectionService
      */
     public function getSectionData()
     {
-        $packagistVendorPackagesCount   = PackagistApiServices::getVendorPackagesCount();
-        $packagistVendorsTotalDownloads = PackagistApiServices::getVendorsTotalDownloads();
+
+        // WIP // TODO :: Abstract into methods and scopes :: Sort by sort_order
+        $counterItems = [];
+        $activeCounterItems = CounterItem::activeItems()->get();
+
+        foreach ($activeCounterItems as $activeCounterItem) {
+            if ($activeCounterItem->counterType->type == 'custom') {
+                $counterItems[] = $activeCounterItem;
+            }
+            if ($activeCounterItem->counterType->type == 'packagistVendorPackagesCount') {
+                $activeCounterItem->number = PackagistApiServices::getVendorPackagesCount($activeCounterItem->vendor);;
+                $counterItems[] = $activeCounterItem;
+            }
+            if ($activeCounterItem->counterType->type == 'packagistVendorsTotalDownloads') {
+                $packagistVendorsTotalDownloads = PackagistApiServices::getVendorsTotalDownloads($activeCounterItem->vendor);;
+                $activeCounterItem->number = $packagistVendorsTotalDownloads;
+                $activeCounterItem->increment = $packagistVendorsTotalDownloads / 500;
+                $counterItems[] = $activeCounterItem;
+            }
+        }
+        // WIP
 
         return [
-            'enabled' => true,
-            'background' => 'https://hdqwalls.com/wallpapers/code.jpg',
-            'bsClass'    => "col-md-3 col-sm-6",
-            'items' => collect([
-                [
-                    'title'     => 'Published Packagist Packages',
-                    'number'    => $packagistVendorPackagesCount,
-                    'increment' => '',
-                    'delay'     => '',
-                    'icon'      => 'fa fa-code',
-                    'link'      => 'https://packagist.org/packages/jeremykenedy/'
-                ],
-                [
-                    'title'     => 'Package Downloads',
-                    'number'    => $packagistVendorsTotalDownloads,
-                    'increment' => $packagistVendorsTotalDownloads / 500,
-                    'delay'     => '150',
-                    'icon'      => 'fa fa-heart',
-                    'link'      => 'https://packagist.org/packages/jeremykenedy/',
-                ],
-                [
-                    'title'     => 'Lines of Code Written',
-                    'number'    => '9305966',
-                    'increment' => '20000',
-                    'delay'     => '300',
-                    'icon'      => 'fa fa-coffee',
-                    'link'      => 'https://sourcerer.io/jeremykenedy',
-                ],
-                [
-                    'title'     => 'Open Source Commits',
-                    'number'    => '1355',
-                    'increment' => '10',
-                    'delay'     => '450',
-                    'icon'      => 'fa fa-trophy',
-                    'link'      => 'https://sourcerer.io/jeremykenedy',
-                ],
-            ]),
+            'enabled'       => true,
+            'background'    => 'https://hdqwalls.com/wallpapers/code.jpg',
+            'bsClass'       => "col-md-3 col-sm-6",
+            'items'         => $counterItems,
         ];
     }
 

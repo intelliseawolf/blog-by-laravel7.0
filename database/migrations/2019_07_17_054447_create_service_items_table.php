@@ -16,7 +16,7 @@ class CreateServiceItemsTable extends Migration
         Schema::create('service_items', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->boolean('active')->default(0);
-            $table->string('name');
+            $table->string('name')->unique();
             $table->string('icon');
             $table->longText('text');
             $table->integer('sort_order');

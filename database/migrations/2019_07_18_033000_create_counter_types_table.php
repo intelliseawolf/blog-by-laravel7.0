@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateSkillItemsTable extends Migration
+class CreateCounterTypesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,10 @@ class CreateSkillItemsTable extends Migration
      */
     public function up()
     {
-        Schema::create('skill_items', function (Blueprint $table) {
+        Schema::create('counter_types', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->boolean('active')->default(0);
+            $table->string('type')->unique();
             $table->string('name')->unique();
-            $table->integer('percent');
-            $table->integer('sort_order');
             $table->timestamps();
             $table->softDeletes();
         });
@@ -31,6 +29,6 @@ class CreateSkillItemsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('skill_items');
+        Schema::dropIfExists('counter_types');
     }
 }
