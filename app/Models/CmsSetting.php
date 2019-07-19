@@ -10,6 +10,7 @@ use App\Traits\Scopes\SkillScopes;
 use App\Traits\Scopes\ServiceScopes;
 use App\Traits\Scopes\CmsItemScopes;
 use App\Traits\Scopes\CounterItemScopes;
+use App\Traits\Scopes\PortfolioSectionScopes;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
@@ -21,6 +22,7 @@ class CmsSetting extends BlogSetting
     use SkillScopes;
     use ServiceScopes;
     use CounterItemScopes;
+    use PortfolioSectionScopes;
 
     /**
      * The database table used by the model.

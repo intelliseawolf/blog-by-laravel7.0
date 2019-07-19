@@ -121,6 +121,24 @@ class CmsSettingsTableSeeder extends Seeder
                 'value'     => 'https://hdqwalls.com/wallpapers/code.jpg',
                 'active'    => 1,
             ],
+            [
+                'name'      => 'Portfolio Section',
+                'key'       => 'portfolio_section',
+                'value'     => 'Portfolio',
+                'active'    => 1,
+            ],
+            [
+                'name'      => 'Portfolio Section Limit',
+                'key'       => 'portfolio_section_limit',
+                'value'     => 8,
+                'active'    => 1,
+            ],
+            [
+                'name'      => 'Portfolio Section Lightbox Enabled',
+                'key'       => 'portfolio_section_lightbox_enabled',
+                'value'     => null,
+                'active'    => 0,
+            ],
         ];
 
         foreach ($settings as $setting) {
