@@ -2,10 +2,12 @@
 
 namespace App\Services\Sections;
 
+use App\Models\CmsSetting;
+use App\Services\CmsServices;
 use Illuminate\Http\Request;
 use Route;
 
-class BlogSectionService
+class BlogSectionService extends CmsServices
 {
     /**
      * Gets the blog data.
@@ -26,7 +28,7 @@ class BlogSectionService
                 'text'      => 'See more',
                 'icon'      => 'fa-long-arrow-right',
             ],
-            'posts'         => array_slice($this->getBlogPosts(), 0, 3),
+            'posts'         => array_slice($this->getBlogPostsFromAPI(), 0, 3),
             'noPosts'       => 'No Recent Posts',
         ];
     }
@@ -36,12 +38,11 @@ class BlogSectionService
      *
      * @return array The blog posts.
      */
-    public function getBlogPosts()
+    public function getBlogPostsFromAPI()
     {
         $blogPostsRequest = Request::create('/api/posts/all/', 'GET');
         $blogPosts = json_decode(Route::dispatch($blogPostsRequest)->getContent());
 
         return $blogPosts;
     }
-
 }

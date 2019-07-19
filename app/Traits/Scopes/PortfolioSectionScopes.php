@@ -39,4 +39,40 @@ trait PortfolioSectionScopes
     {
         return $query->where('key', 'portfolio_section_lightbox_enabled');
     }
+
+    /**
+     * Scope a query to get the Section Spacing enabled from the CMS settings table.
+     *
+     * @param \Illuminate\Database\Eloquent\Builder $query
+     *
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopePortfolioSectionSpacingEnabled($query)
+    {
+        return $query->where('key', 'portfolio_section_spacing_enabled');
+    }
+
+    /**
+     * Scope a query to get the Section Title from the CMS settings table.
+     *
+     * @param \Illuminate\Database\Eloquent\Builder $query
+     *
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopePortfolioSectionTitle($query)
+    {
+        return $query->where('key', 'portfolio_section_section_title');
+    }
+
+    /**
+     * Scope a query to get the Section See More Button from the CMS settings table.
+     *
+     * @param \Illuminate\Database\Eloquent\Builder $query
+     *
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopePortfolioSectionSeeMoreButton($query)
+    {
+        return $query->where('key', 'portfolio_section_see_more_button');
+    }
 }

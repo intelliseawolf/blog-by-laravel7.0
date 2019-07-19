@@ -16,31 +16,34 @@ class PortfolioSectionService extends CmsServices
      */
     public function getSectionData()
     {
-        // Temp until move to CMS settings table
-        $spacing=false;
-        $more=true;
+        $portfolioSection       = self::getPortfolioSection();
+        $portfolioSectionLimit  = self::getPortfolioSectionLimit()->value;
+        $seeMoreButton          = self::getPortfolioSectionSeeMoreButton();
+        $items                  = self::getPortfolioItems();
+        $sectionTitleData       = self::getPortfolioSectionTitle();
+        $sectionTitle           = '';
 
-        $portfolioSection = self::getPortfolioSection();
-        $portfolioSectionLimit = self::getPortfolioSectionLimit()->value;
+        if ($sectionTitleData->active) {
+            $sectionTitle = $sectionTitleData->value;
+        }
 
-        $items = $this->getPortfolioItems();
         if (!$portfolioSectionLimit) {
             $portfolioSectionLimit = count($items);
         }
 
         return [
             'enabled'       => $portfolioSection->active,
-            'spacing'       => $spacing,
+            'spacing'       => self::getPortfolioSectionSpacingEnabled()->active,
             'lightBox'      => self::getPortfolioSectionLightboxEnabled()->active,
             'navTitle'      => $portfolioSection->value,
-            'sectionTitle'  => 'Portfolio',
+            'sectionTitle'  => $sectionTitle,
             'itemLimit'     => $portfolioSectionLimit,
             'noItems'       => trans('portfolio.sections.portfolio.noItems'),
             'items'         => array_slice($items, 0, $portfolioSectionLimit),
             'seeMoreButton' => [
-                'enabled'   => $more,
+                'enabled'   =>  $seeMoreButton->active,
                 'link'      => route('portfolio'),
-                'text'      => 'See more',
+                'text'      =>  $seeMoreButton->value,
                 'icon'      => 'fa-long-arrow-right',
             ],
         ];
@@ -49,7 +52,7 @@ class PortfolioSectionService extends CmsServices
     /**
      * Gets the section Enabled and Nav title from the CMS Settings table.
      *
-     * @return collection The Portfolio section Enabled and Nav Title.
+     * @return collection.
      */
     public static function getPortfolioSection()
     {
@@ -68,7 +71,7 @@ class PortfolioSectionService extends CmsServices
     /**
      * Gets the section Enabled and Nav title from the CMS Settings table.
      *
-     * @return collection The Portfolio section Enabled and Nav Title.
+     * @return collection.
      */
     public static function getPortfolioSectionLimit()
     {
@@ -85,9 +88,9 @@ class PortfolioSectionService extends CmsServices
     }
 
     /**
-     * Gets the section Enabled and Nav title from the CMS Settings table.
+     * Gets the section Enabled Lightbox from the CMS Settings table.
      *
-     * @return collection The Portfolio section Enabled and Nav Title.
+     * @return collection.
      */
     public static function getPortfolioSectionLightboxEnabled()
     {
@@ -104,15 +107,92 @@ class PortfolioSectionService extends CmsServices
     }
 
     /**
+     * Gets the section Enabled Spacing from the CMS Settings table.
+     *
+     * @return collection.
+     */
+    public static function getPortfolioSectionSpacingEnabled()
+    {
+        $key = 'cms_portfolio_section_spacing_enabled';
+
+        if (self::checkIfItemIsCached($key)) {
+            return self::getFromCache($key);
+        }
+
+        $item = CmsSetting::PortfolioSectionSpacingEnabled()->first();
+        self::storeInCache($key, $item);
+
+        return $item;
+    }
+
+    /**
+     * Gets the section Title from the CMS Settings table.
+     *
+     * @return collection.
+     */
+    public static function getPortfolioSectionTitle()
+    {
+        $key = 'cms_portfolio_section_title';
+
+        if (self::checkIfItemIsCached($key)) {
+            return self::getFromCache($key);
+        }
+
+        $item = CmsSetting::PortfolioSectionTitle()->first();
+        self::storeInCache($key, $item);
+
+        return $item;
+    }
+
+    /**
+     * Gets the section Enabled Spacing from the CMS Settings table.
+     *
+     * @return collection.
+     */
+    public static function getPortfolioSectionSeeMoreButton()
+    {
+        $key = 'cms_portfolio_section_see_more_button';
+
+        if (self::checkIfItemIsCached($key)) {
+            return self::getFromCache($key);
+        }
+
+        $item = CmsSetting::PortfolioSectionSeeMoreButton()->first();
+        self::storeInCache($key, $item);
+
+        return $item;
+    }
+
+    /**
      * Gets the portfolio items.
      *
      * @return array The portfolio items.
      */
-    public function getPortfolioItems()
+    public static function getPortfolioItems()
+    {
+        $key = 'portfolio_section_items';
+
+        if (self::checkIfItemIsCached($key)) {
+            return self::getFromCache($key);
+        }
+
+        $items = self::getPortfolioItemsFromAPI();
+        self::storeInCache($key, $items);
+
+        return $items;
+    }
+
+    /**
+     * Gets the portfolio items.
+     *
+     * @return array The portfolio items from the API.
+     */
+    public static function getPortfolioItemsFromAPI()
     {
         $portfolioItemsRequest  = Request::create('/api/portfolioitems/all/', 'GET');
         $portfolioItems         = json_decode(Route::dispatch($portfolioItemsRequest)->getContent());
 
         return $portfolioItems;
     }
+
 }

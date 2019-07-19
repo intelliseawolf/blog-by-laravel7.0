@@ -17,7 +17,7 @@ class CmsSettingsTableSeeder extends Seeder
                 'name'      => 'CMS Cache',
                 'key'       => 'cms_cache',
                 'value'     => '100',
-                'active'    => 0,
+                'active'    => 1,
             ],
             [
                 'name'      => 'Logo Text',
@@ -139,6 +139,49 @@ class CmsSettingsTableSeeder extends Seeder
                 'value'     => null,
                 'active'    => 0,
             ],
+            [
+                'name'      => 'Portfolio Section Spacing Enabled',
+                'key'       => 'portfolio_section_spacing_enabled',
+                'value'     => null,
+                'active'    => 0,
+            ],
+            [
+                'name'      => 'Portfolio Section Section Title',
+                'key'       => 'portfolio_section_section_title',
+                'value'     => 'Portfolio',
+                'active'    => 1,
+            ],
+            [
+                'name'      => 'Portfolio Section See More Button',
+                'key'       => 'portfolio_section_see_more_button',
+                'value'     => 'See More',
+                'active'    => 1,
+            ],
+            [
+                'name'      => 'Experience Timeline Section',
+                'key'       => 'experience_timeline_section',
+                'value'     => 'My Experience',
+                'active'    => 1,
+            ],
+            [
+                'name'      => 'Experience Timeline Section CSS Class',
+                'key'       => 'experience_timeline_section_css_class',
+                'value'     => null,
+                'active'    => 0,
+            ],
+            [
+                'name'      => 'Education Timeline Section',
+                'key'       => 'education_timeline_section',
+                'value'     => 'My Education',
+                'active'    => 1,
+            ],
+            [
+                'name'      => 'Education Timeline Section CSS Class',
+                'key'       => 'education_timeline_section_css_class',
+                'value'     => 'section--darker',
+                'active'    => 1,
+            ],
+
         ];
 
         foreach ($settings as $setting) {

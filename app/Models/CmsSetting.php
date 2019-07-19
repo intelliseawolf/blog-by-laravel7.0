@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Models\BlogSetting;
 use App\Traits\Scopes\AboutScopes;
+use App\Traits\Scopes\BlogScopes;
 use App\Traits\Scopes\CommonScopes;
 use App\Traits\Scopes\IntroScopes;
 use App\Traits\Scopes\SkillScopes;
@@ -11,18 +12,23 @@ use App\Traits\Scopes\ServiceScopes;
 use App\Traits\Scopes\CmsItemScopes;
 use App\Traits\Scopes\CounterItemScopes;
 use App\Traits\Scopes\PortfolioSectionScopes;
+use App\Traits\Scopes\ExperienceTimelineSectionScopes;
+use App\Traits\Scopes\EducationTimelineSectionScopes;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class CmsSetting extends BlogSetting
 {
     use AboutScopes;
+    use BlogScopes;
     use CommonScopes;
     use IntroScopes;
     use SkillScopes;
     use ServiceScopes;
     use CounterItemScopes;
     use PortfolioSectionScopes;
+    use ExperienceTimelineSectionScopes;
+    use EducationTimelineSectionScopes;
 
     /**
      * The database table used by the model.
@@ -54,5 +60,4 @@ class CmsSetting extends BlogSetting
     {
         return $query->where('key', 'logo_text');
     }
-
 }
