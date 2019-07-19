@@ -17,7 +17,7 @@ class CreateCmsSettingsTable extends Migration
             $table->increments('id')->index();
             $table->string('name')->index()->unique();
             $table->string('key')->index()->unique();
-            $table->longText('value');
+            $table->longText('value')->nullable();
             $table->boolean('active')->default(0);
             $table->timestamps();
             $table->softDeletes();

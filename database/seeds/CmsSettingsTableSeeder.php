@@ -34,8 +34,8 @@ class CmsSettingsTableSeeder extends Seeder
             [
                 'name'      => 'Intro Section Particles Enabled',
                 'key'       => 'intro_section_particles_enabled',
-                'value'     => '',
-                'active'    => 0,
+                'value'     => null,
+                'active'    => 1,
             ],
             [
                 'name'      => 'Intro Section Scroll HTML',
@@ -52,7 +52,7 @@ class CmsSettingsTableSeeder extends Seeder
             [
                 'name'      => 'Intro Section Static Text',
                 'key'       => 'intro_section_static_text',
-                'value'     => '',
+                'value'     => null,
                 'active'    => 0,
             ],
             [
@@ -88,7 +88,7 @@ class CmsSettingsTableSeeder extends Seeder
             [
                 'name'      => 'Skills Section Enabled',
                 'key'       => 'skills_section_enabled',
-                'value'     => '',
+                'value'     => null,
                 'active'    => 1,
             ],
             [
@@ -107,6 +107,18 @@ class CmsSettingsTableSeeder extends Seeder
                 'name'      => 'Services Section Title',
                 'key'       => 'services_section_title',
                 'value'     => 'My Services',
+                'active'    => 1,
+            ],
+            [
+                'name'      => 'Counter Section Enabled',
+                'key'       => 'counter_section_enabled',
+                'value'     => null,
+                'active'    => 1,
+            ],
+            [
+                'name'      => 'Counter Section Background',
+                'key'       => 'counter_section_background',
+                'value'     => 'https://hdqwalls.com/wallpapers/code.jpg',
                 'active'    => 1,
             ],
         ];

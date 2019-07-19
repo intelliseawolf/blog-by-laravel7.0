@@ -7,6 +7,7 @@ use App\Traits\Scopes\CounterTypeScopes;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
+
 class CounterType extends Model
 {
     use CommonScopes;

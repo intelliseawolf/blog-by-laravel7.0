@@ -80,7 +80,6 @@ class CounterItemsTableSeeder extends Seeder
                 'repository'    => $item['repository'],
                 'sort_order'    => $item['sort_order'],
             ]);
-
         }
     }
 }

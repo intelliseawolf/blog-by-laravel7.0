@@ -3,14 +3,12 @@
 namespace App\Models;
 
 use App\Traits\Scopes\CommonScopes;
-use App\Traits\Scopes\CounterItemScopes;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class CounterItem extends Model
 {
     use CommonScopes;
-    use CounterItemScopes;
     use SoftDeletes;
 
     /**
