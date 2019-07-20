@@ -51,6 +51,20 @@ return [
         ],
     ],
 
+    'contactForm' => [
+        'labels' => [
+            'name'      => 'Name*',
+            'email'     => 'Email*',
+            'subject'   => 'Subject',
+            'message'   => 'Type your message here*',
+        ],
+        'messages' => [
+            'successMsg'        => 'Your message was sent!',
+            'serverErrorMsg'    => 'Server error',
+        ],
+        'submitButton' => 'Send message',
+    ],
+
     'footer' => [
         'nav' => [
             'github'  => 'GitHub',
@@ -58,5 +72,4 @@ return [
         ],
         'copyright' => '&copy; '.date("Y").' | Developed with Love <i class="fa fa-heart text-danger"></i><br /> by '.config('blog.author'),
     ],
-
 ];

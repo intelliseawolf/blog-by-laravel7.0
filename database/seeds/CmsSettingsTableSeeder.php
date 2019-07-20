@@ -17,7 +17,7 @@ class CmsSettingsTableSeeder extends Seeder
                 'name'      => 'CMS Cache',
                 'key'       => 'cms_cache',
                 'value'     => '100',
-                'active'    => 1,
+                'active'    => 0,
             ],
             [
                 'name'      => 'Logo Text',
@@ -229,9 +229,48 @@ class CmsSettingsTableSeeder extends Seeder
                 'value'     => 'Contact Me',
                 'active'    => 1,
             ],
-
-
-
+            [
+                'name'      => 'Contact Section Text Title',
+                'key'       => 'contact_section_text_title',
+                'value'     => 'Feel free to contact me!',
+                'active'    => 1,
+            ],
+            [
+                'name'      => 'Contact Section Text',
+                'key'       => 'contact_section_text',
+                'value'     => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptate dolores, quasi unde quisquam facilis at ullam aperiam similique dicta voluptatibus!',
+                'active'    => 1,
+            ],
+            [
+                'name'      => 'Contact Section Phone Enabled',
+                'key'       => 'contact_section_phone_enabled',
+                'value'     => null,
+                'active'    => 1,
+            ],
+            [
+                'name'      => 'Contact Section Email Enabled',
+                'key'       => 'contact_section_email_enabled',
+                'value'     => null,
+                'active'    => 1,
+            ],
+            [
+                'name'      => 'Contact Section Time Enabled',
+                'key'       => 'contact_section_time_enabled',
+                'value'     => null,
+                'active'    => 1,
+            ],
+            [
+                'name'      => 'Contact Section Location Enabled',
+                'key'       => 'contact_section_location_enabled',
+                'value'     => null,
+                'active'    => 1,
+            ],
+            [
+                'name'      => 'Contact Section Form Enabled',
+                'key'       => 'contact_section_form_enabled',
+                'value'     => null,
+                'active'    => 1,
+            ],
         ];
 
         foreach ($settings as $setting) {
