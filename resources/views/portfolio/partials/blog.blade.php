@@ -1,7 +1,7 @@
 @php
     $blogItemsCount     = 0;
     $blogPostFade       = 0;
-    $blogPostFadeInc    = $sectionData['fadeInc'];
+    $blogPostFadeInc    = 150;
     $blogItemLimit      = $sectionData['itemLimit'];
 @endphp
 <section id="Blog">

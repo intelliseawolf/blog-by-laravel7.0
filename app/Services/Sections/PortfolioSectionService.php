@@ -69,7 +69,7 @@ class PortfolioSectionService extends CmsServices
     }
 
     /**
-     * Gets the section Enabled and Nav title from the CMS Settings table.
+     * Gets the section post limit the CMS Settings table.
      *
      * @return collection.
      */
@@ -145,7 +145,7 @@ class PortfolioSectionService extends CmsServices
     }
 
     /**
-     * Gets the section Enabled Spacing from the CMS Settings table.
+     * Gets the section show more button from the CMS Settings table.
      *
      * @return collection.
      */

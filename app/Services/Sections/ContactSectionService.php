@@ -2,7 +2,10 @@
 
 namespace App\Services\Sections;
 
-class ContactSectionService
+use App\Models\CmsSetting;
+use App\Services\CmsServices;
+
+class ContactSectionService extends CmsServices
 {
     /**
      * Gets the contact data.
@@ -11,10 +14,18 @@ class ContactSectionService
      */
     public function getSectionData()
     {
+        $contactSectionData         = self::getContactSection();
+        $contactSectionTitleData    = self::getContactSectionTitle();
+        $contactSectionTitle        = '';
+
+        if ($contactSectionTitleData->active) {
+            $contactSectionTitle = $contactSectionTitleData->value;
+        }
+
         return [
-            'enabled'       => true,
-            'navTitle'      => 'Contact',
-            'sectionTitle'  => 'Contact Me',
+            'enabled'       => $contactSectionData->active,
+            'navTitle'      => $contactSectionData->value,
+            'sectionTitle'  => $contactSectionTitle,
             'textTitle'     => 'Feel free to contact me!',
             'textContent'   => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptate dolores, quasi unde quisquam facilis at ullam aperiam similique dicta voluptatibus!',
             'phone' => [
@@ -53,6 +64,44 @@ class ContactSectionService
                 'submitButton' => 'Send message',
             ],
         ];
+    }
+
+    /**
+     * Gets the section Enabled from the CMS Settings table.
+     *
+     * @return collection.
+     */
+    public static function getContactSection()
+    {
+        $key = 'cms_contact_section';
+
+        if (self::checkIfItemIsCached($key)) {
+            return self::getFromCache($key);
+        }
+
+        $item = CmsSetting::ContactSection()->first();
+        self::storeInCache($key, $item);
+
+        return $item;
+    }
+
+    /**
+     * Gets the section Enabled from the CMS Settings table.
+     *
+     * @return collection.
+     */
+    public static function getContactSectionTitle()
+    {
+        $key = 'cms_contact_section_title';
+
+        if (self::checkIfItemIsCached($key)) {
+            return self::getFromCache($key);
+        }
+
+        $item = CmsSetting::ContactSectionTitle()->first();
+        self::storeInCache($key, $item);
+
+        return $item;
     }
 
 }

@@ -4,31 +4,34 @@ namespace App\Models;
 
 use App\Models\BlogSetting;
 use App\Traits\Scopes\AboutScopes;
-use App\Traits\Scopes\BlogScopes;
+use App\Traits\Scopes\BlogSectionScopes;
 use App\Traits\Scopes\CommonScopes;
-use App\Traits\Scopes\IntroScopes;
-use App\Traits\Scopes\SkillScopes;
-use App\Traits\Scopes\ServiceScopes;
-use App\Traits\Scopes\CmsItemScopes;
+use App\Traits\Scopes\ContactSectionScopes;
 use App\Traits\Scopes\CounterItemScopes;
-use App\Traits\Scopes\PortfolioSectionScopes;
+use App\Traits\Scopes\IntroScopes;
 use App\Traits\Scopes\ExperienceTimelineSectionScopes;
 use App\Traits\Scopes\EducationTimelineSectionScopes;
+use App\Traits\Scopes\PortfolioSectionScopes;
+use App\Traits\Scopes\ServiceScopes;
+use App\Traits\Scopes\SkillScopes;
+use App\Traits\Scopes\TestimonialSectionScopes;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class CmsSetting extends BlogSetting
 {
     use AboutScopes;
-    use BlogScopes;
+    use BlogSectionScopes;
     use CommonScopes;
-    use IntroScopes;
-    use SkillScopes;
-    use ServiceScopes;
+    use ContactSectionScopes;
     use CounterItemScopes;
-    use PortfolioSectionScopes;
     use ExperienceTimelineSectionScopes;
     use EducationTimelineSectionScopes;
+    use IntroScopes;
+    use PortfolioSectionScopes;
+    use ServiceScopes;
+    use SkillScopes;
+    use TestimonialSectionScopes;
 
     /**
      * The database table used by the model.

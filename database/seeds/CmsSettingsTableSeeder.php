@@ -181,6 +181,56 @@ class CmsSettingsTableSeeder extends Seeder
                 'value'     => 'section--darker',
                 'active'    => 1,
             ],
+            [
+                'name'      => 'Blog Section',
+                'key'       => 'blog_section',
+                'value'     => 'Blog',
+                'active'    => 1,
+            ],
+            [
+                'name'      => 'Blog Section Title',
+                'key'       => 'blog_section_title',
+                'value'     => 'Latest Blog Posts',
+                'active'    => 1,
+            ],
+            [
+                'name'      => 'Blog Section Limit',
+                'key'       => 'blog_section_limit',
+                'value'     => 3,
+                'active'    => 1,
+            ],
+            [
+                'name'      => 'Blog Section See More Button',
+                'key'       => 'blog_section_see_more_button',
+                'value'     => 'See More',
+                'active'    => 1,
+            ],
+            [
+                'name'      => 'Testimonial Section Enabled',
+                'key'       => 'testimonial_section_enabled',
+                'value'     => null,
+                'active'    => 1,
+            ],
+            [
+                'name'      => 'Testimonial Section Title',
+                'key'       => 'testimonial_section_title',
+                'value'     => 'What people are saying',
+                'active'    => 1,
+            ],
+            [
+                'name'      => 'Contact Section',
+                'key'       => 'contact_section',
+                'value'     => 'Contact',
+                'active'    => 1,
+            ],
+            [
+                'name'      => 'Contact Section Title',
+                'key'       => 'contact_section_title',
+                'value'     => 'Contact Me',
+                'active'    => 1,
+            ],
+
+
 
         ];
 

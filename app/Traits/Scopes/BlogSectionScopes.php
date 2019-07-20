@@ -2,7 +2,7 @@
 
 namespace App\Traits\Scopes;
 
-trait AboutScopes
+trait BlogSectionScopes
 {
     /**
      * Scope a query to get the Section Enabled and Nav Title from the CMS settings table.
@@ -11,44 +11,45 @@ trait AboutScopes
      *
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function scopeAboutSection($query)
+    public function scopeBlogSection($query)
     {
-        return $query->where('key', 'about_section');
+        return $query->where('key', 'blog_section');
     }
 
     /**
-     * Scope a query to get the Title from the CMS settings table.
+     * Scope a query to get the Section Title from the CMS settings table.
      *
      * @param \Illuminate\Database\Eloquent\Builder $query
      *
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function scopeAboutSectionTitle($query)
+    public function scopeBlogSectionTitle($query)
     {
-        return $query->where('key', 'about_section_title');
+        return $query->where('key', 'blog_section_title');
     }
 
     /**
-     * Scope a query to get the Section Intro from the CMS settings table.
+     * Scope a query to get the Section Limit from the CMS settings table.
      *
      * @param \Illuminate\Database\Eloquent\Builder $query
      *
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function scopeAboutSectionIntro($query)
+    public function scopeBlogSectionLimit($query)
     {
-        return $query->where('key', 'about_section_intro');
+        return $query->where('key', 'blog_section_limit');
     }
 
     /**
-     * Scope a query to get the Section Text from the CMS settings table.
+     * Scope a query to get the Section See More Button from the CMS settings table.
      *
      * @param \Illuminate\Database\Eloquent\Builder $query
      *
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function scopeAboutSectionText($query)
+    public function scopeBlogSectionSeeMoreButton($query)
     {
-        return $query->where('key', 'about_section_text');
+        return $query->where('key', 'blog_section_see_more_button');
     }
 }
+
