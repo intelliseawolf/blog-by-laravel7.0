@@ -35,6 +35,7 @@ class DatabaseSeeder extends Seeder
         $this->call(ServiceItemsTableSeeder::class);
         $this->call(CounterTypesTableSeeder::class);
         $this->call(CounterItemsTableSeeder::class);
+        $this->call(SocialMediaItemsTableSeeder::class);
 
         Model::reguard();
     }

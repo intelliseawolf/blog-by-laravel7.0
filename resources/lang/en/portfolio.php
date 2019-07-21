@@ -4,7 +4,7 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Portfolio language lines
+    | Portfolio Homepage language lines
     |--------------------------------------------------------------------------
     |
     */
@@ -69,6 +69,10 @@ return [
         'nav' => [
             'github'  => 'GitHub',
             'license' => 'License',
+        ],
+        'contact' => [
+            'emailIcon' => 'fa-envelope-square',
+            'phoneIcon' => 'fa-phone-square',
         ],
         'copyright' => '&copy; '.date("Y").' | Developed with Love <i class="fa fa-heart text-danger"></i><br /> by '.config('blog.author'),
     ],

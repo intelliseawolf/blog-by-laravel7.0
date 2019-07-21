@@ -3,11 +3,10 @@
 namespace App\Models;
 
 use App\Traits\Scopes\CommonScopes;
-use App\Traits\Scopes\ServiceScopes;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class ServiceItem extends Model
+class SocialMediaItem extends Model
 {
     use CommonScopes;
     use SoftDeletes;
@@ -17,7 +16,7 @@ class ServiceItem extends Model
      *
      * @var string
      */
-    protected $table = 'service_items';
+    protected $table = 'social_media_items';
 
     /**
      * The attributes that are not mass assignable.
@@ -36,8 +35,8 @@ class ServiceItem extends Model
     protected $fillable = [
         'active',
         'name',
-        'text',
         'icon',
+        'link',
         'sort_order',
     ];
 
@@ -49,8 +48,8 @@ class ServiceItem extends Model
     protected $casts = [
         'active'     => 'boolean',
         'name'       => 'string',
-        'text'       => 'string',
         'icon'       => 'string',
+        'link'       => 'string',
         'sort_order' => 'integer',
     ];
 
@@ -64,4 +63,15 @@ class ServiceItem extends Model
         'updated_at',
         'deleted_at',
     ];
+
+    /**
+     * Scope a query to get only enabled items and sort them.
+     *
+     * @return collection
+     */
+    public function scopeAllEnabledItemsSorted($query)
+    {
+        return $query->activeItems()
+            ->sortedItems();
+    }
 }

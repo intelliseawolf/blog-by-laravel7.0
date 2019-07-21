@@ -271,6 +271,30 @@ class CmsSettingsTableSeeder extends Seeder
                 'value'     => null,
                 'active'    => 1,
             ],
+            [
+                'name'      => 'Footer Enabled',
+                'key'       => 'footer_enabled',
+                'value'     => null,
+                'active'    => 1,
+            ],
+            [
+                'name'      => 'Footer Phone Enabled',
+                'key'       => 'footer_phone_enabled',
+                'value'     => null,
+                'active'    => 1,
+            ],
+            [
+                'name'      => 'Footer Email Enabled',
+                'key'       => 'footer_email_enabled',
+                'value'     => null,
+                'active'    => 1,
+            ],
+            [
+                'name'      => 'Footer Copyright',
+                'key'       => 'footer_copyright',
+                'value'     => trans('portfolio.footer.copyright'),
+                'active'    => 1,
+            ],
         ];
 
         foreach ($settings as $setting) {

@@ -40,7 +40,7 @@
             <div class="col-sm-4">
                 <div class="footer-socials">
                     @foreach($sections['footer']['socialmedia']['items'] as $item)
-                        @if($item['enabled'])
+                        @if($item['active'])
                             <a href="{{ $item['link'] }}" target="_blank" class="footer-link">
                                 <i class="fa {{ $item['icon'] }}" aria-hidden="true"></i>
                                 <span class="sr-only">

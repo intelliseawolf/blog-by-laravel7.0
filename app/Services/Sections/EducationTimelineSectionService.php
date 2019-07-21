@@ -88,5 +88,4 @@ class EducationTimelineSectionService extends CmsServices
 
         return $items;
     }
-
 }

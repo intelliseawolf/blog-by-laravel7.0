@@ -11,6 +11,7 @@ use App\Traits\Scopes\CounterItemScopes;
 use App\Traits\Scopes\IntroScopes;
 use App\Traits\Scopes\ExperienceTimelineSectionScopes;
 use App\Traits\Scopes\EducationTimelineSectionScopes;
+use App\Traits\Scopes\FooterScopes;
 use App\Traits\Scopes\PortfolioSectionScopes;
 use App\Traits\Scopes\ServiceScopes;
 use App\Traits\Scopes\SkillScopes;
@@ -27,6 +28,7 @@ class CmsSetting extends BlogSetting
     use CounterItemScopes;
     use ExperienceTimelineSectionScopes;
     use EducationTimelineSectionScopes;
+    use FooterScopes;
     use IntroScopes;
     use PortfolioSectionScopes;
     use ServiceScopes;
