@@ -280,6 +280,25 @@ class PortfolioItem extends Model implements Feedable
      *
      * @return array
      */
+    public function tagTitleList($base = '/?tag=%TAG%')
+    {
+        $tags = $this->tags()->pluck('title')->all();
+        $return = [];
+
+        foreach ($tags as $tag) {
+            $return[] = e($tag);
+        }
+
+        return $return;
+    }
+
+    /**
+     * Return array of tag links.
+     *
+     * @param string $base
+     *
+     * @return array
+     */
     public function techTagLinks($base = '/?tag=%TAG%')
     {
         $techTags = $this->techTags()->pluck('tag')->all();
@@ -303,6 +322,25 @@ class PortfolioItem extends Model implements Feedable
     public function techTagList($base = '/?tag=%TAG%')
     {
         $techTags = $this->techTags()->pluck('tag')->all();
+        $return = [];
+
+        foreach ($techTags as $techTag) {
+            $return[] = e($techTag);
+        }
+
+        return $return;
+    }
+
+    /**
+     * Return array of tag links.
+     *
+     * @param string $base
+     *
+     * @return array
+     */
+    public function techTagTitleList($base = '/?tag=%TAG%')
+    {
+        $techTags = $this->techTags()->pluck('title')->all();
         $return = [];
 
         foreach ($techTags as $techTag) {

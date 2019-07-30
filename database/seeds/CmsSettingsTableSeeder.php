@@ -35,7 +35,7 @@ class CmsSettingsTableSeeder extends Seeder
                 'name'      => 'Intro Section Particles Enabled',
                 'key'       => 'intro_section_particles_enabled',
                 'value'     => null,
-                'active'    => 1,
+                'active'    => 0,
             ],
             [
                 'name'      => 'Intro Section Scroll HTML',
@@ -46,7 +46,7 @@ class CmsSettingsTableSeeder extends Seeder
             [
                 'name'      => 'Intro Section Background',
                 'key'       => 'intro_section_background',
-                'value'     => 'https://paperlief.com/images/portland-wallpaper-4.jpg',
+                'value'     => asset('images/backgrounds/portland.jpg'),
                 'active'    => 1,
             ],
             [
@@ -101,7 +101,7 @@ class CmsSettingsTableSeeder extends Seeder
                 'name'      => 'Services Section',
                 'key'       => 'services_section',
                 'value'     => 'Services',
-                'active'    => 1,
+                'active'    => 0,
             ],
             [
                 'name'      => 'Services Section Title',
@@ -118,7 +118,7 @@ class CmsSettingsTableSeeder extends Seeder
             [
                 'name'      => 'Counter Section Background',
                 'key'       => 'counter_section_background',
-                'value'     => 'https://hdqwalls.com/wallpapers/code.jpg',
+                'value'     => asset('images/backgrounds/code.jpg'),
                 'active'    => 1,
             ],
             [
@@ -185,7 +185,7 @@ class CmsSettingsTableSeeder extends Seeder
                 'name'      => 'Blog Section',
                 'key'       => 'blog_section',
                 'value'     => 'Blog',
-                'active'    => 1,
+                'active'    => 0,
             ],
             [
                 'name'      => 'Blog Section Title',

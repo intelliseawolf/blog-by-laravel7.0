@@ -143,10 +143,10 @@ trait DynamicDataTrait
      *
      * @return     array    The portfolio data.
      */
-    public function getPortfolioData()
+    public function getPortfolioData($allItems = false)
     {
         $service = new PortfolioSectionService;
-        return $service->getSectionData();
+        return $service->getSectionData($allItems);
     }
 
     /**

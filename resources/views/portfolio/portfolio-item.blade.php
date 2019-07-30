@@ -43,12 +43,7 @@
                                                     {!! trans('portfolio.portfolio-item.type') !!}
                                                 </div>
                                                 <div class="project-detail-value">
-                                                    {{--
-                                                    @foreach($sections['portfolioItem']->tags as $tag)
-                                                        {{ $tag->title }} <br />
-                                                    @endforeach
-                                                    --}}
-                                                    {!! join(', ', $sections['portfolioItem']->tagList()) !!}
+                                                    {!! join(', ', $sections['portfolioItem']->tagTitleList()) !!}
                                                 </div>
                                             </div>
                                         @endif
@@ -63,7 +58,7 @@
                                                     {!! join('</span> <span class="badge badge-light badge-pill">', $sections['portfolioItem']->techTagLinks()) !!}
                                                 </span>
                                                 --}}
-                                                {!! join(', ', $sections['portfolioItem']->techTagList()) !!}
+                                                {!! join(', ', $sections['portfolioItem']->techTagTitleList()) !!}
                                             </div>
                                         </div>
                                         @endif

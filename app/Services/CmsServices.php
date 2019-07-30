@@ -12,7 +12,7 @@ class CmsServices
      *
      * @return string The logo text.
      */
-    private static function getCmsCachingEnabled()
+    public static function getCmsCachingEnabled()
     {
         return CmsSetting::CmsCaching()->pluck('active')->first();
     }
@@ -22,7 +22,7 @@ class CmsServices
      *
      * @return string The logo text.
      */
-    private static function getCmsCachingTime()
+    public static function getCmsCachingTime()
     {
         return CmsSetting::CmsCaching()->pluck('value')->first();
     }
@@ -32,7 +32,7 @@ class CmsServices
      *
      * @return bool
      */
-    protected static function checkIfItemIsCached($key = null)
+    public static function checkIfItemIsCached($key = null)
     {
         $cachingEnabled = self::getCmsCachingEnabled();
 
@@ -53,7 +53,7 @@ class CmsServices
      *
      * @return From The from cache.
      */
-    protected static function getFromCache($item)
+    public static function getFromCache($item)
     {
         return Cache::get($item);
     }
@@ -64,7 +64,7 @@ class CmsServices
      * @param string    $key    The key
      * @param multi     $value  The value
      */
-    protected static function storeInCache($key, $value)
+    public static function storeInCache($key, $value)
     {
         $cachingEnabled = self::getCmsCachingEnabled();
 
@@ -82,7 +82,7 @@ class CmsServices
      *
      * @return cache time.
      */
-    protected static function getCmsCacheTime($minutes = null)
+    public static function getCmsCacheTime($minutes = null)
     {
         if ($minutes === null) {
             $minutes = self::getCmsCachingTime();

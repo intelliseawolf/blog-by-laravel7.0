@@ -16,7 +16,7 @@
             <meta name="description" content="@yield('template_description')">
         @endif
         <meta name="author" content="{{ config('blog.author') }}">
-        <link rel="shortcut icon" href="/favicon.ico">
+        <link rel="shortcut icon" href="{{ asset('favicon.ico') }}">
 
         {{-- Dynamic RSS Feed Calls --}}
         @include('feed::links')

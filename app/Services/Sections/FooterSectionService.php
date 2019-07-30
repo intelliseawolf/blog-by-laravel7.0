@@ -6,7 +6,7 @@ use App\Models\SocialMediaItem;
 use App\Models\CmsSetting;
 use App\Services\CmsServices;
 
-class AboutSectionService extends CmsServices
+class FooterSectionService extends CmsServices
 {
     /**
      * Gets the footer data.

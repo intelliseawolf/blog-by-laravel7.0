@@ -25,7 +25,7 @@ class PortfolioController extends Controller
             'navTitle' => trans('portfolio.sections.portfolio.navTitle'),
             'sections' => [
                 'preloader'         => $this->getPreloaderData(),
-                'portfolio'         => $this->getPortfolioData(true, null, false, false, false),
+                'portfolio'         => $this->getPortfolioData(true),
                 'footer'            => $this->getFooterData(),
             ],
         ];

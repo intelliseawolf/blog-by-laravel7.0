@@ -4,6 +4,7 @@ namespace App\Services\Sections;
 
 use App\Models\CmsSetting;
 use App\Services\CmsServices;
+use App\Models\PortfolioItem;
 use Illuminate\Http\Request;
 use Route;
 
@@ -14,12 +15,16 @@ class PortfolioSectionService extends CmsServices
      *
      * @return     array    The portfolio data.
      */
-    public function getSectionData()
+    public function getSectionData($allItems = false)
     {
         $portfolioSection       = self::getPortfolioSection();
         $portfolioSectionLimit  = self::getPortfolioSectionLimit()->value;
         $seeMoreButton          = self::getPortfolioSectionSeeMoreButton();
-        $items                  = self::getPortfolioItems();
+        if ($allItems) {
+            $items = self::getAllEnabledPortfolioItems();
+        } else {
+            $items = self::getPortfolioItems();
+        }
         $sectionTitleData       = self::getPortfolioSectionTitle();
         $sectionTitle           = '';
 
@@ -31,6 +36,10 @@ class PortfolioSectionService extends CmsServices
             $portfolioSectionLimit = count($items);
         }
 
+        if (!$allItems) {
+            $items = array_slice($items, 0, $portfolioSectionLimit);
+        }
+
         return [
             'enabled'       => $portfolioSection->active,
             'spacing'       => self::getPortfolioSectionSpacingEnabled()->active,
@@ -39,7 +48,7 @@ class PortfolioSectionService extends CmsServices
             'sectionTitle'  => $sectionTitle,
             'itemLimit'     => $portfolioSectionLimit,
             'noItems'       => trans('portfolio.sections.portfolio.noItems'),
-            'items'         => array_slice($items, 0, $portfolioSectionLimit),
+            'items'         => $items,
             'seeMoreButton' => [
                 'enabled'   =>  $seeMoreButton->active,
                 'link'      => route('portfolio'),
@@ -177,6 +186,25 @@ class PortfolioSectionService extends CmsServices
         }
 
         $items = self::getPortfolioItemsFromAPI();
+        self::storeInCache($key, $items);
+
+        return $items;
+    }
+
+    /**
+     * Gets all the enabled portfolio items from the database.
+     *
+     * @return collection.
+     */
+    public static function getAllEnabledPortfolioItems()
+    {
+        $key = 'all_enabled_portfolio_items';
+
+        if (self::checkIfItemIsCached($key)) {
+            return self::getFromCache($key);
+        }
+
+        $items = PortfolioItem::AllPublishedPortfolioItems()->get();
         self::storeInCache($key, $items);
 
         return $items;
