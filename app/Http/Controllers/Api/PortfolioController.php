@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\PortfolioItem;
-use App\Models\PortfolioItemTag;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
@@ -33,5 +32,4 @@ class PortfolioController extends Controller
 
         return response()->json($enablePortfolioItems, Response::HTTP_OK);
     }
-
 }

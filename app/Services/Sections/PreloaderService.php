@@ -2,8 +2,6 @@
 
 namespace App\Services\Sections;
 
-use App\Traits\TestimonialsDataTrait;
-
 class PreloaderService
 {
     /**
@@ -15,7 +13,7 @@ class PreloaderService
     {
         return [
             'enabled' => true,
-            'type'  => '8',    // 1-8
+            'type'    => '8',    // 1-8
         ];
     }
 }

@@ -15,15 +15,15 @@ class AboutSectionService extends CmsServices
      */
     public function getSectionData()
     {
-        $aboutSectionIntro      = '';
-        $aboutSectionText       = '';
+        $aboutSectionIntro = '';
+        $aboutSectionText = '';
 
-        $aboutSection           = self::getCmsAboutSection();
-        $aboutSectionTitle      = self::getCmsAboutSectionTitle();
+        $aboutSection = self::getCmsAboutSection();
+        $aboutSectionTitle = self::getCmsAboutSectionTitle();
 
-        $aboutSectionIntroData  = self::getCmsAboutSectionIntro();;
-        $aboutSectionTextData   = self::getCmsAboutSectionText();;
-        $buttons                = self::getCmsAboutButtons();
+        $aboutSectionIntroData = self::getCmsAboutSectionIntro();
+        $aboutSectionTextData = self::getCmsAboutSectionText();
+        $buttons = self::getCmsAboutButtons();
 
         if ($aboutSectionIntroData->active) {
             $aboutSectionIntro = $aboutSectionIntroData->value;
@@ -138,5 +138,4 @@ class AboutSectionService extends CmsServices
 
         return $item;
     }
-
 }

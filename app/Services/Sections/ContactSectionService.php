@@ -14,14 +14,14 @@ class ContactSectionService extends CmsServices
      */
     public function getSectionData()
     {
-        $contactSectionData             = self::getContactSection();
-        $contactSectionTitleData        = self::getContactSectionTitle();
-        $contactSectionTextTitleData    = self::getContactSectionTextTitle();
-        $contactSectionTextData         = self::getContactSectionText();
+        $contactSectionData = self::getContactSection();
+        $contactSectionTitleData = self::getContactSectionTitle();
+        $contactSectionTextTitleData = self::getContactSectionTextTitle();
+        $contactSectionTextData = self::getContactSectionText();
 
-        $contactSectionTitle            = '';
-        $contactSectionTextTitle        = '';
-        $contactSectionText             = '';
+        $contactSectionTitle = '';
+        $contactSectionTextTitle = '';
+        $contactSectionText = '';
 
         if ($contactSectionTitleData->active) {
             $contactSectionTitle = $contactSectionTitleData->value;
@@ -41,7 +41,7 @@ class ContactSectionService extends CmsServices
             'sectionTitle'  => $contactSectionTitle,
             'textTitle'     => $contactSectionTextTitle,
             'textContent'   => $contactSectionText,
-            'phone' => [
+            'phone'         => [
                 'enabled'   => self::getContactSectionPhoneEnabled()->active,
                 'icon'      => config('portfolio.contact.phone.icon'),
                 'text'      => config('portfolio.contact.phone.string'),

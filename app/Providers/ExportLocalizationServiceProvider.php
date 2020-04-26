@@ -2,9 +2,9 @@
 
 namespace App\Providers;
 
-use KgBot\LaravelLocalization\Facades\ExportLocalizations as ExportLocalization;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
+use KgBot\LaravelLocalization\Facades\ExportLocalizations as ExportLocalization;
 
 class ExportLocalizationServiceProvider extends ServiceProvider
 {
@@ -15,8 +15,8 @@ class ExportLocalizationServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        View::composer('*', function($view) {
-            return $view->with( [
+        View::composer('*', function ($view) {
+            return $view->with([
                 'messages' => ExportLocalization::export()->toFlat(),
             ]);
         });

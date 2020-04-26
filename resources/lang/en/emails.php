@@ -12,7 +12,7 @@ return [
     'contact' => [
         'intro'     => 'You have received a new message from your blog contact form.',
         'details'   => 'Contact Details:',
-        'labels' => [
+        'labels'    => [
             'firstname' => 'Firstname:',
             'lastname'  => 'Lastname:',
             'phone'     => 'Phone:',
@@ -30,7 +30,7 @@ return [
     'homecontact' => [
         'intro'     => 'You have received a new message from your portfolio website contact form.',
         'details'   => 'Contact Details:',
-        'labels' => [
+        'labels'    => [
             'name'      => 'Name:',
             'phone'     => 'Phone:',
             'subject'   => 'Subject:',

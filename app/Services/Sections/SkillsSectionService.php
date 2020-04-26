@@ -15,10 +15,10 @@ class SkillsSectionService extends CmsServices
      */
     public function getSectionData()
     {
-        $skillsTitle     = '';
+        $skillsTitle = '';
         $skillsTitleData = self::getCmsSkillSectionTitle();
 
-        if($skillsTitleData->active) {
+        if ($skillsTitleData->active) {
             $skillsTitle = $skillsTitleData->value;
         }
 

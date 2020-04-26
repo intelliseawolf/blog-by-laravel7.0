@@ -2,11 +2,9 @@
 
 use App\Models\TimelineItem;
 use App\Models\TimelineType;
-
 use Faker\Generator as Faker;
 
 $factory->define(TimelineItem::class, function (Faker $faker) {
-
     $timelineTypes = TimelineType::all();
     $timelineTypesCount = count($timelineTypes) - 1;
 
@@ -30,7 +28,7 @@ $factory->define(TimelineItem::class, function (Faker $faker) {
         'type_id'       => $type->id,
         'sort_order'    => $faker->unique()->numberBetween($min = 1, $max = 9000),
         'icon'          => $icons[mt_rand(0, $iconsCount)],
-        'dates'         => $faker->unique()->year($max = 'now') ,
+        'dates'         => $faker->unique()->year($max = 'now'),
         'title'         => $faker->unique()->words($nb = 2, $asText = true),
         'subtitle'      => $faker->words($nb = 4, $asText = true),
         'text'          => $text,

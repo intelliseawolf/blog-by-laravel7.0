@@ -15,15 +15,15 @@ class ServicesSectionService extends CmsServices
      */
     public function getSectionData()
     {
-        $serviceSection         = self::getCmsServicesSection();
-        $serviceSectionTitle    = self::getCmsServicesSectionTitle();
+        $serviceSection = self::getCmsServicesSection();
+        $serviceSectionTitle = self::getCmsServicesSectionTitle();
 
         return [
             'enabled'               => $serviceSection->active,
             'navTitle'              => $serviceSection->value,
             'sectionTitleEnabled'   => $serviceSectionTitle->active,
             'sectionTitle'          => $serviceSectionTitle->value,
-            'bsClass'               => "col-sm-6 col-md-3",
+            'bsClass'               => 'col-sm-6 col-md-3',
             'items'                 => self::getCmsServiceItems(),
         ];
     }

@@ -17,9 +17,9 @@ class TestimonialsSectionService extends CmsServices
      */
     public function getSectionData()
     {
-        $testimonialItems       = self::getTestimonialItems();
-        $testimonialTitleData   = self::getTestimonialSectionTitle();
-        $testimonialTitle       = '';
+        $testimonialItems = self::getTestimonialItems();
+        $testimonialTitleData = self::getTestimonialSectionTitle();
+        $testimonialTitle = '';
 
         if ($testimonialTitleData->active) {
             $testimonialTitle = $testimonialTitleData->value;

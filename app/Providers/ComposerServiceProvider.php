@@ -15,7 +15,8 @@ class ComposerServiceProvider extends ServiceProvider
     public function boot()
     {
         View::composer(
-            '*', 'App\Http\ViewComposers\BlogSettingsComposer'
+            '*',
+            'App\Http\ViewComposers\BlogSettingsComposer'
         );
     }
 

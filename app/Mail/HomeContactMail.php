@@ -8,7 +8,8 @@ use Illuminate\Queue\SerializesModels;
 
 class HomeContactMail extends Mailable
 {
-    use Queueable, SerializesModels;
+    use Queueable;
+    use SerializesModels;
 
     public $name;
     public $email;

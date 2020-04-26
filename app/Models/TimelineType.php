@@ -79,5 +79,4 @@ class TimelineType extends Model
     {
         $query->whereSlug($slug);
     }
-
 }

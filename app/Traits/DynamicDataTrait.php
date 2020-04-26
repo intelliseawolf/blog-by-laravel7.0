@@ -20,7 +20,7 @@ use App\Services\Sections\TestimonialsSectionService;
 trait DynamicDataTrait
 {
     /**
-     * Get the Sections Data
+     * Get the Sections Data.
      *
      * @return array
      */
@@ -50,18 +50,20 @@ trait DynamicDataTrait
      */
     public function getAboutData()
     {
-        $service = new AboutSectionService;
+        $service = new AboutSectionService();
+
         return $service->getSectionData();
     }
 
     /**
      * Gets the blog data.
      *
-     * @return array  The blog data.
+     * @return array The blog data.
      */
     public function getBlogData()
     {
-        $service = new BlogSectionService;
+        $service = new BlogSectionService();
+
         return $service->getSectionData();
     }
 
@@ -72,7 +74,8 @@ trait DynamicDataTrait
      */
     public function getContactData()
     {
-        $service = new ContactSectionService;
+        $service = new ContactSectionService();
+
         return $service->getSectionData();
     }
 
@@ -83,7 +86,8 @@ trait DynamicDataTrait
      */
     public function getCountersData()
     {
-        $service = new CountersSectionService;
+        $service = new CountersSectionService();
+
         return $service->getSectionData();
     }
 
@@ -92,7 +96,8 @@ trait DynamicDataTrait
      */
     public function getEducationTimelineData()
     {
-        $service = new EducationTimelineSectionService;
+        $service = new EducationTimelineSectionService();
+
         return $service->getSectionData();
     }
 
@@ -101,29 +106,32 @@ trait DynamicDataTrait
      */
     public function getExperienceTimelineData()
     {
-        $service = new ExperienceTimelineSectionService;
+        $service = new ExperienceTimelineSectionService();
+
         return $service->getSectionData();
     }
 
     /**
      * Gets the footer data.
      *
-     * @return array  The footer data.
+     * @return array The footer data.
      */
     public function getFooterData()
     {
-        $service = new FooterSectionService;
+        $service = new FooterSectionService();
+
         return $service->getSectionData();
     }
 
     /**
      * Gets the intro data.
      *
-     * @return     array  The intro data.
+     * @return array The intro data.
      */
     public function getIntroData()
     {
-        $service = new IntroSectionService;
+        $service = new IntroSectionService();
+
         return $service->getSectionData();
     }
 
@@ -134,18 +142,20 @@ trait DynamicDataTrait
      */
     public function getLogoText()
     {
-        $service = new LogoService;
+        $service = new LogoService();
+
         return $service->getSectionData();
     }
 
     /**
      * Gets the portfolio data.
      *
-     * @return     array    The portfolio data.
+     * @return array The portfolio data.
      */
     public function getPortfolioData($allItems = false)
     {
-        $service = new PortfolioSectionService;
+        $service = new PortfolioSectionService();
+
         return $service->getSectionData($allItems);
     }
 
@@ -156,7 +166,8 @@ trait DynamicDataTrait
      */
     public function getPreloaderData()
     {
-        $service = new PreloaderService;
+        $service = new PreloaderService();
+
         return $service->getSectionData();
     }
 
@@ -167,7 +178,8 @@ trait DynamicDataTrait
      */
     public function getServicesData()
     {
-        $service = new ServicesSectionService;
+        $service = new ServicesSectionService();
+
         return $service->getSectionData();
     }
 
@@ -178,7 +190,8 @@ trait DynamicDataTrait
      */
     public function getSkillsData()
     {
-        $service = new SkillsSectionService;
+        $service = new SkillsSectionService();
+
         return $service->getSectionData();
     }
 
@@ -189,7 +202,8 @@ trait DynamicDataTrait
      */
     public function getTestimonialsData()
     {
-        $service = new TestimonialsSectionService;
+        $service = new TestimonialsSectionService();
+
         return $service->getSectionData();
     }
 }

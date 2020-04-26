@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Portfolio;
 use App\Http\Controllers\Controller;
 use App\Models\PortfolioItem;
 use App\Models\PortfolioItemTag;
-use App\Models\User;
 use App\Traits\DynamicDataTrait;
 use Illuminate\Http\Request;
 
@@ -79,5 +78,4 @@ class PortfolioController extends Controller
 
         return view('portfolio.portfolio-item', $data);
     }
-
 }

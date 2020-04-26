@@ -19,11 +19,11 @@ class CounterTypesTableSeeder extends Seeder
             ],
             [
                 'type' => 'packagistVendorPackagesCount',
-                'name' => 'Packagist Vendor Packages Count'
+                'name' => 'Packagist Vendor Packages Count',
             ],
             [
                 'type' => 'packagistVendorsTotalDownloads',
-                'name' => 'Packagist Vendors Total Downloads'
+                'name' => 'Packagist Vendors Total Downloads',
             ],
         ];
         foreach ($items as $item) {

@@ -20,9 +20,9 @@ class TimelineItemsTableSeeder extends Seeder
         // factory(TimelineItem::class, 20)->create();
 
         // Seed Real Items
-        $timelineTypes      = TimelineType::all();
-        $experienceId       = null;
-        $educationId        = null;
+        $timelineTypes = TimelineType::all();
+        $experienceId = null;
+        $educationId = null;
 
         // Get ID's for timeline item types
         foreach ($timelineTypes as $timelineType) {
