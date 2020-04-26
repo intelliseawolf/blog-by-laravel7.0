@@ -19,7 +19,7 @@ class IntroTypingTextItemsTableSeeder extends Seeder
                 'sort_order'    => 1,
             ],
             [
-                'value'         => 'Engineering Maanger',
+                'value'         => 'Engineering Manager',
                 'active'        => 1,
                 'sort_order'    => 1,
             ],

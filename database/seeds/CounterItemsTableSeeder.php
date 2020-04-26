@@ -58,7 +58,7 @@ class CounterItemsTableSeeder extends Seeder
                 'active'        => 1,
                 'type_id'       => $typeCustom->id,
                 'title'         => 'Open Source Commits',
-                'number'        => 1355,
+                'number'        => 1465,
                 'increment'     => 10,
                 'icon'          => 'fa fa-trophy',
                 'link'          => 'https://sourcerer.io/jeremykenedy',
