@@ -58,7 +58,7 @@ class CmsSettingsTableSeeder extends Seeder
             [
                 'name'      => 'Intro Section Text Speed',
                 'key'       => 'intro_section_text_speed',
-                'value'     => 4500,
+                'value'     => 6500,
                 'active'    => 1,
             ],
             [
@@ -245,7 +245,7 @@ class CmsSettingsTableSeeder extends Seeder
                 'name'      => 'Contact Section Phone Enabled',
                 'key'       => 'contact_section_phone_enabled',
                 'value'     => null,
-                'active'    => 2,
+                'active'    => 0,
             ],
             [
                 'name'      => 'Contact Section Email Enabled',
@@ -281,7 +281,7 @@ class CmsSettingsTableSeeder extends Seeder
                 'name'      => 'Footer Phone Enabled',
                 'key'       => 'footer_phone_enabled',
                 'value'     => null,
-                'active'    => 1,
+                'active'    => 0,
             ],
             [
                 'name'      => 'Footer Email Enabled',
