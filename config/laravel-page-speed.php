@@ -55,7 +55,7 @@ return [
         '*.flv',
         '*.m4v',
         '*.js',
-        '*.torrent'
+        '*.torrent',
     ],
 
 ];

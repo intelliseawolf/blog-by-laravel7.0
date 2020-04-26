@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Blog;
 use App\Http\Controllers\Controller;
 use App\Models\Post;
 use App\Models\Tag;
-use App\Models\User;
 use App\Services\PostProcesses;
 use App\Traits\DynamicDataTrait;
 use Illuminate\Http\Request;
@@ -32,6 +31,7 @@ class BlogController extends Controller
             ],
         ];
         $data = array_merge($data, $baseInfo);
+
         return view($layout, $data);
     }
 

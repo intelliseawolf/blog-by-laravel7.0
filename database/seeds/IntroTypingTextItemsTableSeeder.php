@@ -14,22 +14,22 @@ class IntroTypingTextItemsTableSeeder extends Seeder
     {
         $items = [
             [
-                'value'         => "Engineering Manager",
+                'value'         => 'Engineering Manager',
                 'active'        => 1,
                 'sort_order'    => 1,
             ],
             [
-                'value'         => "Software Engineer",
+                'value'         => 'Software Engineer',
                 'active'        => 1,
                 'sort_order'    => 2,
             ],
             [
-                'value'         => "Open Source Advocate",
+                'value'         => 'Open Source Advocate',
                 'active'        => 1,
                 'sort_order'    => 3,
             ],
             [
-                'value'         => "Laravel Enthusiast",
+                'value'         => 'Laravel Enthusiast',
                 'active'        => 1,
                 'sort_order'    => 4,
             ],

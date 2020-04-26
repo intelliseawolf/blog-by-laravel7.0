@@ -2,8 +2,8 @@
 
 namespace App\Services\Sections;
 
-use App\Models\TimelineItem;
 use App\Models\CmsSetting;
+use App\Models\TimelineItem;
 use App\Services\CmsServices;
 
 class EducationTimelineSectionService extends CmsServices
@@ -15,10 +15,10 @@ class EducationTimelineSectionService extends CmsServices
     {
         $items = TimelineItem::allEnabledItemsByType('education')->get();
 
-        $educationTimelineSectionData   = self::getEducationTimelineSection();
-        $timelineItems                  = self::getEducationTimelineItems();
-        $sectionCssClassData            = self::getEducationTimelineSectionCssClass();
-        $sectionCssClass                = '';
+        $educationTimelineSectionData = self::getEducationTimelineSection();
+        $timelineItems = self::getEducationTimelineItems();
+        $sectionCssClassData = self::getEducationTimelineSectionCssClass();
+        $sectionCssClass = '';
 
         if ($sectionCssClassData->active) {
             $sectionCssClass = $sectionCssClassData->value;
@@ -32,7 +32,7 @@ class EducationTimelineSectionService extends CmsServices
         ];
     }
 
-   /**
+    /**
      * Gets the section Enabled and Nav title from the CMS Settings table.
      *
      * @return collection.
@@ -71,7 +71,7 @@ class EducationTimelineSectionService extends CmsServices
     }
 
     /**
-     * Get the education timeline items from the database
+     * Get the education timeline items from the database.
      *
      * @return collection
      */

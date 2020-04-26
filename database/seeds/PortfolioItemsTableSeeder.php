@@ -28,15 +28,14 @@ class PortfolioItemsTableSeeder extends Seeder
         DB::table('portfolio_item_tech_tag_pivot')->truncate();
 
         /**
-        * Seed Fake Items
-        */
+         * Seed Fake Items.
+         */
         if ($seedFakeItems) {
             // Get the Tags
             $portfolioTags = PortfolioItemTag::pluck('tag')->all();
             $portfolioTechTags = PortfolioItemTechTag::pluck('tag')->all();
 
             factory(PortfolioItem::class, 100)->create()->each(function ($portfolioItem) use ($portfolioTags, $portfolioTechTags) {
-
                 shuffle($portfolioTags);
                 $portfolioItemTags = [$portfolioTags[0]];
 
@@ -62,10 +61,9 @@ class PortfolioItemsTableSeeder extends Seeder
         }
 
         /**
-        * Seed Real Items
-        */
+         * Seed Real Items.
+         */
         if ($seedRealItems) {
-
             $items = [
                 [
                     'slug'                  => 'experienceeverythingkce',
@@ -275,7 +273,7 @@ class PortfolioItemsTableSeeder extends Seeder
                     'meta_description'      => 'Company Marketing Website - Arcadia',
                     'enabled'               => 1,
                     'tags'                  => ['back_end_development', 'front_end_development'],
-                    'tech_tags'             => ['php', 'laravel', 'cms','foundation','html_5'],
+                    'tech_tags'             => ['php', 'laravel', 'cms', 'foundation', 'html_5'],
                 ],
                 [
                     'slug'                  => 'marketing-site-nails',
@@ -334,7 +332,7 @@ class PortfolioItemsTableSeeder extends Seeder
                     'project_link'          => 'https://www.carsteninstitute.com/',
                     'meta_description'      => 'Institute Marketing Website',
                     'enabled'               => 1,
-                    'tags'                  => ['back_end_development','front_end_development'],
+                    'tags'                  => ['back_end_development', 'front_end_development'],
                     'tech_tags'             => ['html_5', 'sass_scss', 'php', 'foundation'],
                 ],
                 [
@@ -349,7 +347,7 @@ class PortfolioItemsTableSeeder extends Seeder
                     'project_link'          => 'https://ultherapy.com/',
                     'meta_description'      => 'Business Marketing Website',
                     'enabled'               => 1,
-                    'tags'                  => ['back_end_development','front_end_development'],
+                    'tags'                  => ['back_end_development', 'front_end_development'],
                     'tech_tags'             => ['html_5', 'sass_scss', 'google_api', 'php'],
                 ],
                 [

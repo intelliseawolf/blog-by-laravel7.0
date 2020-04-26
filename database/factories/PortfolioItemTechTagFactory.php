@@ -8,6 +8,6 @@ $factory->define(PortfolioItemTechTag::class, function (Faker $faker) {
 
     return [
         'tag'               => $word,
-        'title'             => ucfirst($word)
+        'title'             => ucfirst($word),
     ];
 });

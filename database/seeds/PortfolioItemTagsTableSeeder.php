@@ -26,35 +26,35 @@ class PortfolioItemTagsTableSeeder extends Seeder
             $items = [
                 [
                     'tag'   => 'back_end_development',
-                    'title' => 'Back End Development'
+                    'title' => 'Back End Development',
                 ],
                 [
                     'tag'   => 'front_end_development',
-                    'title' => 'Front End Development'
+                    'title' => 'Front End Development',
                 ],
                 [
                     'tag'   => 'development',
-                    'title' => 'Development'
+                    'title' => 'Development',
                 ],
                 [
                     'tag'   => 'design',
-                    'title' => 'Design'
+                    'title' => 'Design',
                 ],
                 [
                     'tag'   => 'composer_package',
-                    'title' => 'Composer Package'
+                    'title' => 'Composer Package',
                 ],
                 [
                     'tag'   => 'opensource',
-                    'title' => 'Open Source'
+                    'title' => 'Open Source',
                 ],
                 [
                     'tag'   => 'npm_package',
-                    'title' => 'NPM Package'
+                    'title' => 'NPM Package',
                 ],
                 [
                     'tag'   => 'package',
-                    'title' => 'Package'
+                    'title' => 'Package',
                 ],
             ];
 

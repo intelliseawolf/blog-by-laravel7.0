@@ -77,5 +77,4 @@ class PortfolioItemTag extends Model
             ]);
         }
     }
-
 }

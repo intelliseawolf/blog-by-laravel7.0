@@ -49,7 +49,6 @@ Route::group(['prefix' => 'blog', 'middleware' => ['activity']], function () {
 
     // Individual Blog Posts
     Route::get('{slug}', 'Blog\BlogController@showPost');
-
 });
 
 // Super Admin only routes

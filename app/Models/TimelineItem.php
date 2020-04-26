@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use App\Models\TimelineType;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
@@ -80,7 +79,7 @@ class TimelineItem extends Model
     }
 
     /**
-     * Scope a query byt sort order
+     * Scope a query byt sort order.
      *
      * @return collection
      */
@@ -121,5 +120,4 @@ class TimelineItem extends Model
             ->byTypeId($typeId)
             ->sortOrder();
     }
-
 }

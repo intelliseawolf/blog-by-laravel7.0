@@ -11,15 +11,15 @@ class IntroSectionService extends CmsServices
     /**
      * Gets the intro data.
      *
-     * @return     array  The intro data.
+     * @return array The intro data.
      */
     public function getSectionData()
     {
-        $introBgImage           = '';
-        $introStaticText        = '';
-        $introSection           = self::getCmsIntroSection();
-        $scrollHtml             = self::getCmsIntroSectionScrollHtml();
-        $introBackground        = self::getCmsIntroSectionBackground();
+        $introBgImage = '';
+        $introStaticText = '';
+        $introSection = self::getCmsIntroSection();
+        $scrollHtml = self::getCmsIntroSectionScrollHtml();
+        $introBackground = self::getCmsIntroSectionBackground();
         $introSectionStaticText = self::getCmsIntroSectionStaticText();
 
         if ($introBackground->active) {
@@ -175,5 +175,4 @@ class IntroSectionService extends CmsServices
 
         return $item;
     }
-
 }

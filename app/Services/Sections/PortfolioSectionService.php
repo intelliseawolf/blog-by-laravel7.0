@@ -3,8 +3,8 @@
 namespace App\Services\Sections;
 
 use App\Models\CmsSetting;
-use App\Services\CmsServices;
 use App\Models\PortfolioItem;
+use App\Services\CmsServices;
 use Illuminate\Http\Request;
 use Route;
 
@@ -13,20 +13,20 @@ class PortfolioSectionService extends CmsServices
     /**
      * Gets the portfolio data.
      *
-     * @return     array    The portfolio data.
+     * @return array The portfolio data.
      */
     public function getSectionData($allItems = false)
     {
-        $portfolioSection       = self::getPortfolioSection();
-        $portfolioSectionLimit  = self::getPortfolioSectionLimit()->value;
-        $seeMoreButton          = self::getPortfolioSectionSeeMoreButton();
+        $portfolioSection = self::getPortfolioSection();
+        $portfolioSectionLimit = self::getPortfolioSectionLimit()->value;
+        $seeMoreButton = self::getPortfolioSectionSeeMoreButton();
         if ($allItems) {
             $items = self::getAllEnabledPortfolioItems();
         } else {
             $items = self::getPortfolioItems();
         }
-        $sectionTitleData       = self::getPortfolioSectionTitle();
-        $sectionTitle           = '';
+        $sectionTitleData = self::getPortfolioSectionTitle();
+        $sectionTitle = '';
 
         if ($sectionTitleData->active) {
             $sectionTitle = $sectionTitleData->value;
@@ -50,9 +50,9 @@ class PortfolioSectionService extends CmsServices
             'noItems'       => trans('portfolio.sections.portfolio.noItems'),
             'items'         => $items,
             'seeMoreButton' => [
-                'enabled'   =>  $seeMoreButton->active,
+                'enabled'   => $seeMoreButton->active,
                 'link'      => route('portfolio'),
-                'text'      =>  $seeMoreButton->value,
+                'text'      => $seeMoreButton->value,
                 'icon'      => 'fa-long-arrow-right',
             ],
         ];
@@ -218,10 +218,9 @@ class PortfolioSectionService extends CmsServices
      */
     public static function getPortfolioItemsFromAPI()
     {
-        $portfolioItemsRequest  = Request::create('/api/portfolioitems/all/', 'GET');
-        $portfolioItems         = json_decode(Route::dispatch($portfolioItemsRequest)->getContent());
+        $portfolioItemsRequest = Request::create('/api/portfolioitems/all/', 'GET');
+        $portfolioItems = json_decode(Route::dispatch($portfolioItemsRequest)->getContent());
 
         return $portfolioItems;
     }
-
 }

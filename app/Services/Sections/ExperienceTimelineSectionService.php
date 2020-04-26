@@ -2,8 +2,8 @@
 
 namespace App\Services\Sections;
 
-use App\Models\TimelineItem;
 use App\Models\CmsSetting;
+use App\Models\TimelineItem;
 use App\Services\CmsServices;
 
 class ExperienceTimelineSectionService extends CmsServices
@@ -13,10 +13,10 @@ class ExperienceTimelineSectionService extends CmsServices
      */
     public function getSectionData($enabled = true)
     {
-        $experienceTimelineSectionData  = self::getExperienceTimelineSection();
-        $timelineItems                  = self::getExperienceTimelineItems();
-        $sectionCssClassData            = self::getExperienceTimelineSectionCssClass();
-        $sectionCssClass                = '';
+        $experienceTimelineSectionData = self::getExperienceTimelineSection();
+        $timelineItems = self::getExperienceTimelineItems();
+        $sectionCssClassData = self::getExperienceTimelineSectionCssClass();
+        $sectionCssClass = '';
 
         if ($sectionCssClassData->active) {
             $sectionCssClass = $sectionCssClassData->value;
@@ -69,7 +69,7 @@ class ExperienceTimelineSectionService extends CmsServices
     }
 
     /**
-     * Get the experience timeline items from the database
+     * Get the experience timeline items from the database.
      *
      * @return collection
      */

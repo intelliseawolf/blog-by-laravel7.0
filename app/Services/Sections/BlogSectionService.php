@@ -12,17 +12,17 @@ class BlogSectionService extends CmsServices
     /**
      * Gets the blog data.
      *
-     * @return array  The blog data.
+     * @return array The blog data.
      */
     public function getSectionData()
     {
-        $blogSection                    = self::getBlogSection();
-        $blogSectionTitleData           = self::getBlogSectionTitle();
-        $blogSectionLimit               = self::getBlogSectionLimit()->value;
-        $blogSectionSeeMoreButtonData   = self::getBlogSectionSeeMoreButton();
-        $blogPosts                      = self::getBlogPosts();
-        $blogSectionTitle               = '';
-        $blogSectionSeeMoreButton       = '';
+        $blogSection = self::getBlogSection();
+        $blogSectionTitleData = self::getBlogSectionTitle();
+        $blogSectionLimit = self::getBlogSectionLimit()->value;
+        $blogSectionSeeMoreButtonData = self::getBlogSectionSeeMoreButton();
+        $blogPosts = self::getBlogPosts();
+        $blogSectionTitle = '';
+        $blogSectionSeeMoreButton = '';
 
         if ($blogSectionTitleData->active) {
             $blogSectionTitle = $blogSectionTitleData->value;

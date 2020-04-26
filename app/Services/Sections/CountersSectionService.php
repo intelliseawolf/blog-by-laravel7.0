@@ -4,7 +4,6 @@ namespace App\Services\Sections;
 
 use App\Models\CmsSetting;
 use App\Models\CounterItem;
-use App\Models\CounterType;
 use App\Services\CmsServices;
 use jeremykenedy\LaravelPackagist\App\Services\PackagistApiServices;
 
@@ -27,7 +26,7 @@ class CountersSectionService extends CmsServices
         return [
             'enabled'       => self::getCounterSectionEnabled()->active,
             'background'    => $sectionBgImage,
-            'bsClass'       => "col-md-3 col-sm-6",
+            'bsClass'       => 'col-md-3 col-sm-6',
             'items'         => self::getParsedCounterItems(),
         ];
     }
@@ -99,9 +98,9 @@ class CountersSectionService extends CmsServices
     }
 
     /**
-     * Parse the diffferent types of counter items
+     * Parse the diffferent types of counter items.
      *
-     * @param array $item   The item
+     * @param array $item The item
      *
      * @return array
      */

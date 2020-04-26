@@ -43,13 +43,14 @@ class CmsServices
         if (Cache::has($key)) {
             return true;
         }
+
         return false;
     }
 
     /**
      * Gets the from cache.
      *
-     * @param string $item   The item
+     * @param string $item The item
      *
      * @return From The from cache.
      */
@@ -61,8 +62,8 @@ class CmsServices
     /**
      * Stores in cache.
      *
-     * @param string    $key    The key
-     * @param multi     $value  The value
+     * @param string $key   The key
+     * @param multi  $value The value
      */
     public static function storeInCache($key, $value)
     {
@@ -87,6 +88,7 @@ class CmsServices
         if ($minutes === null) {
             $minutes = self::getCmsCachingTime();
         }
+
         return now()->addMinutes($minutes);
     }
 }

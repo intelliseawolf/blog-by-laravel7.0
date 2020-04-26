@@ -52,4 +52,3 @@ trait BlogSectionScopes
         return $query->where('key', 'blog_section_see_more_button');
     }
 }
-

@@ -3,7 +3,6 @@
 namespace App\Models;
 
 use App\Services\Markdowner;
-use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Spatie\Feed\Feedable;

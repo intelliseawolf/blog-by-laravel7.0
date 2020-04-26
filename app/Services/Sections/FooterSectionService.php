@@ -2,8 +2,8 @@
 
 namespace App\Services\Sections;
 
-use App\Models\SocialMediaItem;
 use App\Models\CmsSetting;
+use App\Models\SocialMediaItem;
 use App\Services\CmsServices;
 
 class FooterSectionService extends CmsServices
@@ -11,13 +11,13 @@ class FooterSectionService extends CmsServices
     /**
      * Gets the footer data.
      *
-     * @return array  The footer data.
+     * @return array The footer data.
      */
     public function getSectionData()
     {
         return [
             'enabled' => self::getFooterEnabled()->active,
-            'phone' => [
+            'phone'   => [
                 'enabled'   => self::getFooterPhoneEnabled()->active,
                 'icon'      => config('portfolio.footer.phoneIcon'),
                 'text'      => config('portfolio.contact.phone.string'),
@@ -29,7 +29,7 @@ class FooterSectionService extends CmsServices
                 'text'      => config('portfolio.contact.email.string'),
                 'link'      => config('portfolio.contact.email.link'),
             ],
-            'copyright' => self::getFooterCopyright()->value,
+            'copyright'   => self::getFooterCopyright()->value,
             'socialmedia' => [
                 'items' => self::getAllEnabledItemsSorted(),
             ],
@@ -56,7 +56,7 @@ class FooterSectionService extends CmsServices
     }
 
     /**
-     * Get the social media items from the database
+     * Get the social media items from the database.
      *
      * @return collection
      */
