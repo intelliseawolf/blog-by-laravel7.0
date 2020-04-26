@@ -44,7 +44,6 @@ import Skill from './components/Skill';
 // AOS.init(Config.AOS);
 AOS.init();
 
-
 var app = new Vue({
   components: {
     IntroTyping,
@@ -133,15 +132,3 @@ var app = new Vue({
     }
   },
 })
-
-
-
-
-
-
-
-
-
-
-
-

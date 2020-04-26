@@ -1,10 +1,10 @@
-## Larablog
-#### A powerful open source Laravel Blog with WYSWYG and CRUD (Create Read Update Delete) built on [Laravel](http://laravel.com/) 5.8 and [Bootstrap](http://getbootstrap.com) 4
+## jeremykenedy.com
+#### The source code for [jeremykenedy.com](https://jeremykenedy.com), built on [Laravel](https://laravel.com/) and [Bootstrap](https://getbootstrap.com)
 
-[![Build Status](https://travis-ci.org/jeremykenedy/larablog.svg?branch=master)](https://travis-ci.org/jeremykenedy/larablog)
-[![StyleCI](https://github.styleci.io/repos/40459558/shield?branch=master)](https://github.styleci.io/repos/40459558)
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/jeremykenedy/larablog/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/jeremykenedy/larablog/?branch=master)
-[![Code Intelligence Status](https://scrutinizer-ci.com/g/jeremykenedy/larablog/badges/code-intelligence.svg?b=master)](https://scrutinizer-ci.com/code-intelligence)
+[![Build Status](https://travis-ci.org/jeremykenedy/jeremykenedy.com.svg?branch=master)](https://travis-ci.org/jeremykenedy/jeremykenedy.com)
+[![StyleCI](https://github.styleci.io/repos/191242000/shield?branch=master)](https://github.styleci.io/repos/191242000)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/jeremykenedy/jeremykenedy.com/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/jeremykenedy/jeremykenedy.com/?branch=master)
+[![Code Intelligence Status](https://scrutinizer-ci.com/g/jeremykenedy/jeremykenedy.com/badges/code-intelligence.svg?b=master)](https://scrutinizer-ci.com/code-intelligence)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 #### Table of contents
@@ -29,14 +29,14 @@
 - [License](#license)
 
 ### Features
-| Larablog Features |
+| jeremykenedy.com Features |
 | :------------ |
-|Built on [Laravel](http://laravel.com/) 5.8|
+|Built on [Laravel](http://laravel.com/) 7|
 |Built on [Bootstrap](https://getbootstrap.com/) 4|
 |Front End Built on [Start Bootstrap - Clean Blog](https://www.npmjs.com/package/startbootstrap-clean-blog) |
 |Admin Built on [Paper Dashboard 2](https://www.npmjs.com/package/paper-dashboard-2) |
 |Uses [MySQL](https://github.com/mysql) Database (can be changed)|
-|Uses [Artisan](http://laravel.com/docs/5.8/artisan) to manage database migration, schema creations, and create/publish page controller templates|
+|Uses [Artisan](http://laravel.com/docs/master/artisan) to manage database migration, schema creations, and create/publish page controller templates|
 |Dependencies are managed with [COMPOSER](https://getcomposer.org/)|
 |Laravel Scaffolding **User** and **Administrator Authentication**.|
 |CRUD (Create, Read, Update, Delete) User Management with [Laravel Users](https://github.com/jeremykenedy/laravel-users) Package|
@@ -45,13 +45,13 @@
 |Built in [CKEditor](https://ckeditor.com/) WYSWYG Editor|
 |Google [reCaptcha Protection with Google API](https://developers.google.com/recaptcha/)|
 |Robust File Manager using [UniSharp Laravel File Manager](https://github.com/UniSharp/laravel-filemanager) Package|
-|Makes us of Laravel [Mix](https://laravel.com/docs/5.8/mix) to compile assets|
-|Makes use of [Language Localization Files](https://laravel.com/docs/5.8/localization)|
-|Active Nav states using [Laravel Requests](https://laravel.com/docs/5.8/requests)|
+|Makes us of Laravel [Mix](https://laravel.com/docs/master/mix) to compile assets|
+|Makes use of [Language Localization Files](https://laravel.com/docs/master/localization)|
+|Active Nav states using [Laravel Requests](https://laravel.com/docs/master/requests)|
 |User [Roles/ACL Implementation](https://github.com/jeremykenedy/laravel-roles)|
 |Admin PHP Information UI using [Laravel PHP Info](https://github.com/jeremykenedy/laravel-phpinfo) Package|
 |Activity Logging using [Laravel-logger](https://github.com/jeremykenedy/laravel-logger)|
-|Uses Laravel built in [mail](https://laravel.com/docs/5.8/mail) services|
+|Uses Laravel built in [mail](https://laravel.com/docs/master/mail) services|
 |Automatic sitemap generation with [Spatie Laravel Sitemap](https://github.com/spatie/laravel-sitemap) Package|
 |Automatic RSS Feed generation with [Spatie Laravel Feed](https://github.com/spatie/laravel-feed) Package|
 |Uses [Laravel Debugbar](https://github.com/barryvdh/laravel-debugbar) Package for local debugging|
@@ -59,10 +59,10 @@
 |Front-end bootstrap themes with admin management panel|
 
 ### Installation Instructions
-1. Run `git clone https://github.com/jeremykenedy/larablog.git larablog`
+1. Run `git clone git@github.com:jeremykenedy/jeremykenedy.com.git jeremykenedy.com`
 2. Create a MySQL database for the project
     * ```mysql -u root -p```, if using Vagrant: ```mysql -u homestead -psecret```
-    * ```create database larablog;```
+    * ```create database jeremykenedy;```
     * ```\q```
 3. From the projects root run `cp .env.example .env`
 4. Configure your `.env` file
@@ -88,16 +88,16 @@ php artisan vendor:publish --tag=laravelroles
 2. From the projects root folder run `yarn run dev` or `yarn run production`
   * You can watch assets with `yarn run watch`
 
-###### And thats it with the caveat of setting up and configuring your development environment. I recommend [Laravel Homestead](https://laravel.com/docs/5.8/homestead)
+###### And thats it with the caveat of setting up and configuring your development environment. I recommend [Laravel Homestead](https://laravel.com/docs/master/homestead)
 
 ### Seeds
-* [DatabaseSeeder.php](https://github.com/jeremykenedy/larablog/blob/master/database/seeds/DatabaseSeeder.php)
-* [PermissionsTableSeeder.php](https://github.com/jeremykenedy/larablog/blob/master/database/seeds/PermissionsTableSeeder.php)
-* [RolesTableSeeder.php](https://github.com/jeremykenedy/larablog/blob/master/database/seeds/RolesTableSeeder.php)
-* [ConnectRelationshipsSeeder.php](https://github.com/jeremykenedy/larablog/blob/master/database/seeds/ConnectRelationshipsSeeder.php)
-* [UsersTableSeeder.php](https://github.com/jeremykenedy/larablog/blob/master/database/seeds/UsersTableSeeder.php)
-* [TagTableSeeder.php](https://github.com/jeremykenedy/larablog/blob/master/database/seeds/TagTableSeeder.php)
-* [PostTableSeeder.php](https://github.com/jeremykenedy/larablog/blob/master/database/seeds/PostTableSeeder.php)
+* [DatabaseSeeder.php](https://github.com/jeremykenedy/jeremykenedy.com/blob/master/database/seeds/DatabaseSeeder.php)
+* [PermissionsTableSeeder.php](https://github.com/jeremykenedy/jeremykenedy.com/blob/master/database/seeds/PermissionsTableSeeder.php)
+* [RolesTableSeeder.php](https://github.com/jeremykenedy/jeremykenedy.com/blob/master/database/seeds/RolesTableSeeder.php)
+* [ConnectRelationshipsSeeder.php](https://github.com/jeremykenedy/jeremykenedy.com/blob/master/database/seeds/ConnectRelationshipsSeeder.php)
+* [UsersTableSeeder.php](https://github.com/jeremykenedy/jeremykenedy.com/blob/master/database/seeds/UsersTableSeeder.php)
+* [TagTableSeeder.php](https://github.com/jeremykenedy/jeremykenedy.com/blob/master/database/seeds/TagTableSeeder.php)
+* [PostTableSeeder.php](https://github.com/jeremykenedy/jeremykenedy.com/blob/master/database/seeds/PostTableSeeder.php)
 
 ##### Seeded Roles
 | Role | Level |
@@ -128,7 +128,7 @@ php artisan vendor:publish --tag=laravelroles
 * Controlled by the `.env` file.
 
 ##### Themes Seed List
-  * [ThemesTableSeeder](https://github.com/jeremykenedy/larablog/blob/master/database/seeds/ThemesTableSeeder.php)
+  * [ThemesTableSeeder](https://github.com/jeremykenedy/jeremykenedy.com/blob/master/database/seeds/ThemesTableSeeder.php)
 
 ### Commands
 #### Generate Site Map
@@ -144,18 +144,18 @@ php artisan vendor:publish --tag=laravelroles
 ### Configs
 #### Config File
 Here is a list of the custom config files that have been added or modified to the project:
-* [blog.php](https://github.com/jeremykenedy/larablog/blob/master/config/blog.php)
-* [admin.php](https://github.com/jeremykenedy/larablog/blob/master/config/admin.php)
-* [laravel-logger.php](https://github.com/jeremykenedy/larablog/blob/master/config/laravel-logger.php)
-* [laravelPhpInfo.php](https://github.com/jeremykenedy/larablog/blob/master/config/laravelPhpInfo.php)
-* [laravelusers.php](https://github.com/jeremykenedy/larablog/blob/master/config/laravelusers.php)
-* [roles.php](https://github.com/jeremykenedy/larablog/blob/master/config/roles.php)
-* [superadmin.php](https://github.com/jeremykenedy/larablog/blob/master/config/superadmin.php)
-* [sitemap.php](https://github.com/jeremykenedy/larablog/blob/master/config/sitemap.php)
-* [filesystems.php](https://github.com/jeremykenedy/larablog/blob/master/config/filesystems.php)
+* [blog.php](https://github.com/jeremykenedy/jeremykenedy.com/blob/master/config/blog.php)
+* [admin.php](https://github.com/jeremykenedy/jeremykenedy.com/blob/master/config/admin.php)
+* [laravel-logger.php](https://github.com/jeremykenedy/jeremykenedy.com/blob/master/config/laravel-logger.php)
+* [laravelPhpInfo.php](https://github.com/jeremykenedy/jeremykenedy.com/blob/master/config/laravelPhpInfo.php)
+* [laravelusers.php](https://github.com/jeremykenedy/jeremykenedy.com/blob/master/config/laravelusers.php)
+* [roles.php](https://github.com/jeremykenedy/jeremykenedy.com/blob/master/config/roles.php)
+* [superadmin.php](https://github.com/jeremykenedy/jeremykenedy.com/blob/master/config/superadmin.php)
+* [sitemap.php](https://github.com/jeremykenedy/jeremykenedy.com/blob/master/config/sitemap.php)
+* [filesystems.php](https://github.com/jeremykenedy/jeremykenedy.com/blob/master/config/filesystems.php)
 
 #### Env Variables
-Here is a list of the additonal added [`.env`](https://github.com/jeremykenedy/larablog/blob/master/.env.example) variables:
+Here is a list of the additonal added [`.env`](https://github.com/jeremykenedy/jeremykenedy.com/blob/master/.env.example) variables:
 
 ```
 INITIAL_SEEDED_SUPER_ADMIN_USERNAME='Admin'
@@ -165,7 +165,7 @@ INITIAL_SEEDED_SUPER_ADMIN_USERPASSWORD='password'
 BLOG_APP_NAME="${APP_NAME}"
 BLOG_DEFAULT_TITLE='Lara(b)log2'
 BLOG_DEFAULT_SUBTITLE='An open source blog platform'
-BLOG_DEFAULT_DESCRIPTION='Larablog 2 is an open source blog built on Laravel'
+BLOG_DEFAULT_DESCRIPTION='jeremykenedy.com 2 is an open source blog built on Laravel'
 BLOG_DEFAULT_AUTHOR='Jeremy Kenedy'
 BLOG_SITEMAP_LIMIT=100
 
@@ -208,13 +208,14 @@ RECAPTCHA_CDN=https://www.google.com/recaptcha/api.js
 ```
 
 #### Language Files
-* [larablog.php](https://github.com/jeremykenedy/larablog/blob/master/resources/lang/en/larablog.php)
-* [admin.php](https://github.com/jeremykenedy/larablog/blob/master/resources/lang/en/admin.php)
-* [tooltips.php](https://github.com/jeremykenedy/larablog/blob/master/resources/lang/en/tooltips.php)
-* [messages.php](https://github.com/jeremykenedy/larablog/blob/master/resources/lang/en/messages.php)
-* [forms.php](https://github.com/jeremykenedy/larablog/blob/master/resources/lang/en/forms.php)
-* [emails.php](https://github.com/jeremykenedy/larablog/blob/master/resources/lang/en/emails.php)
-* [validation.php](https://github.com/jeremykenedy/larablog/blob/master/resources/lang/en/validation.php)
+* [larablog.php](https://github.com/jeremykenedy/jeremykenedy.com/blob/master/resources/lang/en/larablog.php)
+* [portfolio.php](https://github.com/jeremykenedy/jeremykenedy.com/blob/master/resources/lang/en/portfolio.php)
+* [admin.php](https://github.com/jeremykenedy/jeremykenedy.com/blob/master/resources/lang/en/admin.php)
+* [tooltips.php](https://github.com/jeremykenedy/jeremykenedy.com/blob/master/resources/lang/en/tooltips.php)
+* [messages.php](https://github.com/jeremykenedy/jeremykenedy.com/blob/master/resources/lang/en/messages.php)
+* [forms.php](https://github.com/jeremykenedy/jeremykenedy.com/blob/master/resources/lang/en/forms.php)
+* [emails.php](https://github.com/jeremykenedy/jeremykenedy.com/blob/master/resources/lang/en/emails.php)
+* [validation.php](https://github.com/jeremykenedy/jeremykenedy.com/blob/master/resources/lang/en/validation.php)
 
 ### Routes
 
@@ -341,7 +342,7 @@ RECAPTCHA_CDN=https://www.google.com/recaptcha/api.js
 ### File Tree
 
 ```
-Larablog
+jeremykenedy.com
 ├── .editorconfig
 ├── .env.example
 ├── .env.travis
@@ -711,4 +712,4 @@ Before opening an issue there are a couple of considerations:
 Open source projects are the community’s responsibility to use, contribute, and debug.
 
 ### License
-Larablog is licensed under the [MIT license](https://opensource.org/licenses/MIT). Enjoy!
+jeremykenedy.com is licensed under the [MIT license](https://opensource.org/licenses/MIT). Enjoy!

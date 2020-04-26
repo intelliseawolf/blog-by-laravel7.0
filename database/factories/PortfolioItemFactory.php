@@ -19,6 +19,7 @@ $factory->define(PortfolioItem::class, function (Faker $faker) {
     ];
 
     $title = $faker->unique()->sentence(mt_rand(1, 2));
+    $sortOrder = PortfolioItem::all();
 
     return [
         'slug'                  => strtolower(str_replace(' ', '-', $title)),
@@ -32,5 +33,6 @@ $factory->define(PortfolioItem::class, function (Faker $faker) {
         'project_link'          => $faker->unique()->url(),
         'meta_description'      => "Meta for $title",
         'enabled'               => rand(0, 1),
+        'sort_order'            => $sortOrder->count() + 1,
     ];
 });

@@ -35,7 +35,7 @@ class CmsSettingsTableSeeder extends Seeder
                 'name'      => 'Intro Section Particles Enabled',
                 'key'       => 'intro_section_particles_enabled',
                 'value'     => null,
-                'active'    => 0,
+                'active'    => 1,
             ],
             [
                 'name'      => 'Intro Section Scroll HTML',
@@ -238,14 +238,14 @@ class CmsSettingsTableSeeder extends Seeder
             [
                 'name'      => 'Contact Section Text',
                 'key'       => 'contact_section_text',
-                'value'     => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptate dolores, quasi unde quisquam facilis at ullam aperiam similique dicta voluptatibus!',
+                'value'     => 'Stay in touch with me. Have a project you want to talk about? Please feel free to contact me. Usually email is best :)',
                 'active'    => 1,
             ],
             [
                 'name'      => 'Contact Section Phone Enabled',
                 'key'       => 'contact_section_phone_enabled',
                 'value'     => null,
-                'active'    => 1,
+                'active'    => 2,
             ],
             [
                 'name'      => 'Contact Section Email Enabled',

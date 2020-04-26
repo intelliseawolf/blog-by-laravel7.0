@@ -205,6 +205,7 @@ class PortfolioSectionService extends CmsServices
         }
 
         $items = PortfolioItem::AllPublishedPortfolioItems()->get();
+
         self::storeInCache($key, $items);
 
         return $items;

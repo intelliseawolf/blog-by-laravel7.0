@@ -45,6 +45,10 @@ class PortfolioItemTagsTableSeeder extends Seeder
                     'title' => 'Composer Package'
                 ],
                 [
+                    'tag'   => 'opensource',
+                    'title' => 'Open Source'
+                ],
+                [
                     'tag'   => 'npm_package',
                     'title' => 'NPM Package'
                 ],

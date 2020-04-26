@@ -23,7 +23,7 @@ class AboutSectionButtonsSeeder extends Seeder
             ],
             [
                 'active'        => 1,
-                'link'          => asset('files/JeremyKenedyResume.pdf'),
+                'link'          => 'https://s3-us-west-2.amazonaws.com/jeremykenedy.com/documents/JeremyKenedyResume.pdf',
                 'text'          => 'Download CV',
                 'delay'         => 300,
                 'target'        => '_blank',

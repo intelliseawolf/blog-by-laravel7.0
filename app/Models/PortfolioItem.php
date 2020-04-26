@@ -57,6 +57,7 @@ class PortfolioItem extends Model implements Feedable
         'project_link',
         'meta_description',
         'enabled',
+        'sort_order',
     ];
 
     /**
@@ -76,6 +77,7 @@ class PortfolioItem extends Model implements Feedable
         'project_link'          => 'string',
         'meta_description'      => 'string',
         'enabled'               => 'boolean',
+        'sort_order'            => 'integer',
     ];
 
     /**
@@ -408,6 +410,7 @@ class PortfolioItem extends Model implements Feedable
             'summary'       => $this->content_html,
             'updated'       => $this->updated_at,
             'link'          => $this->slug,
+            'sort_order'    => $this->sort_order,
         ]);
     }
 
@@ -431,7 +434,7 @@ class PortfolioItem extends Model implements Feedable
         return $query->with('tags')
             ->with('techTags')
             ->isEnabled()
-            ->orderBy('created_at', 'desc');
+            ->ordered();
     }
 
     /**
@@ -454,5 +457,15 @@ class PortfolioItem extends Model implements Feedable
     public function scopeIsEnabled($query)
     {
         $query->where('enabled', 1);
+    }
+
+    /**
+     * Scope a query to be ordered by sort order.
+     *
+     * @return collection
+     */
+    public function scopeOrdered($query)
+    {
+        return $query->orderBy('sort_order', 'asc');
     }
 }

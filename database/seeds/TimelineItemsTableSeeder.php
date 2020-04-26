@@ -14,11 +14,10 @@ class TimelineItemsTableSeeder extends Seeder
     public function run()
     {
         // Clear the table
-        TimelineItem::truncate();
+        // TimelineItem::truncate();
 
         // Seed Fake Items
         // factory(TimelineItem::class, 20)->create();
-
 
         // Seed Real Items
         $timelineTypes      = TimelineType::all();
@@ -41,8 +40,18 @@ class TimelineItemsTableSeeder extends Seeder
                 'enabled'       => 1,
                 'type_id'       => $experienceId,
                 'sort_order'    => null,
-                'icon'          => 'fa-globe',
+                'icon'          => 'fa-code',
                 'dates'         => '2019 - Present',
+                'title'         => 'Apex Trading',
+                'subtitle'      => 'Software Engineering Director & Shareholder',
+                'text'          => null,
+            ],
+            [
+                'enabled'       => 1,
+                'type_id'       => $experienceId,
+                'sort_order'    => null,
+                'icon'          => 'fa-globe',
+                'dates'         => '2019',
                 'title'         => 'FocusVision Worldwide',
                 'subtitle'      => 'Software Engineering Manager',
                 'text'          => null,

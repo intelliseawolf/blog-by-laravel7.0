@@ -189,6 +189,7 @@ section .section--basic,
                     margin: $standardMeasure;
                     max-width: calc(25% - #{2*$standardMeasure});
                     flex: 1 1 calc(25% - #{2*$standardMeasure});
+                    background: #ffffff;
                 }
             }
         }
@@ -246,6 +247,7 @@ section .section--basic,
             opacity: 0;
             transition: 0.5s all ease-in-out;
             font-size: 1.5em;
+            text-align: center;
         }
         a{
             position: absolute;

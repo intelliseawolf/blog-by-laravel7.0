@@ -77,6 +77,7 @@ return [
         'twitter_url'       => env('BLOG_SM_URL_TWITTER', null),
         'facebook_url'      => env('BLOG_SM_URL_FACEBOOK', null),
         'linkedin_url'      => env('BLOG_SM_URL_LINKEDIN', null),
+        'instagram_url'     => env('BLOG_SM_URL_INSTAGRAM', null),
         'googleplus_url'    => env('BLOG_SM_URL_GOOGLEPLUS', null),
         'github_url'        => env('BLOG_SM_URL_GITHUB', null),
     ],

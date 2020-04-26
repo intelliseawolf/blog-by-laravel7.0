@@ -36,17 +36,24 @@ class SocialMediaItemsTableSeeder extends Seeder
             ],
             [
                 'active'        => 1,
-                'name'          => 'Instagram',
+                'name'          => 'LinkedIn',
                 'icon'          => 'fa-linkedin-square',
                 'link'          => config('blog.sm.linkedin_url'),
                 'sort_order'    => 4,
             ],
             [
                 'active'        => 1,
+                'name'          => 'Instagram',
+                'icon'          => 'fa-instagram',
+                'link'          => config('blog.sm.instagram_url'),
+                'sort_order'    => 5,
+            ],
+            [
+                'active'        => 1,
                 'name'          => 'RSS',
                 'icon'          => 'fa-rss-square',
                 'link'          => route('feeds.blog'),
-                'sort_order'    => 5,
+                'sort_order'    => 6,
             ],
         ];
 

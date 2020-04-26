@@ -26,6 +26,7 @@ class CreatePortfolioItemsTable extends Migration
             $table->string('project_link');
             $table->longText('meta_description');
             $table->boolean('enabled')->default(0);
+            $table->integer('sort_order');
             $table->timestamps();
             $table->softDeletes();
         });
