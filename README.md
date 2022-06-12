@@ -1,35 +1,35 @@
-## jeremykenedy.com
-#### The source code for [jeremykenedy.com](https://jeremykenedy.com), built on [Laravel](https://laravel.com/) and [Bootstrap](https://getbootstrap.com)
+#### The source code built on [Laravel](https://laravel.com/) and [Bootstrap](https://getbootstrap.com)
 
-[![Build Status](https://travis-ci.org/jeremykenedy/jeremykenedy.com.svg?branch=master)](https://travis-ci.org/jeremykenedy/jeremykenedy.com)
+[![Build Status](https://travis-ci.org/intelliseawolf/blog-by-laravel7.0.svg?branch=master)](https://travis-ci.org/intelliseawolf/blog-by-laravel7.0)
 [![StyleCI](https://github.styleci.io/repos/191242000/shield?branch=master)](https://github.styleci.io/repos/191242000)
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/jeremykenedy/jeremykenedy.com/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/jeremykenedy/jeremykenedy.com/?branch=master)
-[![Code Intelligence Status](https://scrutinizer-ci.com/g/jeremykenedy/jeremykenedy.com/badges/code-intelligence.svg?b=master)](https://scrutinizer-ci.com/code-intelligence)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/intelliseawolf/blog-by-laravel7.0/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/intelliseawolf/blog-by-laravel7.0/?branch=master)
+[![Code Intelligence Status](https://scrutinizer-ci.com/g/intelliseawolf/blog-by-laravel7.0/badges/code-intelligence.svg?b=master)](https://scrutinizer-ci.com/code-intelligence)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 #### Table of contents
-- [Features](#features)
-- [Installation Instructions](#installation-instructions)
-    - [Build the Front End Assets with Mix](#build-front-end-assets-with-mix)
-- [Seeds](#seeds)
-    - [Seeded Roles](#seeded-roles)
-    - [Seeded Permissions](#seeded-permissions)
-    - [Seeded Users](#seeded-users)
-    - [Themes Seed List](#themes-seed-list)
-- [Commands](#commands)
-    - [Generate Site Map](#generate-site-map)
-- [Configs](#configs)
-    - [Config File](#config-file)
-    - [Env Variables](#env-variables)
-    - [Language Files](#language-files)
-- [Routes](#routes)
-- [Screenshots](#screenshots)
-- [File Tree](#file-tree)
-- [Opening an Issue](#opening-an-issue)
-- [License](#license)
+
+-   [Features](#features)
+-   [Installation Instructions](#installation-instructions)
+    -   [Build the Front End Assets with Mix](#build-front-end-assets-with-mix)
+-   [Seeds](#seeds)
+    -   [Seeded Roles](#seeded-roles)
+    -   [Seeded Permissions](#seeded-permissions)
+    -   [Seeded Users](#seeded-users)
+    -   [Themes Seed List](#themes-seed-list)
+-   [Commands](#commands)
+    -   [Generate Site Map](#generate-site-map)
+-   [Configs](#configs)
+    -   [Config File](#config-file)
+    -   [Env Variables](#env-variables)
+    -   [Language Files](#language-files)
+-   [Routes](#routes)
+-   [Screenshots](#screenshots)
+-   [File Tree](#file-tree)
+-   [Opening an Issue](#opening-an-issue)
+-   [License](#license)
 
 ### Features
-| jeremykenedy.com Features |
+
 | :------------ |
 |Built on [Laravel](http://laravel.com/) 7|
 |Built on [Bootstrap](https://getbootstrap.com/) 4|
@@ -59,18 +59,21 @@
 |Front-end bootstrap themes with admin management panel|
 
 ### Installation Instructions
-1. Run `git clone git@github.com:jeremykenedy/jeremykenedy.com.git jeremykenedy.com`
+
+1. Run `git clone https://github.com/intelliseawolf/blog-by-laravel7.0.git`
 2. Create a MySQL database for the project
-    * ```mysql -u root -p```, if using Vagrant: ```mysql -u homestead -psecret```
-    * ```create database jeremykenedy;```
-    * ```\q```
+    - `mysql -u root -p`, if using Vagrant: `mysql -u homestead -psecret`
+    - `create database jeremykenedy;`
+    - `\q`
 3. From the projects root run `cp .env.example .env`
 4. Configure your `.env` file
 5. Run `composer install` from the projects root folder
 6. From the projects root folder run:
+
 ```
 php artisan vendor:publish --tag=laravelroles
 ```
+
 7. From the projects root folder run `php artisan key:generate`
 8. From the projects root folder run `php artisan migrate`
 9. From the projects root folder run `composer dump-autoload`
@@ -78,84 +81,99 @@ php artisan vendor:publish --tag=laravelroles
 11. Compile the front end assets with [npm steps](#using-npm) or [yarn steps](#using-yarn).
 
 #### Build the Front End Assets with Mix
+
 ##### Using NPM:
+
 1. From the projects root folder run `npm install`
 2. From the projects root folder run `npm run dev` or `npm run production`
-  * You can watch assets with `npm run watch`
+
+-   You can watch assets with `npm run watch`
 
 ##### Using Yarn:
+
 1. From the projects root folder run `yarn install`
 2. From the projects root folder run `yarn run dev` or `yarn run production`
-  * You can watch assets with `yarn run watch`
+
+-   You can watch assets with `yarn run watch`
 
 ###### And thats it with the caveat of setting up and configuring your development environment. I recommend [Laravel Homestead](https://laravel.com/docs/master/homestead)
 
 ### Seeds
-* [DatabaseSeeder.php](https://github.com/jeremykenedy/jeremykenedy.com/blob/master/database/seeds/DatabaseSeeder.php)
-* [PermissionsTableSeeder.php](https://github.com/jeremykenedy/jeremykenedy.com/blob/master/database/seeds/PermissionsTableSeeder.php)
-* [RolesTableSeeder.php](https://github.com/jeremykenedy/jeremykenedy.com/blob/master/database/seeds/RolesTableSeeder.php)
-* [ConnectRelationshipsSeeder.php](https://github.com/jeremykenedy/jeremykenedy.com/blob/master/database/seeds/ConnectRelationshipsSeeder.php)
-* [UsersTableSeeder.php](https://github.com/jeremykenedy/jeremykenedy.com/blob/master/database/seeds/UsersTableSeeder.php)
-* [TagTableSeeder.php](https://github.com/jeremykenedy/jeremykenedy.com/blob/master/database/seeds/TagTableSeeder.php)
-* [PostTableSeeder.php](https://github.com/jeremykenedy/jeremykenedy.com/blob/master/database/seeds/PostTableSeeder.php)
+
+-   [DatabaseSeeder.php](https://github.com/intelliseawolf/blog-by-laravel7.0/blob/master/database/seeds/DatabaseSeeder.php)
+-   [PermissionsTableSeeder.php](https://github.com/intelliseawolf/blog-by-laravel7.0/blob/master/database/seeds/PermissionsTableSeeder.php)
+-   [RolesTableSeeder.php](https://github.com/intelliseawolf/blog-by-laravel7.0/blob/master/database/seeds/RolesTableSeeder.php)
+-   [ConnectRelationshipsSeeder.php](https://github.com/intelliseawolf/blog-by-laravel7.0/blob/master/database/seeds/ConnectRelationshipsSeeder.php)
+-   [UsersTableSeeder.php](https://github.com/intelliseawolf/blog-by-laravel7.0/blob/master/database/seeds/UsersTableSeeder.php)
+-   [TagTableSeeder.php](https://github.com/intelliseawolf/blog-by-laravel7.0/blob/master/database/seeds/TagTableSeeder.php)
+-   [PostTableSeeder.php](https://github.com/intelliseawolf/blog-by-laravel7.0/blob/master/database/seeds/PostTableSeeder.php)
 
 ##### Seeded Roles
-| Role | Level |
-| :------------ | :------------ |
-|Unverified|Level 0|
-|User|Level 1|
-|Writer|Level 2|
-|Moderator|Level 3|
-|Admin|Level 4|
-|Super Admin|Level 5|
+
+| Role        | Level   |
+| :---------- | :------ |
+| Unverified  | Level 0 |
+| User        | Level 1 |
+| Writer      | Level 2 |
+| Moderator   | Level 3 |
+| Admin       | Level 4 |
+| Super Admin | Level 5 |
 
 ##### Seeded Permissions
-  * view.users
-  * create.users
-  * edit.users
-  * delete.users
-  * perms.super-admin
-  * perms.admin
-  * perms.moderator
-  * perms.writer
-  * perms.user
+
+-   view.users
+-   create.users
+-   edit.users
+-   delete.users
+-   perms.super-admin
+-   perms.admin
+-   perms.moderator
+-   perms.writer
+-   perms.user
 
 ##### Seeded Users
-|Email|Password|Access|
-|:------------|:------------|:------------|
-|admin@admin.com|password|Super Admin Access|
 
-* Controlled by the `.env` file.
+| Email           | Password | Access             |
+| :-------------- | :------- | :----------------- |
+| admin@admin.com | password | Super Admin Access |
+
+-   Controlled by the `.env` file.
 
 ##### Themes Seed List
-  * [ThemesTableSeeder](https://github.com/jeremykenedy/jeremykenedy.com/blob/master/database/seeds/ThemesTableSeeder.php)
+
+-   [ThemesTableSeeder](https://github.com/intelliseawolf/blog-by-laravel7.0/blob/master/database/seeds/ThemesTableSeeder.php)
 
 ### Commands
+
 #### Generate Site Map
-* You can generate a XML sitemap which is located at `/sitemap.xml` with the following Artisan Command:
+
+-   You can generate a XML sitemap which is located at `/sitemap.xml` with the following Artisan Command:
 
 `php artisan sitemap:generate` or `php artisan sitemap:generate {limit}`
 
 `{limit}` is the number of pages that the sitemap generator will limit to generating.
 
-* The sitemaps default number of pages is controlled by the `.env` variable `BLOG_SITEMAP_LIMIT`
-
+-   The sitemaps default number of pages is controlled by the `.env` variable `BLOG_SITEMAP_LIMIT`
 
 ### Configs
+
 #### Config File
+
 Here is a list of the custom config files that have been added or modified to the project:
-* [blog.php](https://github.com/jeremykenedy/jeremykenedy.com/blob/master/config/blog.php)
-* [admin.php](https://github.com/jeremykenedy/jeremykenedy.com/blob/master/config/admin.php)
-* [laravel-logger.php](https://github.com/jeremykenedy/jeremykenedy.com/blob/master/config/laravel-logger.php)
-* [laravelPhpInfo.php](https://github.com/jeremykenedy/jeremykenedy.com/blob/master/config/laravelPhpInfo.php)
-* [laravelusers.php](https://github.com/jeremykenedy/jeremykenedy.com/blob/master/config/laravelusers.php)
-* [roles.php](https://github.com/jeremykenedy/jeremykenedy.com/blob/master/config/roles.php)
-* [superadmin.php](https://github.com/jeremykenedy/jeremykenedy.com/blob/master/config/superadmin.php)
-* [sitemap.php](https://github.com/jeremykenedy/jeremykenedy.com/blob/master/config/sitemap.php)
-* [filesystems.php](https://github.com/jeremykenedy/jeremykenedy.com/blob/master/config/filesystems.php)
+
+-   [blog.php](https://github.com/intelliseawolf/blog-by-laravel7.0/blob/master/config/blog.php)
+-   [admin.php](https://github.com/intelliseawolf/blog-by-laravel7.0/blob/master/config/admin.php)
+-   [laravel-logger.php](https://github.com/intelliseawolf/blog-by-laravel7.0/blob/master/config/laravel-logger.php)
+-   [laravelPhpInfo.php](https://github.com/intelliseawolf/blog-by-laravel7.0/blob/master/config/laravelPhpInfo.php)
+-   [laravelusers.php](https://github.com/intelliseawolf/blog-by-laravel7.0/blob/master/config/laravelusers.php)
+-   [roles.php](https://github.com/intelliseawolf/blog-by-laravel7.0/blob/master/config/roles.php)
+-   [superadmin.php](https://github.com/intelliseawolf/blog-by-laravel7.0/blob/master/config/superadmin.php)
+-   [sitemap.php](https://github.com/intelliseawolf/blog-by-laravel7.0/blob/master/config/sitemap.php)
+-   [filesystems.php](https://github.com/intelliseawolf/blog-by-laravel7.0/blob/master/config/filesystems.php)
 
 #### Env Variables
-Here is a list of the additonal added [`.env`](https://github.com/jeremykenedy/jeremykenedy.com/blob/master/.env.example) variables:
+
+Here is a list of the additonal added [`.env`](https://github.com/intelliseawolf/blog-by-laravel7.0/blob/master/.env.example) variables:
 
 ```
 INITIAL_SEEDED_SUPER_ADMIN_USERNAME='Admin'
@@ -208,14 +226,15 @@ RECAPTCHA_CDN=https://www.google.com/recaptcha/api.js
 ```
 
 #### Language Files
-* [larablog.php](https://github.com/jeremykenedy/jeremykenedy.com/blob/master/resources/lang/en/larablog.php)
-* [portfolio.php](https://github.com/jeremykenedy/jeremykenedy.com/blob/master/resources/lang/en/portfolio.php)
-* [admin.php](https://github.com/jeremykenedy/jeremykenedy.com/blob/master/resources/lang/en/admin.php)
-* [tooltips.php](https://github.com/jeremykenedy/jeremykenedy.com/blob/master/resources/lang/en/tooltips.php)
-* [messages.php](https://github.com/jeremykenedy/jeremykenedy.com/blob/master/resources/lang/en/messages.php)
-* [forms.php](https://github.com/jeremykenedy/jeremykenedy.com/blob/master/resources/lang/en/forms.php)
-* [emails.php](https://github.com/jeremykenedy/jeremykenedy.com/blob/master/resources/lang/en/emails.php)
-* [validation.php](https://github.com/jeremykenedy/jeremykenedy.com/blob/master/resources/lang/en/validation.php)
+
+-   [larablog.php](https://github.com/intelliseawolf/blog-by-laravel7.0/blob/master/resources/lang/en/larablog.php)
+-   [portfolio.php](https://github.com/intelliseawolf/blog-by-laravel7.0/blob/master/resources/lang/en/portfolio.php)
+-   [admin.php](https://github.com/intelliseawolf/blog-by-laravel7.0/blob/master/resources/lang/en/admin.php)
+-   [tooltips.php](https://github.com/intelliseawolf/blog-by-laravel7.0/blob/master/resources/lang/en/tooltips.php)
+-   [messages.php](https://github.com/intelliseawolf/blog-by-laravel7.0/blob/master/resources/lang/en/messages.php)
+-   [forms.php](https://github.com/intelliseawolf/blog-by-laravel7.0/blob/master/resources/lang/en/forms.php)
+-   [emails.php](https://github.com/intelliseawolf/blog-by-laravel7.0/blob/master/resources/lang/en/emails.php)
+-   [validation.php](https://github.com/intelliseawolf/blog-by-laravel7.0/blob/master/resources/lang/en/validation.php)
 
 ### Routes
 
@@ -312,6 +331,7 @@ RECAPTCHA_CDN=https://www.google.com/recaptcha/api.js
 ```
 
 ### Screenshots
+
 ![LaraBlog](https://s3-us-west-2.amazonaws.com/larablog.io/1-larablog-home.jpg)
 ![LaraBlog Post](https://s3-us-west-2.amazonaws.com/larablog.io/2-larablog-post.jpg)
 ![LaraBlog Post Comments](https://s3-us-west-2.amazonaws.com/larablog.io/22-larablog-comments.jpg)
@@ -692,24 +712,27 @@ jeremykenedy.com
 
 ```
 
-* Tree command can be installed using brew: `brew install tree`
-* File tree generated using command `tree -a -I '.git|node_modules|vendor|storage|ckeditor'`
+-   Tree command can be installed using brew: `brew install tree`
+-   File tree generated using command `tree -a -I '.git|node_modules|vendor|storage|ckeditor'`
 
 ### Opening an Issue
+
 Before opening an issue there are a couple of considerations:
-* You are all awesome!
-* **Read the instructions** and make sure all steps were *followed correctly*.
-* **Check** that the issue is not *specific to the development environment* setup.
-* **Provide** *duplication steps*.
-* **Attempt to look into the issue**, and if you *have a solution, make a pull request*.
-* **Show that you have made an attempt** to *look into the issue*.
-* **Check** to see if the issue you are *reporting is a duplicate* of a previous reported issue.
-* **Following these instructions show me that you have tried.**
-* If you have a questions send me an email to jeremykenedy@gmail.com
-* Need some help, I can do my best on Slack: https://opensourcehelpgroup.slack.com
-* Please be considerate that this is an open source project that I provide to the community for FREE when opening an issue.
+
+-   You are all awesome!
+-   **Read the instructions** and make sure all steps were _followed correctly_.
+-   **Check** that the issue is not _specific to the development environment_ setup.
+-   **Provide** _duplication steps_.
+-   **Attempt to look into the issue**, and if you _have a solution, make a pull request_.
+-   **Show that you have made an attempt** to _look into the issue_.
+-   **Check** to see if the issue you are _reporting is a duplicate_ of a previous reported issue.
+-   **Following these instructions show me that you have tried.**
+-   If you have a questions send me an email to jeremykenedy@gmail.com
+-   Need some help, I can do my best on Slack: https://opensourcehelpgroup.slack.com
+-   Please be considerate that this is an open source project that I provide to the community for FREE when opening an issue.
 
 Open source projects are the community’s responsibility to use, contribute, and debug.
 
 ### License
+
 jeremykenedy.com is licensed under the [MIT license](https://opensource.org/licenses/MIT). Enjoy!
